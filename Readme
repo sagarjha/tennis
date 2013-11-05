@@ -1,0 +1,3 @@
+To compile, run:
+javac tennis.java -cp ".":servlet-api.jar
+create a tomcat instance and copy tennis.class inside classes directory. Also, make a directory inside classes named dbProject and copy all class files from dbProject of the current directory to this newly created directory.
