@@ -1,0 +1,20 @@
+body
+{
+    background-image:url("images/schedule.jpg");
+    background-size: 100%;
+}
+
+td 
+{
+    text-align: center;
+}
+
+#info
+{
+    background-color:rgba(0,0,250,0.5);
+    background-size:50% auto;
+    text-align:left;
+    margin: 0 auto;
+    width:75%;
+    padding: 10px 0px 10px 10px;
+}
