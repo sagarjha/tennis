@@ -10,19 +10,18 @@
   </h3>
   <hr>
   <body>
-    <form action="../profile/playerProfiletoHimself.jsp">
+    <form name="playersignup" method ="post" action="tennis">
       <table width="500" border="0" cellspacing="0" cellpading="0">
         <tr>
           <td width="401"><div align="center"><b>Upload a Picture : </b></div></td>
-          <td width="399"><input type="text" name="username"></td>
+          <td width="399"><input type="text" name="picture"></td>
         </tr>
         <tr>
           <td width="401"><div align="center"><b>Description : </b></div></td>
-          <td width="399"><textarea id="text" name="username"></textarea></td>
+          <td width="399"><textarea id="text" name="description"></textarea></td>
         </tr>
 	<tr>
-	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Proceed"></div></td>
-	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Skip"></div></td>
+	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Sign Up As a Player"></div></td>
 	</tr>
       </table>
     </form>
