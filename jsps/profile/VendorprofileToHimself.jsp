@@ -38,14 +38,14 @@
    <td width="150"><div align="center"> <%= request.getAttribute("price1") %></div></td>
    </tr>
 <% } 
-if( (request.getAttribute("type2") != null){ %>  
+if( request.getAttribute("type2") != null){ %>  
    <tr>
    <td width="150"><div align="center"> <%= request.getAttribute("type2") %></div></td>
    <td width="150"><div align="center"> <%= request.getAttribute("brand2") %></div></td>
    <td width="150"><div align="center"> <%= request.getAttribute("price2") %></div></td>
     </tr>
 <% } 
-if( (request.getAttribute("type3") != null){ %>    
+if( request.getAttribute("type3") != null){ %>    
    <tr>
    <td width="150"><div align="center"> <%= request.getAttribute("type3") %></div></td>
    <td width="150"><div align="center"> <%= request.getAttribute("brand3") %></div></td>
