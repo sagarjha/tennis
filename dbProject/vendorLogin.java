@@ -21,7 +21,7 @@ class vendorLogin extends HttpServlet{
         String type1 = null, type2= null, type3= null, brand1 ="", brand2 = "", brand3 = "";
         int price1 = -1, price2 = -1, price3 = -1, count = 1;
         while(rs.next()){
-            allItems += rs.getString("brand") + rs.getString("type") + "for Rs." + rs.getInt("price") + "\\n";
+            allItems += rs.getString("brand") + " " + rs.getString("type") + "for Rs." + rs.getInt("price") + "\\n";
             if(count ==1){
                 type1 = rs.getString("type");
                 brand1 = rs.getString("brand");
@@ -33,9 +33,9 @@ class vendorLogin extends HttpServlet{
                 price2 = rs.getInt("price");
                 }
             if(count ==3){
-                type2 = rs.getString("type");
-                brand2 = rs.getString("brand");
-                price2 = rs.getInt("price");
+                type3 = rs.getString("type");
+                brand3 = rs.getString("brand");
+                price3 = rs.getInt("price");
                 }
             count++;
             }
