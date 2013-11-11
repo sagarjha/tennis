@@ -23,7 +23,7 @@
    </tr>
    <tr>
    <td width="150"><div align="left">Experience</div></td>
-	 <td width="100"><div align="left"><%= request.getAttribute("experience")%> </div></td>
+<!--	 <td width="100"><div align="left"><%= request.getAttribute("experience")%> </div></td> -->
    </tr>
    
    </table>

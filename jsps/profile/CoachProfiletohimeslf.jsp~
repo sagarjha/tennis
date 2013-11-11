@@ -40,7 +40,7 @@
 <tr>
 <th>Club News</th>
 <%
-if(request.getAttribute("news1")!=Null)
+if(request.getAttribute("news1")!=null)
 {
 %>
 <tr>
