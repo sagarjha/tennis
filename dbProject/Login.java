@@ -111,10 +111,11 @@ public class Login extends HttpServlet{
 
 		// store the id of the player for future queries
 		int id = rs.getInt("id");
-
+		
 		// call the player login handler
 		playerLogin pL = new playerLogin ();
 		pL.playerLoginHandler (id, request, rs, stmt);
+		System.out.println("player login complete");
 		return playerProfileJsp;
 	    }
 
