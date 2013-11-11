@@ -120,6 +120,7 @@ if(request.getAttribute("club1")!=null)
    <td width="200" ><div align="center">&bull; <%= request.getAttribute("club1")%></div></td>   
    </tr>
 <%
+}
 if(request.getAttribute("club2")!=null)
 {
 %>
@@ -127,6 +128,7 @@ if(request.getAttribute("club2")!=null)
    <td width="200" colspan="2" ><div align="center">&bull; <%= request.getAttribute("club2")%></div></td>
     </tr>
 <%
+}
 if(request.getAttribute("club3")!=null)
 {
 %>
