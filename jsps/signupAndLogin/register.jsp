@@ -8,7 +8,7 @@
   
   <body>
     <table width="500" border="0" cellspacing="0" cellpading="0">
-      <form name="registerForm1" method ="post" action="tennis">
+      <form name="register" method ="post" action="tennis">
 	<tr>
 	  <td width="400"><div align="right"><b><h3>Select your role:</h3></b> </div>
 	  </td>
@@ -25,7 +25,7 @@
 	  </td>
 	</tr>
 	<tr>
-	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Proceed1"></td></div>
+	  <td width="600"><div align="right"><br><input type="Submit" name="REGISTER" value = "Proceed"></td></div>
 	</tr>
       </form>
     </table>
