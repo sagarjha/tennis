@@ -4,7 +4,7 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   </head>
-  <h3 align="center">Sign Up as Player</h3><hr>
+  <h3 align="center">Sign Up</h3><hr>
 
   <body>
     <table width="500" border="0" cellspacing="0" cellpading="0">

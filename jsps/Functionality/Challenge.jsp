@@ -54,7 +54,10 @@
   <option value="saab">3</option>
 	</select> </div></td>
 	</tr>
-    
-
+                  <tr>
+		<td width="401"> </td>
+		<td width="399"><br><input type="Submit" name="SUBMIT" value = "Challenge"></td>
+	      </tr>
+</table>
   </body>
 </html>

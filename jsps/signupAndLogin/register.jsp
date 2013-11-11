@@ -26,7 +26,7 @@
 	  </td>
 	</tr>
 	<tr>
-	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Proceed"></div></td>
+	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Proceed"></td></div>
 	</tr>
       </form>
     </table>

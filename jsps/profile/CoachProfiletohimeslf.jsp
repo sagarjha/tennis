@@ -165,7 +165,7 @@ if(request.getAttribute("club3")!=null)
    
 
    -->
-   <td width="200"><input name="newclub">
+   <td width="200"><input list="newclub" name="newclub">
    <datalist id="newclub">
 
   <option value="Internet Explorer">

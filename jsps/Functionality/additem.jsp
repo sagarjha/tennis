@@ -1,11 +1,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tennis World - Manage News</title>
+        <title>Tennis World - Manage Items</title>
         <link href="style.css" rel="stylesheet" type="text/css">        
     </head>
     <h3 align="center">
-        Add News
+        Add Item
     </h3>
     <hr>
     <body>
@@ -29,6 +29,10 @@
               </tr>
               <tr>
                   <td width="401"><div align="center"><b>Product Brand : </b></div></td>
+                  <td width="399"><input type="text" name="username"></td>
+              </tr>
+			  <tr>
+                  <td width="401"><div align="center"><b>Price : </b></div></td>
                   <td width="399"><input type="text" name="username"></td>
               </tr>
                   <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Add"></td>

@@ -20,16 +20,24 @@
                   <td width="399"><input type="text" name="username"></td>
               </tr>
               <tr>
-                  <td width="401"><div align="center"><b>Cap on number of players : </b></div></td>
+                  <td width="401"><div align="center"><b>Number of players : </b></div></td>
+                  <td width="50"><div align="center"><select>
+				  <option value="volvo">8</option>
+				  <option value="saab">16</option>
+				  <option value="saab">32</option>
+				</select> </div></td>
+              </tr>
+              <tr>
+                  <td width="401"><div align="center"><b>Prize Money : </b></div></td>
                   <td width="399"><input type="text" name="username"></td>
               </tr>
               <tr>
-                  <td width="401"><div align="center"><b>Price Money : </b></div></td>
+                  <td width="401"><div align="center"><b>Starting Slot : </b></div></td>
                   <td width="399"><input type="text" name="username"></td>
               </tr>
               <tr>
 		<td width="401"> </td>
-		<td width="399"><br><input type="Submit" name="SUBMIT" value = "Schedule"></td>
+		<td width="399"><br><input type="Submit" name="SUBMIT" value = "Create Tournament"></td>
 	      </tr>
         </table>
     </body>
