@@ -21,7 +21,7 @@
           <td width="399"><textarea id="text" name="description"></textarea></td>
         </tr>
 	<tr>
-	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Sign Up as a Club"></div></td>
+	  <td width="600"><div align="right"><br><input type="Submit" name="CLUBSIGNUP2" value = "Sign Up"></div></td>
 	</tr>
       </table>
     </form>
