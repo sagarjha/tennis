@@ -42,7 +42,7 @@ public class tennis extends HttpServlet{
 	}
 	        
 	//Enter the connection details
-	String hostname = "127.0.0.1";	// IP address of the machine running the PostgreSQL
+	String hostname = "10.105.14.237";	// IP address of the machine running the PostgreSQL
 	String username = "postgres"; // PostgreSQL username
 	String password = "dbproject"; // PostgreSQL password
 	String dbName = "postgres"; // Name of the database
