@@ -16,7 +16,7 @@ public class tennis extends HttpServlet{
 
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 	System.out.println("doGet");
-	//try{
+	
         if (request.getParameter("LOGIN").toString().equals("Login")) {
 	    System.out.println("Matched");
             Login L = new Login();
@@ -27,13 +27,107 @@ public class tennis extends HttpServlet{
             
 
 	}
-        else
-            System.out.println("Not Matched");
-        //}
-        /*catch(Exception e)
+        
+        //Register
+        else if(request.getParameter("REGISTER").toString().equals("Proceed")) {
+            String role=request.getParameter("role");
+            session.setAttribute("type",role);
+            ServletContext context = getServletContext();
+            if((session.getAttribute("type").equals("1"))|
+                    (session.getAttribute("type").equals("2"))|
+                    (session.getAttribute("type").equals("3")))
+            {   RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/personsignup.jsp");
+                dispatcher.forward(request, response);
+            }
+            else if(session.getAttribute("type").equals("4"))
+            {
+                RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/clubsignup.jsp");
+                dispatcher.forward(request, response);
+            }
+            else if(session.getAttribute("type").equals("5"))
+            {
+                RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/vendorsignup.jsp");
+                dispatcher.forward(request, response);
+            }
+            
+        }
+        
+        //personsignup.jsp
+        else if(request.getParameter("PERSONSIGNUP").toString().equals("Proceed"))
         {
-            System.out.println(e);
-        }*/
+            String name=request.getParameter("name");
+            String age=request.getParameter("age");
+            String gender=request.getParameter("gender");
+            String address=request.getParameter("address");
+            String emailaddress=request.getParameter("emailaddress");
+            String phoneno=request.getParameter("phoneno");
+            String username=request.getParameter("username");
+            String password=request.getParameter("password");
+            String clubid=request.getParameter("clubid");
+            
+            session.setAttribute("name",name);
+            session.setAttribute("age",age);
+            session.setAttribute("gender",gender);
+            session.setAttribute("address",address);
+            session.setAttribute("emailaddress",emailaddress);
+            session.setAttribute("phoneno",phoneno);
+            //phoneno can be empty string so we need to check for both empty and null when converting into int
+            session.setAttribute("username",username);
+            session.setAttribute("password",password);
+            session.setAttribute("clubid",clubid);
+            
+            ServletContext context = getServletContext();
+            if(session.getAttribute("type").equals("1"))
+            {
+                RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/playersignup.jsp");
+                dispatcher.forward(request, response);
+            }
+            else if(session.getAttribute("type").equals("2"))
+            {
+                RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/coachsignup.jsp");
+                dispatcher.forward(request, response);
+            }
+            else if(session.getAttribute("type").equals("3"))
+            {
+                RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/umpiresignup.jsp");
+                dispatcher.forward(request, response);
+            }
+        }
+        
+        //vendorsignup.jsp
+        else if(request.getParameter("VENDORSIGNUP").toString().equals("Proceed"))
+        {
+            String name=request.getParameter("name");
+            String address=request.getParameter("address");
+            String emailaddress=request.getParameter("emailaddress");
+            String phoneno=request.getParameter("phoneno");
+            String username=request.getParameter("username");
+            String password=request.getParameter("password");
+            
+            session.setAttribute("name",name);
+            session.setAttribute("address",address);
+            session.setAttribute("emailaddress",emailaddress);
+            session.setAttribute("phoneno",phoneno);
+            //phoneno can be empty string so we need to check for both empty and null when converting into int
+            session.setAttribute("username",username);
+            session.setAttribute("password",password);
+            
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/vendorsignup2.jsp");
+            dispatcher.forward(request, response);
+        }
+        
+        
+        //clubsignup.jsp
+        else if(request.getParameter("CLUBSIGNUP").toString().equals("Proceed")){
+            String name=request.getParameter("name");
+            String address=request.getParameter("address");
+            String emailaddress=request.getParameter("emailaddress");
+            String phoneno=request.getParameter("phoneno");
+            String username=request.getParameter("username");
+            String password=request.getParameter("password");
+            String courtnum=request.getParameter();
+        }
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response)	throws ServletException, IOException{
