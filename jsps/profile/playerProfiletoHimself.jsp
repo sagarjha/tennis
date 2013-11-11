@@ -58,7 +58,7 @@
 	  <td width="400"><div align="left">&bull; vs Somdev Devvarman at All England Tennis Club on  3 Nov</div></td>
 	</tr>
 	<tr>
-	  <td width="300"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
+	      <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("UpcomingMatches")%>")' value="See all results"> </div></td>
 	</tr>
       </table>
       
@@ -125,13 +125,13 @@
   <tr>
     <th>Recent Results</th>
   <tr>
-    <td width="300"><div align="left">&bull; Lost to Nadal at French Open</div></td>
+    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes1") %></div></td>
   </tr>
   <tr>
-    <td width="300"><div align="left">&bull; Defeated Rishiraj at IIT Open</div></td>
+    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes2") %></div></td>
   </tr>
   <tr>
-    <td width="300"><div align="left">&bull; Lost to Djokovic at Australian Open</div></td>
+    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes3") %></div></td>
   </tr>
   <tr>
     

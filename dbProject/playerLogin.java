@@ -42,12 +42,85 @@ class playerLogin extends HttpServlet{
 	    rs = stmt.executeQuery (query);
 	    String records = "";
 	    int count = 1;
+	    if (rs.next()) {
+		request.setAttribute("publicNotes1",rs.getString("description"));
+		records += count + ". " + rs.getString("description") + "\\n";
+		count++;
+	    }
+	    if (rs.next()) {
+		request.setAttribute("publicNotes2",rs.getString("description"));
+		records += count + ". " + rs.getString("description") + "\\n";
+		count++;
+	    }
+	    if (rs.next()) {
+		request.setAttribute("publicNotes3",rs.getString("description"));
+		records += count + ". " + rs.getString("description") + "\\n";
+		count++;
+	    }
 	    while (rs.next()) {
 		records += count + ". " + rs.getString("description") + "\\n";
 		count++;
 	    }
 	    System.out.println(records);
 	    request.setAttribute("publicNotes",records);
+	}
+
+	// set the attribute UpcomingMatches
+	{
+	    String query = "select P1.Name as player1, P2.Name as player2, Clb.Name as club, M.DateOfMatch, M.SlotNumber, matchtype from Match as M, Player as P1, Player as P2, Club as Clb where (M.Player1ID=" + id + " or M.Player2ID=" + id + ") and P2.ID=M.Player1ID and P1.ID=M.Player2ID and Clb.ID=M.ClubID;";
+	    
+	    System.out.println(query);
+	    rs = stmt.executeQuery (query);
+	    String matches = "";
+	    int count = 1;
+	    if (rs.next()) {
+		if (rs.getString("player1").equals(request.getAttribute("name"))) {
+		    request.setAttribute("UpcomingMatches1", "vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n");
+		    matches += count + ". vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    count++;
+		}
+		else {
+		    request.setAttribute("UpcomingMatches1", "vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n");
+		    matches += count + ". vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    count++;
+		}
+	    }
+	    if (rs.next()) {
+		if (rs.getString("player1").equals(request.getAttribute("name"))) {
+		    request.setAttribute("UpcomingMatches2", "vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n");
+		    matches += count + ". vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    count++;
+		}
+		else {
+		    request.setAttribute("UpcomingMatches2", "vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n");
+		    matches += count + ". vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    count++;
+		}
+	    }
+	    if (rs.next()) {
+		if (rs.getString("player1").equals(request.getAttribute("name"))) {
+		    request.setAttribute("UpcomingMatches3", "vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n");
+		    matches += count + ". vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    count++;
+		}
+		else {
+		    request.setAttribute("UpcomingMatches3", "vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n");
+		    matches += count + ". vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    count++;
+		}
+	    }
+	    while (rs.next()) {
+		if (rs.getString("player1").equals(request.getAttribute("name"))) {
+		    matches += count + ". vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    count++;
+		}
+		else {
+		    matches += count + ". vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    count++;
+		}
+	    }
+	    System.out.println(matches);
+	    request.setAttribute("UpcomingMatches",matches);
 	}
     }
 }
