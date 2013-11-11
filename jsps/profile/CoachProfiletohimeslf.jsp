@@ -23,7 +23,7 @@
    </tr>
    <tr>
    <td width="150"><div align="left">Experience</div></td>
-<!--	 <td width="100"><div align="left"><%= request.getAttribute("experience")%> </div></td> -->
+	 <td width="100"><div align="left"><%= request.getAttribute("experience")%> Years</div></td> 
    </tr>
    
    </table>
@@ -165,14 +165,14 @@ if(request.getAttribute("club3")!=null)
    
 
    -->
-   <td width="200"><input name="newclub">
+   <td width="200"><input list="newclub" name="newclub">
    <datalist id="newclub">
 
-  <option value="Internet Explorer">
-  <option value="Firefox">
-  <option value="Chrome">
-  <option value="Opera">
-  <option value="Safari">
+  <option value="Internet Explorer">IE</option>
+  <option value="Firefox">Fire</option>
+  <option value="Chrome">Google</option>
+  <option value="Opera">Mac</option>
+  <option value="Safari">Mac2</option>
 </datalist>
    </td>
 <!--   	<td width="150"><div align="center"><Button>Add Coaching Slot</Button></div></td> -->

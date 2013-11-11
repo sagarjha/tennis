@@ -9,7 +9,7 @@ class playerLogin extends HttpServlet{
 	// set various attributes required for displaying the correct information on the profile page
 	request.setAttribute("name",rs.getString("name"));		    
 	request.setAttribute("gender",rs.getString("gender"));
-	request.setAttribute("age",2013 - rs.getInt("yearOfBirth"));
+	int yearOfbirth=rs.getInt("yearOfBirth");
 	request.setAttribute("address", rs.getString("address"));
 	request.setAttribute("emailid", rs.getString("emailid"));
 	request.setAttribute("phoneno", rs.getString("phonenum"));
@@ -122,5 +122,15 @@ class playerLogin extends HttpServlet{
 	    System.out.println(matches);
 	    request.setAttribute("UpcomingMatches",matches);
 	}
+        
+        //Calculating Age
+        {
+            String query = "Select extract(year from (select datevalue from constant where constantname = 'time')) as year;";
+            rs=stmt.executeQuery(query);
+            if(rs.next())
+            {
+                request.setAttribute("age", rs.getInt("year") - yearOfbirth);
+            }
+        }
     }
 }

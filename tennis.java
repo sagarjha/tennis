@@ -16,14 +16,24 @@ public class tennis extends HttpServlet{
 
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 	System.out.println("doGet");
-	if (request.getParameter("SUBMIT").toString().equals("Login")) {
-	    Login L = new Login();
+	//try{
+        if (request.getParameter("SUBMIT").toString().equals("Login")) {
+	    System.out.println("Matched");
+            Login L = new Login();
 	    String redirectJsp = L.handleLogin(request,username,password,conn,type);
 	    ServletContext context = getServletContext();
 	    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
 	    dispatcher.forward(request, response);
+            
 
 	}
+        else
+            System.out.println("Not Matched");
+        //}
+        /*catch(Exception e)
+        {
+            System.out.println(e);
+        }*/
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response)	throws ServletException, IOException{

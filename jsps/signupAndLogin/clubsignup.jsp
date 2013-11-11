@@ -36,6 +36,13 @@
    </tr>
   </td>
   </tr>
+   <tr>
+   <td width="401"><div align="center"><b>Phone Number* : </b></div></td>
+   <td width="399"><input type="text" name="username"></td>
+   </td>
+   </tr>
+  </td>
+  </tr>
   <tr>
   <td width="401"><div align="center"><b>Username* : </b></div></td>
    <td width="399"><input type="text" name="username"></td>

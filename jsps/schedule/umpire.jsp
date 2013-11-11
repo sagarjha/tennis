@@ -15,9 +15,6 @@
 	    Player2
 	  </th>
 	  <th width="200">
-	    Club
-	  </th>
-	  <th width="200">
 	    Date
 	  </th>
 	  <th width="200">
@@ -30,9 +27,6 @@
 	  </td>
 	  <td>
 	    Sagar
-	  </td>
-	  <td>
-	    Central club
 	  </td>
 	  <td>
 	    10/11/2013
@@ -48,9 +42,6 @@
 	    Ayush
 	  </td>
 	  <td>
-	    IIT Bombay
-	  </td>
-	  <td>
 	    12/10/2013
 	  </td>
 	  <td>
@@ -63,9 +54,6 @@
 	  </td>
 	  <td>
 	    Pranav
-	  </td>
-	  <td>
-	    King's Club
 	  </td>
 	  <td>
 	    12/10/2013

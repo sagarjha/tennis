@@ -5,14 +5,14 @@
   </head>
 
   <body>
-    <center> <b>Matches to be Accredited<br><br></b>
+    <center> <b>Pending Challenges<br><br></b>
       <table width="1000" border="1">
 	<tr>
 	  <th width="200">
-	    Player1
+	    Opponent
 	  </th>
 	  <th width="200">
-	    Player2
+	    Venue
 	  </th>
 	  <th width="200">
 	    Date
@@ -29,7 +29,7 @@
 	    Sahil
 	  </td>
 	  <td>
-	    Sagar
+	    Sagar Club
 	  </td>
 	  <td>
 	    10/11/2013
@@ -39,8 +39,8 @@
 	  <td>
 	    <select>
 	      <option value="1">select</option>
-	      <option value="2">Player1</option>
-	      <option value="3">Player2</option>
+	      <option value="2">Accept</option>
+	      <option value="3">Reject</option>
 	    </select>
 	  </td>
 	</tr>
@@ -49,7 +49,7 @@
 	    Raghav
 	  </td>
 	  <td>
-	    Ayush
+	    Ayush Club
 	  </td>
 	  <td>
 	    12/10/2013
@@ -60,8 +60,8 @@
 	  <td>
 	    <select>
 	      <option value="1">select</option>
-	      <option value="2">Player1</option>
-	      <option value="3">Player2</option>
+	      <option value="2">Accept</option>
+	      <option value="3">Reject</option>
 	    </select>
 	  </td>
 	</tr>
@@ -70,7 +70,7 @@
 	    Anoop
 	  </td>
 	  <td>
-	    Pranav
+	    Pranav Club
 	  </td>
 	  <td>
 	    12/10/2013
@@ -81,13 +81,13 @@
 	  <td>
 	    <select>
 	      <option value="1">select</option>
-	      <option value="2">Player1</option>
-	      <option value="3">Player2</option>
+	      <option value="2">Accept</option>
+	      <option value="3">Reject</option>
 	    </select>
 	  </td>
 	</tr>
       </table>
     </center>
     <br> <br>
-    <center> <input type="Submit" style="color: blue; background-color: grey" name="Accredit" value = "Accredit"> </center>
+    <center> <input type="Submit" style="color: blue; background-color: grey" name="Accredit" value = "Process"> </center>
   </body>
