@@ -1,7 +1,6 @@
 <html>
   <head>
     <title>Tennis World</title>
-    <script type="text/javascript" src="CaseType.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   </head>
@@ -9,7 +8,7 @@
   
   <body>
     <table width="500" border="0" cellspacing="0" cellpading="0">
-      <form action="personsignup.jsp">
+      <form name="registerForm1" method ="post" action="tennis">
 	<tr>
 	  <td width="400"><div align="right"><b><h3>Select your role:</h3></b> </div>
 	  </td>
@@ -26,7 +25,7 @@
 	  </td>
 	</tr>
 	<tr>
-	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Proceed"></td></div>
+	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Proceed1"></td></div>
 	</tr>
       </form>
     </table>
