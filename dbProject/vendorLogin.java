@@ -5,6 +5,7 @@ import java.sql.*;
 
 class vendorLogin extends HttpServlet{
     public void vendorLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt) throws SQLException{
+       System.out.println("In vendorLogin.java");
         // set various attributes required for displaying the correct information on the profile page
 	request.setAttribute("name",rs.getString("name"));		    
 	request.setAttribute("address", rs.getString("address"));

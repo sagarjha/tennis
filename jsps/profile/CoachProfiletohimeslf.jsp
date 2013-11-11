@@ -89,7 +89,7 @@ if(request.getAttribute("news3")!=null)
    </tr>
    <tr>
    <td width="100"><div align="left"><%= request.getAttribute("gender")%></div></td>
-   <td width="100"><div align="left"><%= request.getAttribute("age")%></div></td>
+   <td width="100"><div align="left"><%= request.getAttribute("age")%> Years</div></td>
    </td>
    </tr>
    <tr>

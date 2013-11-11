@@ -6,9 +6,11 @@ import java.sql.*;
 class coachLogin extends HttpServlet{
     public void coachLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt, Connection conn) throws SQLException{
 	// set various attributes required for displaying the correct information on the profile page
-	request.setAttribute("name",rs.getString("name"));		    
+        int coachingStartYear = rs.getInt("coachingstartyear");
+        int yearOfbirth = rs.getInt("yearOfBirth");
+        request.setAttribute("name",rs.getString("name"));		    
 	request.setAttribute("gender",rs.getString("gender"));
-	request.setAttribute("age",2013 - rs.getInt("yearOfBirth"));
+//	request.setAttribute("age",2013 - rs.getInt("yearOfBirth"));
 	request.setAttribute("address", rs.getString("address"));
 	request.setAttribute("emailid", rs.getString("emailid"));
 	request.setAttribute("phoneno", rs.getString("phonenum"));
@@ -16,12 +18,13 @@ class coachLogin extends HttpServlet{
 
 	request.setAttribute("rating",rs.getString("rating"));
 
-	// More Club
+	// More Club and More News
 	{
 	    String query = "select clubid from teachesat where coachid="+id+";";
 	    System.out.println(query);
 	    rs = stmt.executeQuery (query);
             Statement stmt2 = conn.createStatement();
+            Statement stmt3 = conn.createStatement();
 	    String records = "";
             String record_news="";
             int clubid=0;
@@ -42,39 +45,39 @@ class coachLogin extends HttpServlet{
             String clubName="";
             String clubNews="";
 	    while (rs.next()) {
-		//records += count + ". " + rs.getInt("clubid") + "\\n";
                 clubid=rs.getInt("clubid");
                 clubName="select name from club where id="+clubid+";";
                 clubNews="select description from news where clubid="+clubid+";";
                 ResultSet rs2=stmt2.executeQuery(clubName);
-                ResultSet rs3=stmt2.executeQuery(clubNews);
-                //if(rs2.next())
-                {//Club Name Part
-                    //club=rs2.getString("name");
+                ResultSet rs3=stmt3.executeQuery(clubNews);
+                if(rs2.next())
+                {
+                    //Club Name Part
+                    club=rs2.getString("name");
                     if(count==1)
                     {
                         club1id=rs.getInt("clubid");
-                      //  club1=rs2.getString("name");
-                       // request.setAttribute("club1",club1);
+                        club1=rs2.getString("name");
+                        request.setAttribute("club1",club1);
                     }
                     if(count==2)
                     {
                         club2id=rs.getInt("clubid");
-                        //club2=rs2.getString("name");
-                        //request.setAttribute("club2",club2);
+                        club2=rs2.getString("name");
+                        request.setAttribute("club2",club2);
                     }
                     if(count==3)
                     {
                         club3id=rs.getInt("clubid");
-                        //club3=rs2.getString("name");
-                        //request.setAttribute("club3",club3);
+                        club3=rs2.getString("name");
+                        request.setAttribute("club3",club3);
                     }
-                   // records += count + ". " + club + "\\n";
+                    records += count + ". " + club + "\\n";
                     count++;
                 }
                 
                 //News for each club
-                /*while(rs3.next())
+                while(rs3.next())
                 {
                     news=rs3.getString("description");
                     if(count2==1)
@@ -84,25 +87,36 @@ class coachLogin extends HttpServlet{
                     }
                     if(count2==2)
                     {
-                        news1=rs3.getString("description");
+                        news2=rs3.getString("description");
                         request.setAttribute("news2",news2);
                     }
                     if(count2==3)
                     {
-                        news1=rs3.getString("description");
+                        news3=rs3.getString("description");
                         request.setAttribute("news3",news3);
                     }
-                    record_news+= count2+". "+ news;
+                    record_news+= count2+". "+ news + "\\n";
                     count2++;
-                }*/
+                }
                 
 	    }
 	    System.out.println(records);
             request.setAttribute("morenews",record_news);
 	    request.setAttribute("moreclub",records);
 	}
-
-	// More News
+        
+        //Calculating Age and Experience
+        {
+            String query = "Select extract(year from (select datevalue from constant where constantname = 'time')) as year;";
+            rs=stmt.executeQuery(query);
+            if(rs.next())
+            {
+                request.setAttribute("age", rs.getInt("year") - yearOfbirth);
+                request.setAttribute("experience",rs.getInt("year") - coachingStartYear);
+            }
+        }
+        
+	
 	
     }
 }
