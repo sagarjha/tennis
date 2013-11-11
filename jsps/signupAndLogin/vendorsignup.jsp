@@ -8,33 +8,33 @@
 
   <body>
   <table width="500" border="0" cellspacing="0" cellpading="0">
-      <form name="vendorsignup1" method="post" action="Assgmt">
+      <form name="vendorsignup1" method="post" action="tennis">
   <tr>
     <td width="401"><div align="center"><b>Name* : </b></div></td>
-    <td width="399"><input type="text" name="username"></td>
+    <td width="399"><input type="text" name="name" required></td>
   </tr>
   <tr>
-    <td width="401"><div align="center"><b>Address: </b></div></td>
-    <td width="399"><input type="text" name="username"></td>
+    <td width="401"><div align="center"><b>Address*: </b></div></td>
+    <td width="399"><input type="text" name="address" required></td>
   </tr>
   <tr>
     <td width="401"><div align="center"><b>Email address* : </b></div></td>
-    <td width="399"><input type="text" name="username"></td>
+    <td width="399"><input type="text" name="emailaddress" required></td>
   </tr>
    <tr>
     <td width="401"><div align="center"><b>Phone Number: </b></div></td>
-    <td width="399"><input type="text" name="username"></td>   
+    <td width="399"><input type="text" name="phoneno"></td>   
   </tr>
   <tr>
     <td width="401"><div align="center"><b>Username* : </b></div></td>
-    <td width="399"><input type="text" name="username"></td>
+    <td width="399"><input type="text" name="username" required></td>
   </tr>
   <tr>
     <td width="401"><div align="center"><b>Password* : </b></div></td>
-    <td width="399"><input type="password" name="username"></td>
+    <td width="399"><input type="password" name="password" required></td>
   </tr>
   <tr>
-  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Proceed"></td>
+  <td width="600"><div align="right"><br><input type="Submit" name="VENDORSIGNUP" value = "Proceed"></td>
   </tr>
   </table>
   </body>
