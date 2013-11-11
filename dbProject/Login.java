@@ -13,6 +13,7 @@ public class Login extends HttpServlet{
 	String coachProfileJsp = "/profile/CoachProfiletohimeslf.jsp";
 	String umpireProfileJsp = "/profile/UmpireprofiletoHimself.jsp";
 	String playerProfileJsp = "/profile/playerProfiletoHimself.jsp";
+	String loginNotSuccessful = "/loginError.jsp";
 
 	// Get the username from the request
 	username = request.getParameter("username");
@@ -25,46 +26,74 @@ public class Login extends HttpServlet{
 	    String loginQuery = "";
 
 	    //Check if the user is a valid vendor
-	    loginQuery= "select id from vendor where username = '" + username + "' and password = '" + password + "'";
+	    loginQuery= "select * from vendor where username = '" + username + "' and password = '" + password + "'";
 	    System.out.println(loginQuery);
 	    ResultSet rs = stmt.executeQuery (loginQuery);
 	    if (rs.next()) {
 		//login successful, direct to the vendor profile
 		System.out.println ("A vendor has logged in!");
 		type="vendor";
+		
+		// store the id of the vendor for future queries
+		int id = rs.getInt("id");
+		
+		// call the vendor login handler
+		
+		
 		return vendorProfileJsp;
 	    }
 
 	    //Check if the user is a valid club
-	    loginQuery= "select id from club where username = '" + username + "' and password = '" + password + "'";
+	    loginQuery= "select * from club where username = '" + username + "' and password = '" + password + "'";
 	    System.out.println(loginQuery);
 	    rs = stmt.executeQuery (loginQuery);
 	    if (rs.next()) {
 		//login successful, direct to the club profile
 		System.out.println ("A club has logged in!");
 		type="club";
+		
+		// store the id of the club for future queries
+		int id = rs.getInt("id");
+		
+		// call the club login handler
+		
+		
 		return clubProfileJsp;
 	    }
 
 	    //Check if the user is a valid coach
-	    loginQuery= "select id from coach where username = '" + username + "' and password = '" + password + "'";
+	    loginQuery= "select * from coach where username = '" + username + "' and password = '" + password + "'";
 	    System.out.println(loginQuery);
 	    rs = stmt.executeQuery (loginQuery);
 	    if (rs.next()) {
 		//login successful, direct to the coach profile
 		System.out.println ("A coach has logged in!");
 		type="coach";
+		
+		// store the id of the coach for future queries
+		int id = rs.getInt("id");
+		
+		// call the coach login handler
+		
+		
 		return coachProfileJsp;
 	    }
 
 	    //Check if the user is a valid umpire
-	    loginQuery= "select id from umpire where username = '" + username + "' and password = '" + password + "'";
+	    loginQuery= "select * from umpire where username = '" + username + "' and password = '" + password + "'";
 	    System.out.println(loginQuery);
 	    rs = stmt.executeQuery (loginQuery);
 	    if (rs.next()) {
 		//login successful, direct to the umpire profile
 		System.out.println ("A umpire has logged in!");
 		type="umpire";
+
+		// store the id of the umpire for future queries
+		int id = rs.getInt("id");
+		
+		// call the umpire login handler
+		
+		
 		return umpireProfileJsp;
 	    }
 
@@ -80,55 +109,18 @@ public class Login extends HttpServlet{
 		// store the id of the player for future queries
 		int id = rs.getInt("id");
 
+		// call the player login handler
 		playerLogin pL = new playerLogin ();
 		pL.playerLoginHandler (id, request, rs, stmt);
-		// // set various attributes required for displaying the correct information on the profile page
-	    // 	request.setAttribute("name",rs.getString("name"));		    
-	    // 	request.setAttribute("gender",rs.getString("gender"));
-	    // 	request.setAttribute("age",2013 - rs.getInt("yearOfBirth"));
-	    // 	request.setAttribute("address", rs.getString("address"));
-	    // 	request.setAttribute("emailid", rs.getString("emailid"));
-	    // 	request.setAttribute("phoneno", rs.getString("phonenum"));
-	    // 	request.setAttribute("description", rs.getString("description"));
-	    // 	request.setAttribute("numMatchesPlayed",rs.getString("numMatchesPlayed"));
-	    // 	request.setAttribute("numMatchesWon",rs.getString("numMatchesWon"));
-	    // 	request.setAttribute("numMatchesLost",rs.getInt("numMatchesPlayed") - rs.getInt("numMatchesWon"));
-	    // 	request.setAttribute("rating",rs.getString("rating"));
-	    // 	request.setAttribute("highestRatingAchieved",rs.getString("highestRatingAchieved"));
-		    
-	    // 	// set the attribute private notes
-	    // 	{
-	    // 	    String query = "select * from record where playerid="+id+" and type='Private';";
-	    // 	    System.out.println(query);
-	    // 	    rs = stmt.executeQuery (query);
-	    // 	    String records = "";
-	    // 	    int count = 1;
-	    // 	    while (rs.next()) {
-	    // 		records += count + ". " + rs.getString("description") + "\\n";
-	    // 		count++;
-	    // 	    }
-	    // 	    System.out.println(records);
-	    // 	    request.setAttribute("privateNotes",records);
-	    // 	}
-
-	    // 	// set the attribute public notes
-	    // 	{
-	    // 	    String query = "select * from record where playerid="+id+" and type='Public';";
-	    // 	    System.out.println(query);
-	    // 	    rs = stmt.executeQuery (query);
-	    // 	    String records = "";
-	    // 	    int count = 1;
-	    // 	    while (rs.next()) {
-	    // 		records += count + ". " + rs.getString("description") + "\\n";
-	    // 		count++;
-	    // 	    }
-	    // 	    System.out.println(records);
-	    // 	    request.setAttribute("publicNotes",records);
-	    // 	}
-
-	    // 	return playerProfileJsp;
+		return playerProfileJsp;
 	    }
+
+	    // Invalid login
+	    username = "";
+	    password = "";
+	    return loginNotSuccessful;
 	}
+
 	catch (Exception e) {
 	    System.out.println(e);
 	}
