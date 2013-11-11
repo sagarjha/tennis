@@ -5,6 +5,7 @@ import java.sql.*;
 
 class playerLogin extends HttpServlet{
     public void playerLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt) throws SQLException{
+	System.out.println("In playerLogin.java");
 	// set various attributes required for displaying the correct information on the profile page
 	request.setAttribute("name",rs.getString("name"));		    
 	request.setAttribute("gender",rs.getString("gender"));
