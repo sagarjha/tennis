@@ -76,8 +76,9 @@ public class Login extends HttpServlet{
 		int id = rs.getInt("id");
 		
 		// call the coach login handler
-		
-		
+		coachLogin cL = new coachLogin ();
+		cL.coachLoginHandler(id,request,rs,stmt);
+				
 		return coachProfileJsp;
 	    }
 
