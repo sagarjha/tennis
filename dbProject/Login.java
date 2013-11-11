@@ -95,7 +95,8 @@ public class Login extends HttpServlet{
 		int id = rs.getInt("id");
 		
 		// call the umpire login handler
-		
+		umpireLogin uL=new umpireLogin();
+                uL.umpireLoginHandler(id,request,rs,stmt);
 		
 		return umpireProfileJsp;
 	    }

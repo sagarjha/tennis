@@ -36,7 +36,7 @@ class umpireLogin extends HttpServlet{
         
         
         query = "select P1.Name as player1, P2.Name as player2, M.DateOfMatch as date, M.SlotNumber as slot from Match as M, Player as P1, Player as P2, Competitive as C where C.UmpireID="
-                + id + " and M.ID=C.ID and P1.ID=M.Player1ID and P2.ID=M.Player2ID and M.status = 'Competitive';";
+                + id + " and M.ID=C.ID and P1.ID=M.Player1ID and P2.ID=M.Player2ID and M.status = 'Upcoming';";
         rs = stmt.executeQuery(query);
         String allMatches = "", match1 = null, match2= null, match3 = null, match4 = null, match5 = null;
         int count = 1;
@@ -65,12 +65,12 @@ class umpireLogin extends HttpServlet{
             }
             count++;
         }
-        request.setAttribue("match1", match1);
-        request.setAttribue("match2", match2);
-        request.setAttribue("match3", match3);
-        request.setAttribue("match4", match4);
-        request.setAttribue("match5", match5);
-        request.setAttribue("allMatches", allMatches);
+        request.setAttribute("match1", match1);
+        request.setAttribute("match2", match2);
+        request.setAttribute("match3", match3);
+        request.setAttribute("match4", match4);
+        request.setAttribute("match5", match5);
+        request.setAttribute("allMatches", allMatches);
                 
     }
 }
