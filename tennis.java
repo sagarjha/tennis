@@ -17,7 +17,7 @@ public class tennis extends HttpServlet{
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
 	System.out.println("doGet");
 	//try{
-        if (request.getParameter("SUBMIT").toString().equals("Login")) {
+        if (request.getParameter("LOGIN").toString().equals("Login")) {
 	    System.out.println("Matched");
             Login L = new Login();
 	    String redirectJsp = L.handleLogin(request,username,password,conn,type);

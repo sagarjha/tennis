@@ -33,7 +33,7 @@
 	      </tr>
 	      <tr>
 		<td width="401"> </td>
-		<td width="399"><br><input type="Submit" name="SUBMIT" value = "Login"></td>
+		<td width="399"><br><input type="Submit" name="LOGIN" value = "Login"></td>
 	      </tr>
 	      <tr>
 		<td width="401"> </td>
