@@ -1,23 +1,29 @@
 <html>
   <head>
     <title>Tennis World</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="profile/style.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <script>
+      function myFunction(test)
+      {
+      alert (test);
+      }
+    </script>
   </head>
   <body>
   
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
 <img style="display:block;" left = '400'   width='250' height='300' src='images/Eva.jpg' />
-<div style="margin-left:75px; margin-top:0px;"><p>Eva Asderaki</p></div>
+<div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
 
 <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
 <tr>
    <td width="150"><div align="left">Club</div></td>
-   <td width="100"><div align="left">Longton Tennis Club</div></td>
+   <td width="100"><div align="left"><%= request.getAttribute("clubname")%></div></td>
    </tr>
    <tr>
    <td width="150"><div align="left">Experience</div></td>
-   <td width="100"><div align="left">5 Years</div></td>
+   <td width="100"><div align="left"><%= request.getAttribute("experience")%></div></td>
    </tr>
    
    </table>
@@ -28,41 +34,45 @@
 <table border="0" style="margin-top:50px; margin-left:100px; position:absolute">
 <tr>
 <th>Upcoming Matches</th>
+<% if(request.getAttribute("match1") != null){ %>
 <tr>
-   <td width="300"><div align="left">&bull; Roger Fedrer vs Rafael Nadal on 3rd Nov</div></td>
+   <td width="300"><div align="left">&bull;<%= request.getAttribute("match1")%></div></td>
    </tr>
+<% } 
+if( request.getAttribute("match2") != null){ %>    
    <tr>
-   <td width="300"><div align="left">&bull; Jindal vs Rishiraj on 4th Nov</div></td>
+   <td width="300"><div align="left">&bull;<%= request.getAttribute("match2")%></div></td>
     </tr>
+ <% } 
+if( request.getAttribute("match3") != null){ %>    
    <tr>
-   <td width="300"><div align="left">&bull; Williams vs Djokovic on 5th Nov</div></td>
+   <td width="300"><div align="left">&bull;<%= request.getAttribute("match3")%></div></td>
     </tr>
+    
+ <% } 
+if( request.getAttribute("match4") != null){ %>    
    <tr>
-   <td width="300"><div align="left"><a href="../schedule/umpire.jsp">See More</a></div></td>
+   <td width="300"><div align="left">&bull;<%= request.getAttribute("match4")%></div></td>
+    </tr>
    
+ <% } 
+if( request.getAttribute("match5") != null){ %>    
+   <tr>
+   <td width="300"><div align="left">&bull;<%= request.getAttribute("match5")%></div></td>
+    </tr>         
+  <% } %>  
+   <tr>
+   <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("allMatches")%>")' value="See More"></div></td>
    
    </tr>
   </table>
   
-  <table border="0" style="margin-top:250px; margin-left:100px; position:absolute">
+  <table border="0" style="margin-top:350px; margin-left:100px; position:absolute">
 <tr>
 <th>Matches to be Accredited</th>
-<tr>
-   <td width="150"><div align="left">&bull; Roger Fedrer vs Rafael Nadal</div></td>
-   <td width="150"><div align="left"><button>Accredit Match</button></div></td>
-   </tr>
-   <tr>
-   <td width="300"><div align="left">&bull; Jindal vs Rishiraj</div></td>
-   <td width="150"><div align="left"><button>Accredit Match</button></div></td>
-    </tr>
-   <tr>
-   <td width="300"><div align="left">&bull; Williams vs Djokovic</div></td>
-   <td width="150"><div align="left"><button>Accredit Match</button></div></td>
-    </tr>
+
    <tr>
    <td width="300"><div align="left"><a href="../schedule/umpireAck.jsp">See More</a></div></td>
-   
-   
    </tr>
   </table>
   
@@ -83,21 +93,21 @@
    
    </tr>
    <tr>
-   <td width="100"><div align="left">FeMale</div></td>
-   <td width="100"><div align="left">32 years</div></td>
+   <td width="100"><div align="left"><%= request.getAttribute("gender")%></div></td>
+   <td width="100"><div align="left"><%= request.getAttribute("age")%></div></td>
    </td>
    </tr>
    <tr>
-   <td width="100" colspan="2"><div align="left">ZSchool Ln, Longton, Preston, Lancashire PR4 5ZA, United Kingdom</div></td>
+   <td width="100" colspan="2"><div align="left"><%= request.getAttribute("address")%></div></td>
 </tr>
    <tr>
-   <td width="100" colspan="2"><div align="left">Contact :  Longtontennisclub@hotmail.com</div></td>
+   <td width="100" colspan="2"><div align="left">Contact :  <%= request.getAttribute("emailid")%></div></td>
    </tr>
    <tr>
-   <td width="100" colspan="2"><div align="left">Phone : +44 7920 557134</div></td>
+   <td width="100" colspan="2"><div align="left">Phone : <%= request.getAttribute("phoneno")%></div></td>
    </tr>
    <tr>
-   <td width="100" colspan="2"><div align="left">About Her : Evanthia (Eva) Asderaki is a Greek tennis Chair Umpire holding a Gold Certification from the International Tennis Federation. Eva umpires on the WTA and ATP tours and at all four Grand Slams. Eva is currently contracted by the WTA.</div></td>
+   <td width="100" colspan="2"><div align="left">About Me : <%= request.getAttribute("description")%></div></td>
    </tr>
    </table>
    
