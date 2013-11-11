@@ -38,7 +38,8 @@ public class Login extends HttpServlet{
 		int id = rs.getInt("id");
 		
 		// call the vendor login handler
-		
+		vendorLogin vL = new vendorLogin ();
+		vL.vendorLoginHandler(id,request,rs,stmt);
 		
 		return vendorProfileJsp;
 	    }
