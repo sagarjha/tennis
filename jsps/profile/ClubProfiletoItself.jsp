@@ -3,6 +3,12 @@
     <title>Tennis World</title>
     <link href="style.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <script>
+      function myFunction(test)
+      {
+      alert (test);
+      }
+    </script>
   </head>
   <body>
     
@@ -57,23 +63,25 @@
 	  <td width="33%"><div align="center"><b>Umpires</b></div></td>
 	</tr>
 	<tr>
-	  <td width="150"><div align="left">&bull; Rafel Nadal</div></td>
-	  <td width="150"><div align="left">&bull; Vijay Amritraj</div></td>
-	  <td width="150"><div align="left">&bull; Rod Tucker</div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("player1")%></div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("coach1")%></div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("umpire1")%></div></td>
 	</tr>
 	<tr>
-	  <td width="150"><div align="left">&bull; Roger Fedrer</div></td>
-	  <td width="150"><div align="left">&bull; Prakash</div></td>
-	  <td width="150"><div align="left">&bull; Ramesh Krishnan</div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("player2")%></div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("coach2")%></div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("umpire2")%></div></td>
 	</tr>
 	</tr>
 	<tr>
-	  <td width="150"><div align="left">&bull; Sagar Jindal</div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("player3")%></div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("coach3")%></div></td>
+	  <td width="150"><div align="left">&bull; <%= request.getAttribute("umpire3")%></div></td>
 	</tr>
 	<tr>
-	  <td width="150"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
-	  <td width="150"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
-	  <td width="150"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
+	  <td width="150"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("player")%>")' value="See More"></div></td>
+	 <td width="150"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("coach")%>")' value="See More"></div></td>
+	 <td width="150"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("umpire")%>")' value="See More"></div></td>
 	  
 	  
 	</tr>
@@ -126,7 +134,7 @@
   </tr>
   
   <tr>
-    <td width="200"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
+    <td width="200"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("news")%>")' value="See More"></div></td>
     <td width="200"><div align="left"><a href="http://www.yahoo.com">Add News Items</a></div></td>
     
     
