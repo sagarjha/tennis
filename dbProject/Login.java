@@ -56,7 +56,8 @@ public class Login extends HttpServlet{
 		int id = rs.getInt("id");
 		
 		// call the club login handler
-		
+		clubLogin cL = new clubLogin ();
+		cL.clubLoginHandler(id,request,rs,stmt);
 		
 		return clubProfileJsp;
 	    }
