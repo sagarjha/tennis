@@ -1,0 +1,21 @@
+body
+{
+    background-image:url("images/tennis.jpg");
+    background-size: 100%;
+}
+
+#menu
+{
+    background-color:rgba(255,255,250,0.5);
+    
+}
+#details
+{
+    background-color:rgba(255,255,250,0.5);
+    
+}
+#content
+{
+    background-color:rgba(255,255,250,0.5);
+    
+}
