@@ -44,12 +44,12 @@
 	<tr>
 	  <td width="401"><div align="center"><b>Password* : </b></div></td>
 	  <td width="399"><input type="password" name="password" required></td>
-	  <!-- do autocomplete for club -->
 	</tr>
 	<tr>
 	  <td width="401"><div align="center"><b>Club* : </b></div></td>
-	  <td width="399"><input type="password" name="username" required></td>
+	  <td width="399"><input type="password" name="clubid" required></td>
 	</tr>
+	<!-- do autocomplete for club -->
 	<tr>
 	  <td width="600"><div align="right"><br><input type="Submit" name="PERSONSIGNUP" value = "Proceed"></div></td>
 	</tr>
