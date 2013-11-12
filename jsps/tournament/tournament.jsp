@@ -3,7 +3,7 @@
     <title>Tournaments</title>
     <link href="style_light.css" rel="stylesheet" type="text/css">
   </head>
-
+  
   <body>
     <center> <b> Upcoming Tournaments <br><br></b>
       <table width="1000" border="1">
@@ -24,6 +24,7 @@
 	    Prize money
 	  </th>
 	</tr>
+	
 	<tr>
 	  <td>
 	    <a href="clubtournament.jsp">King's Club Annual Tournament</a>

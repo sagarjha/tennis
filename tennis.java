@@ -462,6 +462,19 @@ public class tennis extends HttpServlet{
                 }
             }
         }
+
+	else if (request.getParameter("CLUBPROFILETOITSELF") != null) {
+	    if (request.getParameter("CLUBPROFILETOITSELF").equals("View Tournaments Page")) {
+		System.out.println("redirected from clubprofiletoitself");
+		tournamentViewHandler TVH = new tournamentViewHandler ();
+		try {
+		    TVH.handleView (conn);
+		}
+		catch (Exception e) {
+		    System.out.println(e);
+		}
+	    }
+	}
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response)	throws ServletException, IOException{

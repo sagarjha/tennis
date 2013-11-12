@@ -119,7 +119,7 @@ class clubLogin extends HttpServlet{
 	    {
 	    
 	    {
-	    	String query = "select Ch.Name from Coach as Ch, TeachesAt as Ta where Ta.ClubID="+id+" and Ta.CoachID=coachID";
+	    	String query = "select Ch.Name from Coach as Ch, TeachesAt as Ta where Ta.ClubID="+id+" and Ta.CoachID=Ch.ID";
 
 			System.out.println(query);
 			rs = stmt.executeQuery (query);
