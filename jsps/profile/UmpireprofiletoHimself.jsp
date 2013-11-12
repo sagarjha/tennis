@@ -13,7 +13,7 @@
   <body>
   
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
-<img style="display:block;" left = '400'   width='250' height='300' src='images/Eva.jpg' />
+   <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 <div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
 
 <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
@@ -89,7 +89,7 @@ if( request.getAttribute("match5") != null){ %>
 <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
 <tr>
    
-   <td width="350"><div align="left"><h2>Eva Asderaki</h1></div></td>
+   <td width="350"><div align="left"><h2> <%= request.getAttribute("name") %> </h1></div></td>
    
    </tr>
    <tr>

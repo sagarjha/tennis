@@ -2,6 +2,7 @@ package dbProject;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
+import java.io.*;
 
 class vendorLogin extends HttpServlet{
     public void vendorLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt) throws SQLException{
@@ -12,7 +13,27 @@ class vendorLogin extends HttpServlet{
 	request.setAttribute("emailid", rs.getString("emailid"));
 	request.setAttribute("phoneno", rs.getString("phonenum"));
 	request.setAttribute("description", rs.getString("description"));
-        
+	
+	String pictureFile = "../webapps/ROOT/profile/images/" + rs.getString("username");
+	System.out.println(pictureFile);
+	request.setAttribute("profilePicUrl","profile/images/defaultVendorPic.jpeg");
+	File f = new File(pictureFile+".jpeg");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpeg");
+	}
+
+	f = new File(pictureFile+".jpg");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpg");
+	}
+
+	f = new File(pictureFile+".png");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".png");
+	}        
         // get all the items sold by the vendor
         
         String query = "select I.Type as type, I.Brand as brand, S.Price as price from Item as I, Sells as S where S.VendorID="+id+" and S.ID=I.ID;";

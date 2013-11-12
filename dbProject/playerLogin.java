@@ -1,4 +1,5 @@
 package dbProject;
+import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
@@ -19,7 +20,27 @@ class playerLogin extends HttpServlet{
 	request.setAttribute("numMatchesLost",rs.getInt("numMatchesPlayed") - rs.getInt("numMatchesWon"));
 	request.setAttribute("rating",rs.getString("rating"));
 	request.setAttribute("highestRatingAchieved",rs.getString("highestRatingAchieved"));
-		    
+	String pictureFile = "../webapps/ROOT/profile/images/" + rs.getString("username");
+	System.out.println(pictureFile);
+	request.setAttribute("profilePicUrl","profile/images/defaultPic.jpeg");
+	File f = new File(pictureFile+".jpeg");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpeg");
+	}
+
+	f = new File(pictureFile+".jpg");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpg");
+	}
+
+	f = new File(pictureFile+".png");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".png");
+	}
+	
 	// set the attribute private notes
 	{
 	    String query = "select * from record where playerid="+id+" and type='Private';";

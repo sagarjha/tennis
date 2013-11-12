@@ -13,8 +13,8 @@
   <body>
     
     <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
-      <img style="display:block;" left = '400'   width='250' height='300' src='images/TennisClub.JPG' />
-      <div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
+      <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
+      <div style="margin-left:75px; margin-top:0px;"><p><b><%= request.getAttribute("name")%></b></p></div>
 
       <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
       

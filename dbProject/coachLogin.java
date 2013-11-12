@@ -2,6 +2,7 @@ package dbProject;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
+import java.io.*;
 
 class coachLogin extends HttpServlet{
     public void coachLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt, Connection conn) throws SQLException{
@@ -17,6 +18,27 @@ class coachLogin extends HttpServlet{
 	request.setAttribute("description", rs.getString("description"));
 
 	request.setAttribute("rating",rs.getString("rating"));
+
+	String pictureFile = "../webapps/ROOT/profile/images/" + rs.getString("username");
+	System.out.println(pictureFile);
+	request.setAttribute("profilePicUrl","profile/images/defaultCoachPic.jpeg");
+	File f = new File(pictureFile+".jpeg");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpeg");
+	}
+
+	f = new File(pictureFile+".jpg");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpg");
+	}
+
+	f = new File(pictureFile+".png");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".png");
+	}
 
 	// More Club and More News
 	{

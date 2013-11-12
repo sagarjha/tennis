@@ -13,8 +13,8 @@
   <body>
     
     <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
-      <img style="display:block;" left = '400'   width='250' height='300' src='images/profilePic.jpg' />
-      <p>Fedrer</p>
+      <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
+      <p><b><%= request.getAttribute("name") %> </b></p>
       <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
 	<tr>
 	  <td width="150"><div align="left">Matches Played</div></td>
@@ -64,17 +64,17 @@
 	  <th>Club News</th>
 	</tr>
 	<tr>
-	  <td width="400"><div align="left">&bull; Relayering or courts at Dadar Gymkhana</div></td>
+	  <td width="400"><div align="left">&bull; <%= request.getAttribute("news1") %> </div></td>
 	</tr>
 	<tr>
-	  <td width="400"><div align="left">&bull; New Floodlights installed at Wimbeldon</div></td>
+	  <td width="400"><div align="left">&bull; <%= request.getAttribute("news2") %> </div></td>
 	</tr>
 	<tr>
-	  <td width="400"><div align="left">&bull; Nadal wins the French Open</div></td>
+	  <td width="400"><div align="left">&bull; <%= request.getAttribute("news3") %> </div></td>
 	</tr>
 	
 	<tr>
-	  <td width="400"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
+	  <td width="400"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("news")%>")' value="See More"> </div></td>
 	</tr>
       </table>
 

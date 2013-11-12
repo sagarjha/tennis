@@ -2,6 +2,7 @@ package dbProject;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
+import java.io.*;
 
 class clubLogin extends HttpServlet{
     public void clubLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt) throws SQLException{
@@ -14,6 +15,27 @@ class clubLogin extends HttpServlet{
 	request.setAttribute("description", rs.getString("description"));
 	request.setAttribute("numcourts",rs.getString("numcourts"));
 	request.setAttribute("coachingslot",rs.getString("coachingslot"));
+	String pictureFile = "../webapps/ROOT/profile/images/" + rs.getString("username");
+	System.out.println(pictureFile);
+	request.setAttribute("profilePicUrl","profile/images/defaultClubPic.jpg");
+	File f = new File(pictureFile+".jpeg");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpeg");
+	}
+
+	f = new File(pictureFile+".jpg");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpg");
+	}
+
+	f = new File(pictureFile+".png");
+	System.out.println(f.exists());
+	if (f.exists()) {
+	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".png");
+	}
+
 	{
 	    {
 			String query = "select * from news where clubid="+id+" ;";

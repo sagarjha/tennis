@@ -13,7 +13,7 @@
   <body>
   
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
-<img style="display:block;" left = '400'   width='250' height='300' src='images/vendor.jpg' />
+   <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 <div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
 </div>
 
