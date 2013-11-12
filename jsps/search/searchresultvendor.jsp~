@@ -1,3 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Search results</title>
@@ -6,11 +11,11 @@
   <body>  
     <h3 align="center">Search results</h3><hr>
     
-    <center><a href="">Ivan Lendl</a></center>
+    <center><a href="">All Season Sports</a></center>
     <br>
-    <center>Boris Becker</center>
+    <center>Planet Sports</center>
     <br>
-    <center>Andre Agassi</center>
+    <center>Sai Sports</center>
     <br>
   </body>
 </html>

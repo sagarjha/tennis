@@ -10,12 +10,14 @@
 
   <body>  
     <h3 align="center">Search results</h3><hr>
-    
-    <center><a href="">All Season Sports</a></center>
+    <form name="searchresultvendor" method ="post" action="../tennis">
+    <%
+    List<Integer> ids = (List<Integer>)request.getAttribute("vendorids");
+    List<String> names = (List<String>)request.getAttribute("vendornames");
+    for(int i = 0; i < ids.size(); i++){ %>
+    <center><input type="text" name="SEARCHRESULTVENDOR" value="<%= names.get(i)%>"</center>
     <br>
-    <center>Planet Sports</center>
-    <br>
-    <center>Sai Sports</center>
-    <br>
+    <% } %>
+    </form>
   </body>
 </html>

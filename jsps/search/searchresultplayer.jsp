@@ -10,7 +10,7 @@
 
   <body>  
     <h3 align="center">Search results</h3><hr>
-    <form name="searchresultplayer" method ="post" action="tennis">
+    <form name="searchresultplayer" method ="post" action="../tennis">
     <%
     List<Integer> ids = (List<Integer>)request.getAttribute("playerids");
     List<String> names = (List<String>)request.getAttribute("playernames");

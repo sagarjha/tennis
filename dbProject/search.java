@@ -41,19 +41,19 @@ public class search extends HttpServlet{
                 if(order.equals("2")){
                     // order by rating
                     query = "select p.name as name,p.id as id from player as p, member as m, club as c where m.playerid = p.id"+
-                            "and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
+                            " and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
                             "%') order by p.rating;";
                 }
                 else if(order.equals("3")){
                     // order by age
                     query = "select p.name as name,p.id as id from player as p, member as m, club as c where m.playerid = p.id"+
-                            "and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
+                            " and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
                             "%') order by p.yearofbirth;";
                 }
                 else{
                     // order by name default
                     query = "select p.name as name,p.id as id from player as p, member as m, club as c where m.playerid = p.id"+
-                            "and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
+                            " and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
                             "%') order by p.name;";
                 } 
             }
@@ -63,19 +63,19 @@ public class search extends HttpServlet{
                 if(order.equals("2")){
                     // order by rating
                     query = "select p.name as name , p.id as id from player p, coach c, training t" +
-                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
+                            " where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
                             + searchString +"%') order by p.rating;";
                 }
                 else if(order.equals("3")){
                     // order by age
                     query = "select p.name as name , p.id as id from player p, coach c, training t" +
-                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
+                            " where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
                             + searchString +"%') order by p.yearofbirth;";
                 }
                 else{
                     // order by name default
                     query = "select p.name as name , p.id as id from player p, coach c, training t" +
-                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
+                            " where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
                             + searchString +"%') order by p.name;";
                 }
             }
@@ -107,7 +107,7 @@ public class search extends HttpServlet{
                     age = rs.getInt("year")- Integer.parseInt(searchString);
                 }
                 
-                else if(order.equals("2")){
+                if(order.equals("2")){
                     // order by rating
                     query = "select name, id from Player where yearofbirth = " + age + " order by rating;";
                 } 
@@ -246,16 +246,16 @@ public class search extends HttpServlet{
                 query = "select name, id from vendor where lower(address) like lower('%" + searchString +
                             "%') order by name;";
             }
-            if(basis.equals("3")){
+            else if(basis.equals("3")){
                 //by brand
                 query = "select distinct v.name as name, v.id as id from vendor v, item i, sells s" + 
-                        "where s.itemid = i.id and s.vendorid = v.id and lower(i.brand) like lower('%" +
+                        " where s.id = i.id and s.vendorid = v.id and lower(i.brand) like lower('%" +
                         searchString + "%') order by v.name;";
             }
-            if(basis.equals("4")){
+            else if(basis.equals("4")){
                 // by product
                 query = "select distinct v.name as name, v.id as id from vendor v, item i, sells s" + 
-                        "where s.itemid = i.id and s.vendorid = v.id and lower(i.type) like lower('%" +
+                        " where s.id = i.id and s.vendorid = v.id and lower(i.type) like lower('%" +
                         searchString + "%') order by v.name;";
             }
             else{
@@ -263,7 +263,7 @@ public class search extends HttpServlet{
                 query = "select name, id from vendor where lower(name) like lower('%" + searchString + 
                             "%') order by name;";
             }
-            
+            System.out.println(query);
             rs = stmt.executeQuery(query);
             while(rs.next()){
                 vendorids.add(rs.getInt("id"));
@@ -292,11 +292,11 @@ public class search extends HttpServlet{
             if(basis.equals("2")){
                 // by coach
                 query = "select clb.name as name, clb.id as id from club clb, teachesat t, coach c"+
-                        "where c.id = t.coachid and clb.id = t.clubid and lower(c.name) like lower('%" + searchString + 
+                        " where c.id = t.coachid and clb.id = t.clubid and lower(c.name) like lower('%" + searchString + 
                             "%') order by clb.name;";
                 
             }
-            if(basis.equals("3")){
+            else if(basis.equals("3")){
                 // by location
                 query = "select name, id from club where lower(address) like lower('%" + searchString +
                             "%') order by name;";
@@ -306,7 +306,7 @@ public class search extends HttpServlet{
                 query = "select name, id from club where lower(name) like lower('%" + searchString + 
                             "%') order by name;";
             }
-            
+            System.out.println(query);
             rs = stmt.executeQuery(query);
             while(rs.next()){
                 clubids.add(rs.getInt("id"));
