@@ -462,6 +462,11 @@ public class tennis extends HttpServlet{
 		catch (Exception e) {
 		    System.out.println(e);
 		}
+
+		String redirectJsp = "/tournament/tournament.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
 	    }
 	}
     }
