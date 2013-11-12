@@ -5,7 +5,7 @@ import javax.servlet.*;
 import java.sql.*;
 
 public class tournamentViewHandler extends HttpServlet{
-    public void handleView (Connection conn) throws SQLException{
+    public void handleView (Connection conn, ServletRequest request) throws SQLException{
 	System.out.println("In tournamentViewHandler.java");
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery ("select datevalue from constant where constantname='time'");

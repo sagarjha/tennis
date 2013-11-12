@@ -457,7 +457,7 @@ public class tennis extends HttpServlet{
 		System.out.println("redirected from clubprofiletoitself");
 		tournamentViewHandler TVH = new tournamentViewHandler ();
 		try {
-		    TVH.handleView (conn);
+		    TVH.handleView (conn,request);
 		}
 		catch (Exception e) {
 		    System.out.println(e);
