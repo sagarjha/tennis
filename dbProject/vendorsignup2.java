@@ -34,7 +34,7 @@ public class vendorsignup2 extends HttpServlet{
             conn.setAutoCommit(false);
             query="Update Constant set IDValue = IDValue+1 where ConstantName = 'account';";
             stmt.executeUpdate(query);
-            query="Insert into club(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, numcourts, coachingslot) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+session.getAttribute("courtnum")+", "+session.getAttribute("coachingslot")+");";
+            query="Insert into vendor(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"');";
             stmt.executeUpdate(query);
             conn.commit();
         }

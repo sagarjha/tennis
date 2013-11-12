@@ -24,7 +24,7 @@
                   <td width="399"><input type="number" name="experience" min="1"></td></td>
               </tr>
               <tr>
-                  <td width="600"><div align="right"><br><input type="Submit" name="UMPIRESIGNUP" value = "Sign Up"></td>
+                  <td width="600"><div align="right"><br><input type="Submit" name="UMPIRESIGNUP" value = "SIgn Up"></td>
               </tr>
         </table>
     </body>
