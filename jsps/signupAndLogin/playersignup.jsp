@@ -20,6 +20,10 @@
           <td width="401"><div align="center"><b>Description : </b></div></td>
           <td width="399"><textarea id="text" name="description"></textarea></td>
         </tr>
+        <tr>
+          <td width="401"><div align="center"><b>Role Model : </b></div></td>
+          <td width="399"><textarea id="text" name="rolemodel"></textarea></td>
+        </tr>
 	<tr>
 	  <td width="600"><div align="right"><br><input type="Submit" name="PLAYERSIGNUP" value = "Sign Up"></div></td>
 	</tr>
