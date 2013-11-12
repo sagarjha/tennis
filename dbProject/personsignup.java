@@ -28,16 +28,24 @@ public class personsignup extends HttpServlet{
 
         try{
             Statement stmt = conn.createStatement();
-
-            if((session.getAttribute("type").equals("1")))
-                query="select username from player where username='"+username+"';";
-            else if((session.getAttribute("type").equals("2")))
-                query="select username from coach where username='"+username+"';";
-            else if((session.getAttribute("type").equals("3")))
-                query="select username from Umpire where username='"+username+"';";
-            ResultSet rs = stmt.executeQuery (query);
-
             flag=0;
+            //if((session.getAttribute("type").equals("1")))
+            query="select username from player where username='"+username+"';";
+            ResultSet rs = stmt.executeQuery (query);
+            if(rs.next())
+            {
+                flag=1;
+            }
+            //else if((session.getAttribute("type").equals("2")))
+            query="select username from coach where username='"+username+"';";
+            rs = stmt.executeQuery (query);
+            if(rs.next())
+            {
+                flag=1;
+            }
+            //else if((session.getAttribute("type").equals("3")))
+            query="select username from Umpire where username='"+username+"';";
+            rs = stmt.executeQuery (query);
             if(rs.next())
             {
                 flag=1;
