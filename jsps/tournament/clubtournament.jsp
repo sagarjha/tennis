@@ -1,27 +1,27 @@
 <html>
   <head>
-    <title>King's Club Annual Tournament</title>
-    <center><h1>King's Club Annual Tournament</h1></center>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <title><%= request.getAttribute("name")%></title>
+    <center><h1><%= request.getAttribute("name")%></h1></center>
+    <link href="tournament/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
     <div id="info" style="color:#00FFFF">
       <center>
 	<table width="400">
-	<form action="registrationsuccessful.jsp">
+	<form action=tennis>
 	  <tr>
 	    <td>
 	      Club:
 	    </td>
 	    <td>
-	      King's Club
+	      <%= request.getAttribute("club") %>
 	    </td>
 	  <tr>
 	    <td>
 	      Starting Date:
 	    </td>
 	    <td>
-	      09/09/2013
+	      <%= request.getAttribute("startdate") %>
 	    </td>
 	  </tr>
 	  <tr>
@@ -29,7 +29,7 @@
 	      No. of players:
 	    </td>
 	    <td>
-	      32
+	      <%= request.getAttribute("numplayers") %>
 	    </td>
 	  </tr>
 	  <tr>
@@ -37,14 +37,14 @@
 	      Prize money:
 	    </td>
 	    <td>
-	      20000
+	      <%= request.getAttribute("prizemoney") %>
 	    </td>
 	  </tr>
 	</table>
       </center>
       <br>
       <br>
-      <center><img src="images/draw.jpg" align="center"></center>
+      <center><img src="tournament/images/draw.jpg" align="center"></center>
     </div>
     <center> <input type="Submit" style="color: red; background-color: grey" name="Register" value = "Register"> </center>
 	</form>
