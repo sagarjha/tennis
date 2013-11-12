@@ -8,6 +8,7 @@
         Successfully Signed Up!
     </h3>
     <hr>
+    <% session.invalidate();%>
     <body>
      <a href = "../login.jsp"> Go to Login Page </a> 
     </body>
