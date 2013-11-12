@@ -19,7 +19,7 @@
 	</div> </td>
       </tr>
       <tr>
-	<td width="100"> <div align="right"> <input type="text" name="username"> </div></td>
+	<td width="100"> <div align="right"> <input type="text" name="searchString" required> </div></td>
 	<td  width="400"> <div align="right">
 	    <select id="basis" name="basis">
 	      <option value="1">Locality</option>
@@ -30,14 +30,14 @@
 	  </select></div>
 	</td>
 	<td  width="400"> <div align="right">
-	    <select id="basis" name="basis">
+	    <select id="order" name="order">
 	      <option value="1">Age</option>
 	      <option value="2">Rating</option>
 	  </select></div> 
 	</td>
       </tr>
       <tr>
-	<td width="200"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Search"></div></td>
+	<td width="200"><div align="right"><br><input type="Submit" name="SEARCHPLAYER" value = "Search"></div></td>
       </tr>
     </table>
   </body>

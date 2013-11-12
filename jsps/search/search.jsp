@@ -12,22 +12,22 @@
 	</td>
       <tr>
 	<td width = "200"> <div align="right">
-	  <a href=""> player </a>
+	  <a href="searchplayer.jsp"> player </a>
 	</td>
       </tr>
       <tr>
 	<td width = "200"> <div align="right">
-	  <a href=""> club </a>
+	  <a href="searchclub.jsp"> club </a>
 	</td>
       </tr>
       <tr>
 	<td width = "200"> <div align="right">
-	  <a href=""> coach </a>
+	  <a href="searchcoach.jsp"> coach </a>
 	</td>
       </tr>
       <tr>
 	<td width = "200"> <div align="right">
-	  <a href=""> vendor </a>
+	  <a href="searchvendor.jsp"> vendor </a>
 	</td>
       </tr>
     </table>
