@@ -100,7 +100,7 @@ public class search extends HttpServlet{
             }
             else if(basis.equals("5")){
                     // search by age
-                int age;
+                int age = 0;
                 String query1 = "Select extract(year from (select datevalue from constant where constantname = 'time')) as year;";
                 rs=stmt.executeQuery(query1);
                 if(rs.next()){

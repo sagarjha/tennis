@@ -1,3 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Search results</title>
