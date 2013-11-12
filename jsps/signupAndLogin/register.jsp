@@ -8,7 +8,7 @@
   
   <body>
     <table width="500" border="0" cellspacing="0" cellpading="0">
-      <form name="register" method ="post" action="tennis">
+      <form name="register" method ="post" action="../tennis">
 	<tr>
 	  <td width="400"><div align="right"><b><h3>Select your role:</h3></b> </div>
 	  </td>
