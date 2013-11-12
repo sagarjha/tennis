@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Tennis World</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="profile/style.css" rel="stylesheet" type="text/css">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <script>
       function myFunction(test)

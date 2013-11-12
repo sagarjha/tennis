@@ -191,6 +191,19 @@ public class tennis extends HttpServlet{
 	    }
 	}
         
+	else if (request.getParameter("TOURNAMENTVIEW") != null) {
+	    showTournamentPageHandler STPH = new showTournamentPageHandler ();
+	    try {
+		STPH.handleShow(conn,request);
+	    }
+	    catch (Exception e) {
+		System.out.println(e);
+	    }
+	    String redirectJsp = "/tournament/clubtournament.jsp";
+	    ServletContext context = getServletContext();
+	    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+	    dispatcher.forward(request, response);
+	}
         
         else if (request.getParameter("SEARCHPLAYER") != null) {
             if (request.getParameter("SEARCHPLAYER").equals("Search")) {
