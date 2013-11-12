@@ -22,7 +22,8 @@
 	<td width="100"> <div align="right"> <input type="text" name="searchString" required> </div></td>
 	<td  width="400"> <div align="right">
 	    <select id="basis" name="basis">
-	      <option value="1">Locality</option>
+              <option value="1">Name</option>  
+	      <option value="6">Locality</option>
 	      <option value="2">Club</option>
 	      <option value="3">Coached by</option>
 	      <option value="4">Gender</option>	
@@ -31,7 +32,8 @@
 	</td>
 	<td  width="400"> <div align="right">
 	    <select id="order" name="order">
-	      <option value="1">Age</option>
+              <option value="1">Name</option>  
+	      <option value="3">Age</option>
 	      <option value="2">Rating</option>
 	  </select></div> 
 	</td>

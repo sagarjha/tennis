@@ -28,7 +28,8 @@
 	</td>
 	<td  width="400"> <div align="right">
 	    <select id="order" name="order">
-	      <option value="1">Age</option>
+              <option value="1">Name</option>  
+	      <option value="4">Age</option>
 	      <option value="2">Rating</option>
 	      <option value="3">Experience</option>
 	  </select></div> 

@@ -19,7 +19,8 @@
 	<td width="100"> <div align="right"> <input type="text" name="searchString" required> </div></td>
 	<td  width="400"> <div align="right">
 	    <select id="basis" name="basis">
-	      <option value="1">Location</option>
+              <option value="1">Name</option> 
+	      <option value="3">Location</option>
 	      <option value="2">Coach</option>
 	  </select></div>
 	</td>
