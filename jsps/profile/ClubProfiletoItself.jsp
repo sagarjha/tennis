@@ -36,21 +36,17 @@
 	  <tr>
 	    <th>Upcoming Matches at the Club</th>
 	  <tr>
-	    <td width="300"><div align="left"> &bull; Fedrer vs Rafael Nadal on 27th Oct</div></td>
+	    <td width="300"><div align="left">&bull; <%= request.getAttribute("UpcomingMatches1") %></div></td>
 	  </tr>
 	  <tr>
-	    <td width="300"><div align="left">&bull; Jindal vs Rishiraj on 3rd Nov</div></td>
+	    <td width="300"><div align="left">&bull; <%= request.getAttribute("UpcomingMatches2") %></div></td>
 	  </tr>
 	  <tr>
-	    <td width="300"><div align="left">&bull; Jha vs Djokovic on 4th Nov</div></td>
+	    <td width="300"><div align="left">&bull; <%= request.getAttribute("UpcomingMatches3") %> </div></td>
 	  </tr>
 	  <tr>
-	    <td width="400"><div align="left">&bull; Gyani vs Somdev Devvarman on 5th Nov</div></td>
+	    <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("UpcomingMatches")%>")' value="See all results"> </div></td>
 	  </tr>
-	  <tr>
-	    <td width="300"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
-	    
-	    
 	  </tr>
 	</table>
 	
