@@ -268,7 +268,23 @@ public class tennis extends HttpServlet{
         //playersignup.jsp
         else if (request.getParameter("PLAYERSIGNUP") != null) {
             if(request.getParameter("PLAYERSIGNUP").toString().equals("Sign Up")){
-        
+                int new_id=0;
+                try{
+                    Statement stmt = conn.createStatement();
+                    query="Select IDValue from Constant where ConstantName = ‘account’;";
+                    ResultSet rs = stmt.executeQuery (query);
+                    if(rs.next())
+                        new_id=rs.getInt("idvalue");
+                    conn.setAutoCommit(false);
+                    query="Update Constant set IDValue = IDValue+1 where ConstantName = ‘account’;";
+                    
+                    conn.setAutoCommit(true);
+                }
+                catch(Exception e)
+                {
+                    System.out.println(e);
+                }
+            }
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response)	throws ServletException, IOException{
