@@ -282,6 +282,80 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
 	    }
 	}
+        
+        
+        else if (request.getParameter("SEARCHPLAYER") != null) {
+            if (request.getParameter("SEARCHPLAYER").equals("Search")) {
+                System.out.println("come from searchplayer.jsp into tennis.java, call searchPlayer in search.java");
+                search S = new search();
+                try{
+                    S.searchPlayer(request, conn);
+                }
+                catch(Exception e) {
+		    System.out.println(e);
+		}
+                
+                String redirectJsp = "/search/searchresultplayer.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
+        
+        else if (request.getParameter("SEARCHCOACH") != null) {
+            if (request.getParameter("SEARCHCOACH").equals("Search")) {
+                System.out.println("come from searchcoach.jsp into tennis.java, call searchCoach in search.java");
+                search S = new search();
+                try{
+                    S.searchCoach(request, conn);
+                }
+                catch(Exception e) {
+		    System.out.println(e);
+		}
+                
+                String redirectJsp = "/search/searchresultcoach.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
+        
+        else if (request.getParameter("SEARCHVENDOR") != null) {
+            if (request.getParameter("SEARCHVENDOR").equals("Search")) {
+                System.out.println("come from searchvendor.jsp into tennis.java, call searchVendor in search.java");
+                search S = new search();
+                try{
+                    S.searchVendor(request, conn);
+                }
+                catch(Exception e) {
+		    System.out.println(e);
+		}
+                
+                String redirectJsp = "/search/searchresultvendor.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
+        
+        else if (request.getParameter("SEARCHCLUB") != null) {
+            if (request.getParameter("SEARCHCLUB").equals("Search")) {
+                System.out.println("come from searchclub.jsp into tennis.java, call searchClub in search.java");
+                search S = new search();
+                try{
+                    S.searchClub(request, conn);
+                }
+                catch(Exception e) {
+		    System.out.println(e);
+		}
+                
+                String redirectJsp = "/search/searchresultclub.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
+        
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response)	throws ServletException, IOException{
