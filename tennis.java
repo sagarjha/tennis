@@ -42,7 +42,7 @@ public class tennis extends HttpServlet{
                 {
                     redirectJsp = reg.registerHandler(request, session);
                 }
-                catch(SQLException regexcp)
+                catch(Exception regexcp)
                 {
                     System.out.println(regexcp);
                 }
@@ -56,78 +56,19 @@ public class tennis extends HttpServlet{
         else if (request.getParameter("PERSONSIGNUP") != null) {
             if(request.getParameter("PERSONSIGNUP").toString().equals("Proceed"))
             {
-                String name=request.getParameter("name");
-                String age=request.getParameter("age");
-                String gender=request.getParameter("gender");
-                String address=request.getParameter("address");
-                String emailaddress=request.getParameter("emailaddress");
-                String phoneno=request.getParameter("phoneno");
-                String username=request.getParameter("username");
-                String password=request.getParameter("password");
-                String clubid=request.getParameter("clubid");
-                
-                try{
-                    Statement stmt = conn.createStatement();
-                    
-                    if((session.getAttribute("type").equals("1")))
-                        query="select username from player where username='"+username+"';";
-                    else if((session.getAttribute("type").equals("2")))
-                        query="select username from coach where username='"+username+"';";
-                    else if((session.getAttribute("type").equals("3")))
-                        query="select username from Umpire where username='"+username+"';";
-                    ResultSet rs = stmt.executeQuery (query);
-                    
-                    flag=0;
-                    if(rs.next())
-                    {
-                        flag=1;
-                    }
-                    if(flag==0)
-                    {
-                        session.setAttribute("name",name);
-                        session.setAttribute("age",age);
-                        session.setAttribute("gender",gender);
-                        session.setAttribute("address",address);
-                        session.setAttribute("emailaddress",emailaddress);
-                        session.setAttribute("phoneno",phoneno);
-                        //phoneno can be empty string so we need to check for both empty and null when converting into int
-                        session.setAttribute("username",username);
-                        session.setAttribute("password",password);
-                        session.setAttribute("clubid",clubid);
-
-                        ServletContext context = getServletContext();
-                        if(session.getAttribute("type").equals("1"))
-                        {
-                            RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/playersignup.jsp");
-                            dispatcher.forward(request, response);
-                        }
-                        else if(session.getAttribute("type").equals("2"))
-                        {
-                            RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/coachsignup.jsp");
-                            dispatcher.forward(request, response);
-                        }
-                        else if(session.getAttribute("type").equals("3"))
-                        {
-                            RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/umpiresignup.jsp");
-                            dispatcher.forward(request, response);
-                        }
-                    }
-                    else
-                    {
-                        
-                        session.setAttribute("usernamealreadyexists",1);
-                        ServletContext context = getServletContext();
-                        
-                        RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/personsignup.jsp");
-                        dispatcher.forward(request, response);
-                        
-                    }
-                }
-                catch(Exception e)
+                String redirectJsp="";
+                personsignup su=new personsignup();
+                try
                 {
-                    System.out.println(e);
+                    redirectJsp = su.personsignupHandler(request, session, conn);
                 }
-                
+                catch(Exception regexcp)
+                {
+                    System.out.println(regexcp);
+                }
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
             }
         }
         
@@ -135,122 +76,38 @@ public class tennis extends HttpServlet{
         else if (request.getParameter("VENDORSIGNUP") != null) {
             if(request.getParameter("VENDORSIGNUP").toString().equals("Proceed"))
             {
-                String name=request.getParameter("name");
-                String address=request.getParameter("address");
-                String emailaddress=request.getParameter("emailaddress");
-                String phoneno=request.getParameter("phoneno");
-                String username=request.getParameter("username");
-                String password=request.getParameter("password");
-                //**********************************************
-                
-                try{
-                    Statement stmt = conn.createStatement();
-                    query="select username from vendor where username='"+username+"';";
-                    ResultSet rs = stmt.executeQuery (query);
-                    
-                    flag=0;
-                    if(rs.next())
-                    {
-                        flag=1;
-                    }
-                    if(flag==0)
-                    {
-                        session.setAttribute("name",name);
-                        session.setAttribute("address",address);
-                        session.setAttribute("emailaddress",emailaddress);
-                        session.setAttribute("phoneno",phoneno);
-                        //phoneno can be empty string so we need to check for both empty and null when converting into int
-                        session.setAttribute("username",username);
-                        session.setAttribute("password",password);
-                        
-                        
-                        
-                        ServletContext context = getServletContext();
-                        RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/vendorsignup2.jsp");
-                        dispatcher.forward(request, response);
-                    }
-                    else
-                    {
-                        
-                        session.setAttribute("usernamealreadyexists",1);
-                        ServletContext context = getServletContext();
-                        
-                        RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/vendorsignup.jsp");
-                        dispatcher.forward(request, response);
-                    }
-                }
-                catch(Exception e)
+                String redirectJsp="";
+                vendorsignup su=new vendorsignup();
+                try
                 {
-                    System.out.println(e);
+                    redirectJsp = su.vendorsignupHandler(request, session, conn);
                 }
-                
-                
-                
-                //**********************************************
-                
+                catch(Exception regexcp)
+                {
+                    System.out.println(regexcp);
+                }
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
             }
         }
         
         //clubsignup.jsp
         else if (request.getParameter("CLUBSIGNUP") != null) {
             if(request.getParameter("CLUBSIGNUP").toString().equals("Proceed")){
-                String name=request.getParameter("name");
-                String address=request.getParameter("address");
-                String emailaddress=request.getParameter("emailaddress");
-                String phoneno=request.getParameter("phoneno");
-                String username=request.getParameter("username");
-                String password=request.getParameter("password");
-                int courtnum=Integer.parseInt(request.getParameter("courtnum"));
-                int coachingslot=Integer.parseInt(request.getParameter("coachingslot"));
-
-                //**********************************************
-                
-                try{
-                    Statement stmt = conn.createStatement();
-                    query="select username from club where username='"+username+"';";
-                    ResultSet rs = stmt.executeQuery (query);
-                    
-                    flag=0;
-                    if(rs.next())
-                    {
-                        flag=1;
-                    }
-                    if(flag==0)
-                    {
-                        session.setAttribute("name",name);
-                        session.setAttribute("address",address);
-                        session.setAttribute("emailaddress",emailaddress);
-                        session.setAttribute("phoneno",phoneno);
-                        session.setAttribute("username",username);
-                        session.setAttribute("password",password);
-                        session.setAttribute("courtnum",courtnum);
-                        session.setAttribute("coachingslot",coachingslot);
-
-
-
-                        ServletContext context = getServletContext();
-                        RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/clubsignup2.jsp");
-                        dispatcher.forward(request, response);
-                    }
-                    else
-                    {
-                        
-                        session.setAttribute("usernamealreadyexists",1);
-                        ServletContext context = getServletContext();
-                        
-                        RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/clubsignup.jsp");
-                        dispatcher.forward(request, response);
-                    }
-                }
-                catch(Exception e)
+                String redirectJsp="";
+                clubsignup su=new clubsignup();
+                try
                 {
-                    System.out.println(e);
+                    redirectJsp = su.clubsignupHandler(request, session, conn);
                 }
-                
-                //**********************************************
-                
-                
-                
+                catch(Exception regexcp)
+                {
+                    System.out.println(regexcp);
+                }
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
             }
         }
         
