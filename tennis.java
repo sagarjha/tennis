@@ -136,65 +136,19 @@ public class tennis extends HttpServlet{
         //coachsignup.jsp: need to change age and experience. Also redirect
          else if (request.getParameter("COACHSIGNUP") != null) {
             if(request.getParameter("COACHSIGNUP").toString().equals("Sign Up")){
-                int new_id=0;
-                String experience=request.getParameter("experience");
-                String description=request.getParameter("description");
+                String redirectJsp="";
+                coachsignup su=new coachsignup();
                 try
                 {
-                    session.setAttribute("experience",experience);
-                    session.setAttribute("description",description);
+                    redirectJsp = su.coachsignupHandler(request, session, conn);
                 }
-                catch(Exception e)
+                catch(Exception regexcp)
                 {
-                    System.out.println(e);
+                    System.out.println(regexcp);
                 }
-                try{
-                    Statement stmt = conn.createStatement();
-                    query="Select IDValue from Constant where ConstantName = 'account';";
-                    ResultSet rs = stmt.executeQuery (query);
-                    if(rs.next())
-                    {    
-                        new_id=rs.getInt("idvalue");
-                        System.out.println(new_id);
-                    }
-                    conn.setAutoCommit(false);
-                    query="Update Constant set IDValue = IDValue+1 where ConstantName = 'account';";
-                    stmt.executeUpdate(query);
-                    int yearofbirth=0;
-                    int coachingstartyear=0;
-                    query="Insert into Coach(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, YearOfBirth, Gender, coachingstartyear) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+yearofbirth+", '"+session.getAttribute("gender")+"', "+coachingstartyear+");";
-                    stmt.executeUpdate(query);
-                    query="Insert into teachesat(coachid, clubid) values ("+new_id+", "+session.getAttribute("clubid")+");";
-                    stmt.executeUpdate(query);
-                    conn.commit();
-                }
-                catch(SQLException e)
-                {
-                    System.out.println(e);
-                    if (conn != null) 
-                    {
-                        try 
-                        {
-                            System.err.print("Transaction is being rolled back");
-                            conn.rollback();
-                        } 
-                        catch(SQLException excep) 
-                        {
-                            System.out.println(excep);
-                        }
-                    }
-                }
-                finally
-                {
-                    try
-                    {
-                        conn.setAutoCommit(true);
-                    }
-                    catch(SQLException excep2)
-                    {
-                        System.out.println(excep2);
-                    }
-                }
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
             }
         }
         
@@ -203,65 +157,19 @@ public class tennis extends HttpServlet{
         //umpiresignup.jsp: Need to change age and experience. Also redirect
         else if (request.getParameter("UMPIRESIGNUP") != null) {
             if(request.getParameter("UMPIRESIGNUP").toString().equals("Sign Up")){
-                int new_id=0;
-                String experience=request.getParameter("experience");
-                String description=request.getParameter("description");
+                String redirectJsp="";
+                umpiresignup su=new umpiresignup();
                 try
                 {
-                    session.setAttribute("experience",experience);
-                    session.setAttribute("description",description);
+                    redirectJsp = su.umpiresignupHandler(request, session, conn);
                 }
-                catch(Exception e)
+                catch(Exception regexcp)
                 {
-                    System.out.println(e);
+                    System.out.println(regexcp);
                 }
-                try{
-                    Statement stmt = conn.createStatement();
-                    query="Select IDValue from Constant where ConstantName = 'account';";
-                    ResultSet rs = stmt.executeQuery (query);
-                    if(rs.next())
-                    {    
-                        new_id=rs.getInt("idvalue");
-                        System.out.println(new_id);
-                    }
-                    conn.setAutoCommit(false);
-                    query="Update Constant set IDValue = IDValue+1 where ConstantName = 'account';";
-                    stmt.executeUpdate(query);
-                    int yearofbirth=0;
-                    int umpiringstartyear=0;
-                    query="Insert into umpire(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, YearOfBirth, Gender, umpiringstartyear, clubid) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+yearofbirth+", '"+session.getAttribute("gender")+"', "+umpiringstartyear+","+session.getAttribute("clubid")+");";
-                    stmt.executeUpdate(query);
-                    query="Insert into teachesat(coachid, clubid) values ("+new_id+", "+session.getAttribute("clubid")+");";
-                    stmt.executeUpdate(query);
-                    conn.commit();
-                }
-                catch(SQLException e)
-                {
-                    System.out.println(e);
-                    if (conn != null) 
-                    {
-                        try 
-                        {
-                            System.err.print("Transaction is being rolled back");
-                            conn.rollback();
-                        } 
-                        catch(SQLException excep) 
-                        {
-                            System.out.println(excep);
-                        }
-                    }
-                }
-                finally
-                {
-                    try
-                    {
-                        conn.setAutoCommit(true);
-                    }
-                    catch(SQLException excep2)
-                    {
-                        System.out.println(excep2);
-                    }
-                }
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
             }
         }
 

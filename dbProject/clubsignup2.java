@@ -4,24 +4,24 @@ import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
 
-public class umpiresignup extends HttpServlet{
-    public String umpiresignupHandler (HttpServletRequest request, HttpSession session, Connection conn) throws SQLException{
-        
+public class clubsignup2 extends HttpServlet{
+    public String clubsignup2Handler (HttpServletRequest request, HttpSession session, Connection conn) throws SQLException{
+       
         String query="";
         String redirectJsp="";
         
         int new_id=0;
-        String experience=request.getParameter("experience");
         String description=request.getParameter("description");
+        
         try
         {
-            session.setAttribute("experience",experience);
             session.setAttribute("description",description);
         }
         catch(Exception e)
         {
             System.out.println(e);
         }
+        
         try{
             Statement stmt = conn.createStatement();
             query="Select IDValue from Constant where ConstantName = 'account';";
@@ -34,11 +34,7 @@ public class umpiresignup extends HttpServlet{
             conn.setAutoCommit(false);
             query="Update Constant set IDValue = IDValue+1 where ConstantName = 'account';";
             stmt.executeUpdate(query);
-            int yearofbirth=0;
-            int umpiringstartyear=0;
-            query="Insert into umpire(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, YearOfBirth, Gender, umpiringstartyear, clubid) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+yearofbirth+", '"+session.getAttribute("gender")+"', "+umpiringstartyear+","+session.getAttribute("clubid")+");";
-            stmt.executeUpdate(query);
-            query="Insert into teachesat(coachid, clubid) values ("+new_id+", "+session.getAttribute("clubid")+");";
+            query="Insert into club(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, numcourts, coachingslot) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+session.getAttribute("courtnum")+", "+session.getAttribute("coachingslot")+");";
             stmt.executeUpdate(query);
             conn.commit();
         }
@@ -69,6 +65,7 @@ public class umpiresignup extends HttpServlet{
                 System.out.println(excep2);
             }
         }
+        
         return redirectJsp;
     }
 }
