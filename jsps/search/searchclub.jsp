@@ -6,6 +6,7 @@
   <h3 align="center">Search for clubs</h3><hr>
 
   <body>
+   <form name="searchclub" method ="post" action="../tennis">
     <table width="350" border="0" cellspacing="0" cellpading="0">
       <tr>
 	<td width="200"> <div align="left">
@@ -29,6 +30,7 @@
 	<td width="200"><div align="right"><br><input type="Submit" name="SEARCHCLUB" value = "Search"></div></td>
       </tr>
     </table>
+    </form>
   </body>
 </html>
 

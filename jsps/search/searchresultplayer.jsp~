@@ -12,8 +12,8 @@
     <h3 align="center">Search results</h3><hr>
     <form name="searchresultplayer" method ="post" action="tennis">
     <%
-    List<Integer> ids = (List<Integer>)request.getAttribute("playerids");
-    List<String> names = (List<String>)request.getAttribute("playernames");
+    List<Integer> ids = request.getAttribute("playerids");
+    List<Integer> names = request.getAttribute("playernames");
     for(int i = 0; i < ids.size(); i++){ %>
     <center><input type="text" name="SEARCHRESULTPLAYER" value="<%= names.get(i)%>"</center>
     <br>

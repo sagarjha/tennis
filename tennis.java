@@ -255,7 +255,7 @@ public class tennis extends HttpServlet{
                 catch(Exception e) {
 		    System.out.println(e);
 		}
-                
+                System.out.println("searched the player");
                 String redirectJsp = "/search/searchresultplayer.jsp";
 		ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);

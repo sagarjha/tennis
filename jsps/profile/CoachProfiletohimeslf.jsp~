@@ -13,7 +13,7 @@
   <body>
   
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
-<img style="display:block;" left = '400'   width='250' height='300' src='images/Lendl.jpg' />
+   <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 <div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
 
 <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
@@ -168,11 +168,11 @@ if(request.getAttribute("club3")!=null)
    <td width="200"><input list="newclub" name="newclub">
    <datalist id="newclub">
 
-  <option value="Internet Explorer">
-  <option value="Firefox">
-  <option value="Chrome">
-  <option value="Opera">
-  <option value="Safari">
+  <option value="Internet Explorer">IE</option>
+  <option value="Firefox">Fire</option>
+  <option value="Chrome">Google</option>
+  <option value="Opera">Mac</option>
+  <option value="Safari">Mac2</option>
 </datalist>
    </td>
 <!--   	<td width="150"><div align="center"><Button>Add Coaching Slot</Button></div></td> -->

@@ -6,7 +6,9 @@
   <h3 align="center">Search for players</h3><hr>
 
   <body>
+  	 <form name="searchplayer" method ="post" action="../tennis">
     <table width="500" border="0" cellspacing="0" cellpading="0">
+   
       <tr>
 	<td width="200"> <div align="left">
 	    Search String
@@ -42,5 +44,6 @@
 	<td width="200"><div align="right"><br><input type="Submit" name="SEARCHPLAYER" value = "Search"></div></td>
       </tr>
     </table>
+    </form>
   </body>
 </html>

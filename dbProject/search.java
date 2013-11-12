@@ -21,18 +21,18 @@ public class search extends HttpServlet{
                 //search by name
                 if(order.equals("2")){
                     //order by rating
-                    query = "select name, id from Player where lower(name) like lower(%" + searchString + 
-                            "%) order by rating;";
+                    query = "select name, id from Player where lower(name) like lower('%" + searchString + 
+                            "%') order by rating;";
                 }
                 else if(order.equals("3")){
                     //order by age
-                    query = "select name, id from Player where lower(name) like lower(%" + searchString + 
-                            "%) order by yearofbirth;";
+                    query = "select name, id from Player where lower(name) like lower('%" + searchString + 
+                            "%') order by yearofbirth;";
                 }
                 else {
                     // order by name by default
-                    query = "select name, id from Player where lower(name) like lower(%" + searchString + 
-                            "%) order by name;";
+                    query = "select name, id from Player where lower(name) like lower('%" + searchString + 
+                            "%') order by name;";
                 }
             }
             
@@ -41,20 +41,20 @@ public class search extends HttpServlet{
                 if(order.equals("2")){
                     // order by rating
                     query = "select p.name as name,p.id as id from player as p, member as m, club as c where m.playerid = p.id"+
-                            "and m.clubid = c.id and lower(c.name) like lower(%" + searchString +
-                            "%) order by p.rating;";
+                            "and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
+                            "%') order by p.rating;";
                 }
                 else if(order.equals("3")){
                     // order by age
                     query = "select p.name as name,p.id as id from player as p, member as m, club as c where m.playerid = p.id"+
-                            "and m.clubid = c.id and lower(c.name) like lower(%" + searchString +
-                            "%) order by p.yearofbirth;";
+                            "and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
+                            "%') order by p.yearofbirth;";
                 }
                 else{
                     // order by name default
                     query = "select p.name as name,p.id as id from player as p, member as m, club as c where m.playerid = p.id"+
-                            "and m.clubid = c.id and lower(c.name) like lower(%" + searchString +
-                            "%) order by p.name;";
+                            "and m.clubid = c.id and lower(c.name) like lower('%" + searchString +
+                            "%') order by p.name;";
                 } 
             }
             
@@ -63,20 +63,20 @@ public class search extends HttpServlet{
                 if(order.equals("2")){
                     // order by rating
                     query = "select p.name as name , p.id as id from player p, coach c, training t" +
-                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower(%"
-                            + searchString +"%) order by p.rating;";
+                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
+                            + searchString +"%') order by p.rating;";
                 }
                 else if(order.equals("3")){
                     // order by age
                     query = "select p.name as name , p.id as id from player p, coach c, training t" +
-                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower(%"
-                            + searchString +"%) order by p.yearofbirth;";
+                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
+                            + searchString +"%') order by p.yearofbirth;";
                 }
                 else{
                     // order by name default
                     query = "select p.name as name , p.id as id from player p, coach c, training t" +
-                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower(%"
-                            + searchString +"%) order by p.name;";
+                            "where p.id = t.playerid and c.id = t.coachid and lower(c.name) like lower('%"
+                            + searchString +"%') order by p.name;";
                 }
             }
             
@@ -84,18 +84,18 @@ public class search extends HttpServlet{
                     // search by gender
                 if(order.equals("2")){
                     // order by rating
-                    query = "select name, id from Player where lower(gender) like lower(%" + searchString +
-                            "%) order by rating;";
+                    query = "select name, id from Player where lower(gender) like lower('%" + searchString +
+                            "%') order by rating;";
                 }    
                 else if(order.equals("3")){
                     // order by age
-                    query = "select name, id from Player where lower(gender) like lower(%" + searchString +
-                            "%) order by yearofbirth;";
+                    query = "select name, id from Player where lower(gender) like lower('%" + searchString +
+                            "%') order by yearofbirth;";
                 }  
                 else{
                     // order by name default
-                    query = "select name, id from Player where lower(gender) like lower(%" + searchString +
-                            "%) order by name;";
+                    query = "select name, id from Player where lower(gender) like lower('%" + searchString +
+                            "%') order by name;";
                 }  
             }
             else if(basis.equals("5")){
@@ -104,38 +104,40 @@ public class search extends HttpServlet{
                 String query1 = "Select extract(year from (select datevalue from constant where constantname = 'time')) as year;";
                 rs=stmt.executeQuery(query1);
                 if(rs.next()){
-                    age = Integer.parseInt(searchString) - rs.getInt("year");
+                    age = rs.getInt("year")- Integer.parseInt(searchString);
                 }
                 
                 else if(order.equals("2")){
                     // order by rating
-                    query = "select name, id from Player where yaerofbirth = " + age + " order by rating;";
+                    query = "select name, id from Player where yearofbirth = " + age + " order by rating;";
                 } 
                 else{
                     // order by name default
-                    query = "select name, id from Player where yaerofbirth = " + age + " order by name;";
+                    
+                    query = "select name, id from Player where yearofbirth = " + age + " order by name;";
                 }
             }
             else{
                     // search by locality
                 if(order.equals("2")){
                     // order by rating
-                    query = "select name, id from Player where lower(address) like lower(%" + searchString +
-                            "%) order by rating;";
+                    query = "select name, id from Player where lower(address) like lower('%" + searchString +
+                            "%') order by rating;";
                 }    
                 else if(order.equals("3")){
                     // order by age
-                    query = "select name, id from Player where lower(address) like lower(%" + searchString +
-                            "%) order by yearofbirth;";
+                    query = "select name, id from Player where lower(address) like lower('%" + searchString +
+                            "%') order by yearofbirth;";
                 }  
                 else{
                     // order by name default
-                    query = "select name, id from Player where lower(address) like lower(%" + searchString +
-                            "%) order by name;";
+                    query = "select name, id from Player where lower(address) like lower('%" + searchString +
+                            "%') order by name;";
                 }      
             }
-            
+            System.out.println(query);
             rs = stmt.executeQuery(query);
+            System.out.println("done");
             while(rs.next()){
                 playerids.add(rs.getInt("id"));
                 playernames.add(rs.getString("name"));
@@ -165,26 +167,26 @@ public class search extends HttpServlet{
                 if(order.equals("2")){
                     //rating
                     query = "select c.name as name, c.id as id from coach c, club clb, teachesat t"+ 
-                            " where t.clubid = clb.id and t.coachid = c.id and lower(clb.name) like lower(%"
-                            + searchString +"%) order by c.rating;";
+                            " where t.clubid = clb.id and t.coachid = c.id and lower(clb.name) like lower('%"
+                            + searchString +"%') order by c.rating;";
                 }
                 else if(order.equals("3")){
                     //experience
                     query = "select c.name as name, c.id as id from coach c, club clb, teachesat t"+ 
-                            " where t.clubid = clb.id and t.coachid = c.id and lower(clb.name) like lower(%"
-                            + searchString +"%) order by c.coachingstartyear;";
+                            " where t.clubid = clb.id and t.coachid = c.id and lower(clb.name) like lower('%"
+                            + searchString +"%') order by c.coachingstartyear;";
                 }
                 else if(order.equals("4")){
                     // age
                     query = "select c.name as name, c.id as id from coach c, club clb, teachesat t"+ 
-                            " where t.clubid = clb.id and t.coachid = c.id and lower(clb.name) like lower(%"
-                            + searchString +"%) order by c.yearofbirth;";
+                            " where t.clubid = clb.id and t.coachid = c.id and lower(clb.name) like lower('%"
+                            + searchString +"%') order by c.yearofbirth;";
                 }
                 else{
                     //name
                     query = "select c.name as name, c.id as id from coach c, club clb, teachesat t"+ 
-                            " where t.clubid = clb.id and t.coachid = c.id and lower(clb.name) like lower(%"
-                            + searchString +"%) order by c.name;";
+                            " where t.clubid = clb.id and t.coachid = c.id and lower(clb.name) like lower('%"
+                            + searchString +"%') order by c.name;";
                 }
                 
             }
@@ -193,23 +195,23 @@ public class search extends HttpServlet{
                 // search by name of coach
                 if(order.equals("2")){
                     //rating
-                    query = "select name, id from coach where lower(name) like lower(%" + searchString + 
-                            "%) order by rating;";
+                    query = "select name, id from coach where lower(name) like lower('%" + searchString + 
+                            "%') order by rating;";
                 }
                 else if(order.equals("3")){
                     //experience
-                    query = "select name, id from coach where lower(name) like lower(%" + searchString + 
-                            "%) order by coachingstartyear;";
+                    query = "select name, id from coach where lower(name) like lower('%" + searchString + 
+                            "%') order by coachingstartyear;";
                 }
                 else if(order.equals("4")){
                     // age
-                    query = "select name, id from coach where lower(name) like lower(%" + searchString + 
-                            "%) order by yearofbirth;";
+                    query = "select name, id from coach where lower(name) like lower('%" + searchString + 
+                            "%') order by yearofbirth;";
                 }
                 else{
                     //name
-                    query = "select name, id from coach where lower(name) like lower(%" + searchString + 
-                            "%) order by name;";
+                    query = "select name, id from coach where lower(name) like lower('%" + searchString + 
+                            "%') order by name;";
                 }
             }
             
@@ -241,25 +243,25 @@ public class search extends HttpServlet{
             
             if(basis.equals("2")){
                 //by location
-                query = "select name, id from vendor where lower(address) like lower(%" + searchString +
-                            "%) order by name;";
+                query = "select name, id from vendor where lower(address) like lower('%" + searchString +
+                            "%') order by name;";
             }
             if(basis.equals("3")){
                 //by brand
                 query = "select distinct v.name as name, v.id as id from vendor v, item i, sells s" + 
-                        "where s.itemid = i.id and s.vendorid = v.id and lower(i.brand) like lower(%" +
-                        searchString + "%) order by v.name;";
+                        "where s.itemid = i.id and s.vendorid = v.id and lower(i.brand) like lower('%" +
+                        searchString + "%') order by v.name;";
             }
             if(basis.equals("4")){
                 // by product
                 query = "select distinct v.name as name, v.id as id from vendor v, item i, sells s" + 
-                        "where s.itemid = i.id and s.vendorid = v.id and lower(i.type) like lower(%" +
-                        searchString + "%) order by v.name;";
+                        "where s.itemid = i.id and s.vendorid = v.id and lower(i.type) like lower('%" +
+                        searchString + "%') order by v.name;";
             }
             else{
                 // by name
-                query = "select name, id from vendor where lower(name) like lower(%" + searchString + 
-                            "%) order by name;";
+                query = "select name, id from vendor where lower(name) like lower('%" + searchString + 
+                            "%') order by name;";
             }
             
             rs = stmt.executeQuery(query);
@@ -290,19 +292,19 @@ public class search extends HttpServlet{
             if(basis.equals("2")){
                 // by coach
                 query = "select clb.name as name, clb.id as id from club clb, teachesat t, coach c"+
-                        "where c.id = t.coachid and clb.id = t.clubid and lower(c.name) like lower(%" + searchString + 
-                            "%) order by clb.name;";
+                        "where c.id = t.coachid and clb.id = t.clubid and lower(c.name) like lower('%" + searchString + 
+                            "%') order by clb.name;";
                 
             }
             if(basis.equals("3")){
                 // by location
-                query = "select name, id from club where lower(address) like lower(%" + searchString +
-                            "%) order by name;";
+                query = "select name, id from club where lower(address) like lower('%" + searchString +
+                            "%') order by name;";
             }
             else{
                 // by name
-                query = "select name, id from club where lower(name) like lower(%" + searchString + 
-                            "%) order by name;";
+                query = "select name, id from club where lower(name) like lower('%" + searchString + 
+                            "%') order by name;";
             }
             
             rs = stmt.executeQuery(query);

@@ -13,8 +13,8 @@
   <body>
     
     <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
-      <img style="display:block;" left = '400'   width='250' height='300' src='images/profilePic.jpg' />
-      <p>Fedrer</p>
+      <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
+      <p><b><%= request.getAttribute("name") %> </b></p>
       <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
 	<tr>
 	  <td width="150"><div align="left">Matches Played</div></td>
@@ -46,19 +46,16 @@
 	  <th>Upcoming Matches</th>
 	</tr>
 	<tr>
-	  <td width="300"><div align="left">&bull; vs Rafael Nadal at Roland Garros on 27th Oct</div></td>
+	  <td width="300"><div align="left">&bull; <%= request.getAttribute("UpcomingMatches1") %></div></td>
 	</tr>
 	<tr>
-	  <td width="300"><div align="left">&bull; vs Rishiraj at Bombay Gymkhana on 31st Oct</div></td>
+	  <td width="300"><div align="left">&bull; <%= request.getAttribute("UpcomingMatches2") %></div></td>
 	</tr>
 	<tr>
-	  <td width="300"><div align="left">&bull; vs Djokovic at IIT Gymkhana 2 Nov</div></td>
+	  <td width="300"><div align="left">&bull; <%= request.getAttribute("UpcomingMatches3") %> </div></td>
 	</tr>
 	<tr>
-	  <td width="400"><div align="left">&bull; vs Somdev Devvarman at All England Tennis Club on  3 Nov</div></td>
-	</tr>
-	<tr>
-	  <td width="300"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
+	      <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("UpcomingMatches")%>")' value="See all results"> </div></td>
 	</tr>
       </table>
       
@@ -67,17 +64,17 @@
 	  <th>Club News</th>
 	</tr>
 	<tr>
-	  <td width="400"><div align="left">&bull; Relayering or courts at Dadar Gymkhana</div></td>
+	  <td width="400"><div align="left">&bull; <%= request.getAttribute("news1") %> </div></td>
 	</tr>
 	<tr>
-	  <td width="400"><div align="left">&bull; New Floodlights installed at Wimbeldon</div></td>
+	  <td width="400"><div align="left">&bull; <%= request.getAttribute("news2") %> </div></td>
 	</tr>
 	<tr>
-	  <td width="400"><div align="left">&bull; Nadal wins the French Open</div></td>
+	  <td width="400"><div align="left">&bull; <%= request.getAttribute("news3") %> </div></td>
 	</tr>
 	
 	<tr>
-	  <td width="400"><div align="left"><a href="http://www.yahoo.com">See More</a></div></td>
+	  <td width="400"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("news")%>")' value="See More"> </div></td>
 	</tr>
       </table>
 
@@ -125,13 +122,13 @@
   <tr>
     <th>Recent Results</th>
   <tr>
-    <td width="300"><div align="left">&bull; Lost to Nadal at French Open</div></td>
+    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes1") %></div></td>
   </tr>
   <tr>
-    <td width="300"><div align="left">&bull; Defeated Rishiraj at IIT Open</div></td>
+    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes2") %></div></td>
   </tr>
   <tr>
-    <td width="300"><div align="left">&bull; Lost to Djokovic at Australian Open</div></td>
+    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes3") %></div></td>
   </tr>
   <tr>
     
