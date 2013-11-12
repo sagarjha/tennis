@@ -8,14 +8,14 @@
 
   <body>
     <table width="500" border="0" cellspacing="0" cellpading="0">
-      <form name="personsignup" method ="post" action="tennis">
+      <form name="personsignup" method ="post" action="../tennis">
 	<tr>
 	  <td width="401"><div align="center"><b>Name* : </b></div></td>
 	  <td width="399"><input type="text" name="name" required></td>
 	</tr>
 	<tr>
 	  <td width="401"><div align="center"><b>Age* : </b></div></td>
-	  <td width="399"><input type="text" name="age" required></td>
+	  <td width="399"><input type="number" name="age" required min="1"></td>
 	</tr>
 	<tr>
 	  <td width="401"><div align="center"><b>Gender* : </b></div></td>
@@ -47,7 +47,7 @@
 	</tr>
 	<tr>
 	  <td width="401"><div align="center"><b>Club* : </b></div></td>
-	  <td width="399"><input type="password" name="clubid" required></td>
+	  <td width="399"><input type="number" name="clubid" required></td>
 	</tr>
 	<!-- do autocomplete for club -->
 	<tr>

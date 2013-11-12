@@ -10,7 +10,7 @@
   </h3>
   <hr>
   <body>
-    <form name="playersignup" method ="post" action="tennis">
+    <form name="playersignup" method ="post" action="../tennis">
       <table width="500" border="0" cellspacing="0" cellpading="0">
         <tr>
           <td width="401"><div align="center"><b>Upload a Picture : </b></div></td>

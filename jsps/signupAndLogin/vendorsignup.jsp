@@ -8,7 +8,7 @@
 
   <body>
   <table width="500" border="0" cellspacing="0" cellpading="0">
-      <form name="vendorsignup1" method="post" action="tennis">
+      <form name="vendorsignup1" method="post" action="../tennis">
   <tr>
     <td width="401"><div align="center"><b>Name* : </b></div></td>
     <td width="399"><input type="text" name="name" required></td>

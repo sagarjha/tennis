@@ -8,7 +8,7 @@
   
   <body>
   <table width="500" border="0" cellspacing="0" cellpading="0">
-    <form name="clubsignup" method ="post" action="tennis">
+    <form name="clubsignup" method ="post" action="../tennis">
    <tr>
    <td width="401"><div align="center"><b>Name* : </b></div></td>
    <td width="399"><input type="text" name="name" required></td>
@@ -16,12 +16,12 @@
    </tr>
    <tr>
    <td width="401"><div align="center"><b>No. of courts* : </b></div></td>
-   <td width="399"><input type="number" name="courtnum" required></td>
+   <td width="399"><input type="number" name="courtnum" required min="1"></td>
    </td>
    </tr>
    <tr>
    <td width="401"><div align="center"><b>Coaching slot* : </b></div></td>
-   <td width="399"><input type="number" name="coachingslot" required></td>
+   <td width="399"><input type="number" name="coachingslot" required min="1" max="14"></td>
    </td>
    </tr>
    <tr>

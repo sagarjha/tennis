@@ -10,7 +10,7 @@
     <hr>
     <body>
         <table width="500" border="0" cellspacing="0" cellpading="0">
-            <form name="vendorsignup2" method="post" action="tennis">
+            <form name="vendorsignup2" method="post" action="../tennis">
               <tr>
                   <td width="401"><div align="center"><b>Upload a Picture : </b></div></td>
                   <td width="399"><input type="text" name="picture"></td>
