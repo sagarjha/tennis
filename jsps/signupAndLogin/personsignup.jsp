@@ -21,8 +21,8 @@
 	  <td width="401"><div align="center"><b>Gender* : </b></div></td>
 	  <td width="399">
 	    <select id="gender" name="gender" required>
-	      <option value="1">Male</option>
-	      <option value="2">Female</option>
+	      <option value="Male">Male</option>
+	      <option value="Female">Female</option>
 	  </select></td>
 	</tr>
 	<tr>
