@@ -36,30 +36,19 @@ public class tennis extends HttpServlet{
         //Register
         else if (request.getParameter("REGISTER") != null) {
             if(request.getParameter("REGISTER").toString().equals("Proceed")) {
-            String role=request.getParameter("role");
-            
-            session.setAttribute("type",role);
-            session.setAttribute("usernamealreadyexists",0);
-            
-            ServletContext context = getServletContext();
-            if((session.getAttribute("type").equals("1"))|
-               (session.getAttribute("type").equals("2"))|
-               (session.getAttribute("type").equals("3")))
-                {   String redirect="/signupAndLogin/personsignup.jsp";
-                    RequestDispatcher dispatcher = context.getRequestDispatcher(redirect);
-                    System.out.println(redirect);
-                    dispatcher.forward(request, response);
-                }
-            else if(session.getAttribute("type").equals("4"))
+                String redirectJsp="";
+                register reg=new register();
+                try
                 {
-                    RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/clubsignup.jsp");
-                    dispatcher.forward(request, response);
+                    redirectJsp = reg.registerHandler(request, session);
                 }
-            else if(session.getAttribute("type").equals("5"))
+                catch(SQLException regexcp)
                 {
-                    RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/vendorsignup.jsp");
-                    dispatcher.forward(request, response);
+                    System.out.println(regexcp);
                 }
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
             }
         }
 
