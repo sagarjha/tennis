@@ -10,16 +10,14 @@
 
   <body>  
     <h3 align="center">Search results</h3><hr>
-    
-    <center><a href="">Roger Federer</a></center>
+    <form name="searchresultplayer" method ="post" action="tennis">
+    <%
+    List<Integer> ids = request.getAttribute("playerids");
+    List<Integer> names = request.getAttribute("playernames");
+    for(int i = 0; i < ids.size(); i++){ %>
+    <center><input type="text" name="SEARCHRESULTPLAYER" value="<%= names.get(i)%>"</center>
     <br>
-    <center>Sagar Jha</center>
-    <br>
-    <center>Sahil Jindal</center>
-    <br>
-    <center>RishiRaj Singh</center>
-    <br>
-    <center>Rohan Gyani</center>
-    <br>
+    <% } %>
+    </form>
   </body>
 </html>
