@@ -5,7 +5,7 @@
   </head>
   
   <body>
-    <form action = "tennis">
+    <form method="post" action = "tennis">
       <center> <b> Upcoming Tournaments <br><br></b>
 	<table width="1000" border="1">
 	  <tr>

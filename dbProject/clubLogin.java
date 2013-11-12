@@ -158,7 +158,7 @@ class clubLogin extends HttpServlet{
 		    request.setAttribute("coach2",coach2);
 		    request.setAttribute("coach3",coach3);
 		}
-
+		
 		{
 		    String query = "select U.Name from Umpire as U where U.ClubID="+id+";";
 
@@ -205,55 +205,38 @@ class clubLogin extends HttpServlet{
 	}
 	// set the attribute UpcomingMatches
 	{
-	    String query = "select P1.Name as player1, P2.Name as player2, Clb.Name as club, M.DateOfMatch, M.SlotNumber, matchtype from Match as M, Player as P1, Player as P2, Club as Clb where (M.Player1ID=" + id + " or M.Player2ID=" + id + ") and P2.ID=M.Player1ID and P1.ID=M.Player2ID and Clb.ID=M.ClubID;";
+	    rs = stmt.executeQuery ("select datevalue from constant where constantname='time'");
+	    rs.next();
+	    String date = rs.getString("datevalue");
+	    
+	    String query = "select P1.Name as player1, P2.Name as player2, M.DateOfMatch, M.SlotNumber, matchtype from Match as M, Player as P1, Player as P2, Club as Clb where Clb.id=" + id + " and P2.ID=M.Player1ID and P1.ID=M.Player2ID and Clb.ID=M.ClubID and dateofmatch > '" + date + "' order by dateofmatch;";
 	    
 	    System.out.println(query);
 	    rs = stmt.executeQuery (query);
 	    String matches = "";
 	    int count = 1;
 	    if (rs.next()) {
-		if (rs.getString("player1").equals(request.getAttribute("name"))) {
-		    request.setAttribute("UpcomingMatches1", "vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch"));
-		    matches += count + ". vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
-		    count++;
-		}
-		else {
-		    request.setAttribute("UpcomingMatches1", "vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch"));
-		    matches += count + ". vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
-		    count++;
-		}
+		request.setAttribute("UpcomingMatches1", rs.getString("player1") + " vs " + rs.getString("player2") + " on " + rs.getString("dateofmatch"));
+		matches += count + ". " + rs.getString("player1") +" vs " + rs.getString("player2") + " on " + rs.getString("dateofmatch") + "\\n";
+		count++;
 	    }
 	    if (rs.next()) {
-		if (rs.getString("player1").equals(request.getAttribute("name"))) {
-		    request.setAttribute("UpcomingMatches2", "vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch"));
-		    matches += count + ". vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
-		    count++;
-		}
-		else {
-		    request.setAttribute("UpcomingMatches2", "vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch"));
-		    matches += count + ". vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
-		    count++;
-		}
+		request.setAttribute("UpcomingMatches2", rs.getString("player1") + " vs " + rs.getString("player2") + " on " + rs.getString("dateofmatch"));
+		matches += count + ". " + rs.getString("player1") + " vs " + rs.getString("player2") + " on " + rs.getString("dateofmatch") + "\\n";
+		count++;
 	    }
 	    if (rs.next()) {
-		if (rs.getString("player1").equals(request.getAttribute("name"))) {
-		    request.setAttribute("UpcomingMatches3", "vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch"));
-		    matches += count + ". vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
-		    count++;
-		}
-		else {
-		    request.setAttribute("UpcomingMatches3", "vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch"));
-		    matches += count + ". vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
-		    count++;
-		}
+		request.setAttribute("UpcomingMatches3", rs.getString("player1") + " vs " + rs.getString("player2") + " on " + rs.getString("dateofmatch"));
+		matches += count + ". " + rs.getString("player1") + " vs " + rs.getString("player2") + " on " + rs.getString("dateofmatch") + "\\n";
+		count++;
 	    }
 	    while (rs.next()) {
 		if (rs.getString("player1").equals(request.getAttribute("name"))) {
-		    matches += count + ". vs " + rs.getString("player2") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    matches += count + ". " + rs.getString("player1") +" vs " + rs.getString("player2") + " on " + rs.getString("dateofmatch") + "\\n";
 		    count++;
 		}
 		else {
-		    matches += count + ". vs " + rs.getString("player1") + " at " + rs.getString("club") + " on " + rs.getString("dateofmatch") + "\\n";
+		    matches += count + ". " + rs.getString("player1") + " vs " + rs.getString("player1") + " on " + rs.getString("dateofmatch") + "\\n";
 		    count++;
 		}
 	    }

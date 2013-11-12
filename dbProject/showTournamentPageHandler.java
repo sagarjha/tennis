@@ -9,13 +9,13 @@ public class showTournamentPageHandler extends HttpServlet{
 	System.out.println("In showTournamentPageHandler.java");
 	Statement stmt = conn.createStatement();
 	String tournamentName = request.getParameter ("TOURNAMENTVIEW");
-	String name = request.getParameter("TOURNAMENTVIEW");
+	String id = request.getParameter("TOURNAMENTVIEW");
 	System.out.println("tournamentName");
-	request.setAttribute("name",name);
-	String query = "select * from tournament where name = '" + name + "'";
+	String query = "select * from tournament where id = '" + id + "'";
 	System.out.println(query);
 	ResultSet rs = stmt.executeQuery(query);
 	rs.next();
+	request.setAttribute("name",rs.getString("name"));
 	request.setAttribute("startdate",rs.getString("startDate"));
 	request.setAttribute("numplayers",rs.getString("numplayers"));
 	request.setAttribute("prizemoney",rs.getString("prizemoney"));

@@ -24,9 +24,9 @@ public class tournamentViewHandler extends HttpServlet{
 		Statement stmt1 = conn.createStatement();
 		ResultSet rs1 = stmt1.executeQuery (query);
 		rs1.next();
-		upcomingTournamentsData += "<tr>\n<td>\n" + "<input type=\"Submit\" style=\"border:none;color:blue\" name=\"TOURNAMENTVIEW\" value = \"" + rs.getString("name") + "\">\n </td>\n <td>\n" + rs1.getString("name") + "\n</td>\n<td>\n" + rs.getString("startdate") + "\n</td>\n<td>\n" + rs.getInt("numplayers") + "\n</td>\n<td>\n" + rs.getString("prizemoney") + "\n</td>\n</tr>\n";
+		upcomingTournamentsData += "<tr>\n<td>\n" + "<button type=\"Submit\" style=\"border:none;color:blue\" name=\"TOURNAMENTVIEW\" value = \"" + rs.getString("id") + "\">" + rs.getString("name") + "\n </td>\n <td>\n" + rs1.getString("name") + "\n</td>\n<td>\n" + rs.getString("startdate") + "\n</td>\n<td>\n" + rs.getInt("numplayers") + "\n</td>\n<td>\n" + rs.getString("prizemoney") + "\n</td>\n</tr>\n";
 	    }
-
+	    System.out.println(upcomingTournamentsData);
 	    request.setAttribute("upcomingTournamentsData",upcomingTournamentsData);
 	}
 
@@ -42,7 +42,7 @@ public class tournamentViewHandler extends HttpServlet{
 		Statement stmt1 = conn.createStatement();
 		ResultSet rs1 = stmt1.executeQuery (query);
 		rs1.next();
-		ongoingTournamentsData += "<tr>\n<td>\n" + "<input type=\"Submit\" style=\"border:none;color:blue\" name=\"TOURNAMENTVIEW\" value = \"" + rs.getString("name") + "\">\n </td>\n <td>\n" + rs1.getString("name") + "\n</td>\n<td>\n" + rs.getString("startdate") + "\n</td>\n<td>\n" + rs.getInt("numplayers") + "\n</td>\n<td>\n" + rs.getString("prizemoney") + "\n</td>\n</tr>\n";
+		ongoingTournamentsData += "<tr>\n<td>\n" + "<input type=\"Submit\" style=\"border:none;color:blue\" name=\"TOURNAMENTVIEW\" value = \"" + rs.getString("id") + "\"" + rs.getString("name") + ">\n </td>\n <td>\n" + rs1.getString("name") + "\n</td>\n<td>\n" + rs.getString("startdate") + "\n</td>\n<td>\n" + rs.getInt("numplayers") + "\n</td>\n<td>\n" + rs.getString("prizemoney") + "\n</td>\n</tr>\n";
 	    }
 
 	    request.setAttribute("ongoingTournamentsData",ongoingTournamentsData);
