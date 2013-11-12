@@ -21,7 +21,7 @@
               </tr>
               <tr>
                   <td width="401"><div align="center"><b>Experience (in years) : </b></div></td>
-                  <td width="399"><textarea id="number" name="experience"></textarea></td>
+                  <td width="399"><textarea id="text" name="experience"></textarea></td>
               </tr>
               <tr>
                   <td width="600"><div align="right"><br><input type="Submit" name="COACHSIGNUP" value = "Sign Up"></td>

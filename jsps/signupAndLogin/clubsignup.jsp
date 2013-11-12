@@ -16,12 +16,12 @@
    </tr>
    <tr>
    <td width="401"><div align="center"><b>No. of courts* : </b></div></td>
-   <td width="399"><input type="text" name="courtnum" required></td>
+   <td width="399"><input type="number" name="courtnum" required></td>
    </td>
    </tr>
    <tr>
    <td width="401"><div align="center"><b>Coaching slot* : </b></div></td>
-   <td width="399"><input type="text" name="coachingslot" required></td>
+   <td width="399"><input type="number" name="coachingslot" required></td>
    </td>
    </tr>
    <tr>

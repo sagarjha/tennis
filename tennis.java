@@ -29,14 +29,17 @@ public class tennis extends HttpServlet{
 	}
         
         //Register
-        else if(request.getParameter("REGISTER").toString().equals("Proceed")) {
+       /* else if(request.getParameter("REGISTER").toString().equals("Proceed")) {
             String role=request.getParameter("role");
+            HttpSession session = request.getSession();
             session.setAttribute("type",role);
             ServletContext context = getServletContext();
             if((session.getAttribute("type").equals("1"))|
                     (session.getAttribute("type").equals("2"))|
                     (session.getAttribute("type").equals("3")))
-            {   RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/personsignup.jsp");
+            {   String redirect="/signupAndLogin/personsignup.jsp";
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirect);
+                System.out.println(redirect);
                 dispatcher.forward(request, response);
             }
             else if(session.getAttribute("type").equals("4"))
@@ -50,8 +53,8 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
             
-        }
-        
+        }*/
+        /*
         //personsignup.jsp
         else if(request.getParameter("PERSONSIGNUP").toString().equals("Proceed"))
         {
@@ -161,6 +164,6 @@ public class tennis extends HttpServlet{
 	    System.out.println(sqle);
 	    connectionFailed = true;;
 	}
-
+*/
     }
 }
