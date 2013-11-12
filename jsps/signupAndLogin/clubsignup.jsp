@@ -1,3 +1,7 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
 <html>
   <head>
     <title>Tennis World</title>
@@ -44,8 +48,12 @@
   </td>
   </tr>
   <tr>
-  <td width="401"><div align="center"><b>Username* : </b></div></td>
+  <td width="401"><div align="center"><b>Username*: </b></div></td>
    <td width="399"><input type="text" name="username" required></td>
+
+	<%if(session.getAttribute("usernamealreadyexists").toString().equals("1")){ %>
+   <td width="1001">Username Already Exists. Please choose another username.</td>
+	<% } %> 
    </td>
    </tr>
   </td>
