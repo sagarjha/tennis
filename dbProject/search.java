@@ -25,8 +25,5 @@ public class search extends HttpServlet{
         else if(basis.equals("5")){
             
         }
-        else if(basis.equals("6")){
-            
-        }
     }
 }

@@ -24,9 +24,9 @@
 	    <select id="basis" name="basis">
 	      <option value="1">Locality</option>
 	      <option value="2">Club</option>
-	      <option value="4">Coached by</option>
-	      <option value="5">Gender</option>	
-	      <option value="6">Age</option>	
+	      <option value="3">Coached by</option>
+	      <option value="4">Gender</option>	
+	      <option value="5">Age</option>	
 	  </select></div>
 	</td>
 	<td  width="400"> <div align="right">
