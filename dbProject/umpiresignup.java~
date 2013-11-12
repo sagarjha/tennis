@@ -4,18 +4,18 @@ import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
 
-public class playersignup extends HttpServlet{
-    public String playersignupHandler (HttpServletRequest request, HttpSession session, Connection conn) throws SQLException{
+public class umpiresignup extends HttpServlet{
+    public String umpiresignupHandler (HttpServletRequest request, HttpSession session, Connection conn) throws SQLException{
         
         String query="";
-        String redirectJsp="/signupAndLogin/success.jsp";
+        String redirectJsp="/profile/VendorprofileToHimself.jsp";
         
         int new_id=0;
-        String rolemodel=request.getParameter("rolemodel");
+        String experience=request.getParameter("experience");
         String description=request.getParameter("description");
         try
         {
-            session.setAttribute("rolemodel",rolemodel);
+            session.setAttribute("experience",experience);
             session.setAttribute("description",description);
         }
         catch(Exception e)
@@ -34,21 +34,9 @@ public class playersignup extends HttpServlet{
             conn.setAutoCommit(false);
             query="Update Constant set IDValue = IDValue+1 where ConstantName = 'account';";
             stmt.executeUpdate(query);
-            
-            //Calculating Age
-            int currentyear=0;
-            int age=Integer.parseInt(session.getAttribute("age").toString());
-            query = "Select extract(year from (select datevalue from constant where constantname = 'time')) as year;";
-            rs=stmt.executeQuery(query);
-            if(rs.next())
-            {
-                currentyear=rs.getInt("year");
-            }
-            int yearofbirth=currentyear-age;
-            
-            query="Insert into Player(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, YearOfBirth, Gender, RoleModel) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+yearofbirth+", '"+session.getAttribute("gender")+"', '"+session.getAttribute("rolemodel")+"');";
-            stmt.executeUpdate(query);
-            query="Insert into member(playerid, clubid) values ("+new_id+", "+session.getAttribute("clubid")+");";
+            int yearofbirth=0;
+            int umpiringstartyear=0;
+            query="Insert into umpire(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, YearOfBirth, Gender, umpiringstartyear, clubid) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+yearofbirth+", '"+session.getAttribute("gender")+"', "+umpiringstartyear+","+session.getAttribute("clubid")+");";
             stmt.executeUpdate(query);
             conn.commit();
         }
@@ -79,7 +67,6 @@ public class playersignup extends HttpServlet{
                 System.out.println(excep2);
             }
         }
-        
         return redirectJsp;
     }
 }

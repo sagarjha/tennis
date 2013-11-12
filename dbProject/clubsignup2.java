@@ -8,7 +8,7 @@ public class clubsignup2 extends HttpServlet{
     public String clubsignup2Handler (HttpServletRequest request, HttpSession session, Connection conn) throws SQLException{
        
         String query="";
-        String redirectJsp="";
+        String redirectJsp="/signupAndLogin/success.jsp";
         
         int new_id=0;
         String description=request.getParameter("description");

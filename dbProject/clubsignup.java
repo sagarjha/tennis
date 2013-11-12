@@ -7,10 +7,10 @@ import java.sql.*;
 public class clubsignup extends HttpServlet{
     public String clubsignupHandler (HttpServletRequest request, HttpSession session, Connection conn) throws SQLException{
         
-        String query="/signupAndLogin/clubsignup.jsp";
+        String query="";
         int flag=0;
         
-        String clubsignup="";
+        String clubsignup="/signupAndLogin/clubsignup.jsp";
         String clubsignup2="/signupAndLogin/clubsignup2.jsp";
         
         String name=request.getParameter("name");

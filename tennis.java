@@ -111,7 +111,7 @@ public class tennis extends HttpServlet{
             }
         }
         
-        //playersignup.jsp: need to change age and experience. Also redirect
+        //playersignup.jsp: need to change age and experience
         else if (request.getParameter("PLAYERSIGNUP") != null) {
             if(request.getParameter("PLAYERSIGNUP").toString().equals("Sign Up")){
                 
@@ -133,7 +133,7 @@ public class tennis extends HttpServlet{
         
         
         
-        //coachsignup.jsp: need to change age and experience. Also redirect
+        //coachsignup.jsp: need to change age and experience
          else if (request.getParameter("COACHSIGNUP") != null) {
             if(request.getParameter("COACHSIGNUP").toString().equals("Sign Up")){
                 String redirectJsp="";
@@ -154,7 +154,7 @@ public class tennis extends HttpServlet{
         
         
         
-        //umpiresignup.jsp: Need to change age and experience. Also redirect
+        //umpiresignup.jsp: Need to change age and experience
         else if (request.getParameter("UMPIRESIGNUP") != null) {
             if(request.getParameter("UMPIRESIGNUP").toString().equals("Sign Up")){
                 String redirectJsp="";
@@ -173,6 +173,46 @@ public class tennis extends HttpServlet{
             }
         }
 
+        //clubsignup2.java
+        else if (request.getParameter("CLUBSIGNUP2") != null) {
+            if(request.getParameter("CLUBSIGNUP2").toString().equals("Sign Up")){
+                String redirectJsp="";
+                clubsignup2 su=new clubsignup2();
+                try
+                {
+                    redirectJsp = su.clubsignup2Handler(request, session, conn);
+                }
+                catch(Exception regexcp)
+                {
+                    System.out.println(regexcp);
+                }
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
+        
+        
+        //vendorsignup2.java
+        else if (request.getParameter("VENDORSIGNUP2") != null) {
+            if(request.getParameter("VENDORSIGNUP2").toString().equals("Sign Up")){
+                String redirectJsp="";
+                vendorsignup2 su=new vendorsignup2();
+                try
+                {
+                    redirectJsp = su.vendorsignup2Handler(request, session, conn);
+                }
+                catch(Exception regexcp)
+                {
+                    System.out.println(regexcp);
+                }
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
+        
+        
 	else if (request.getParameter("CLUBPROFILETOITSELF") != null) {
 	    if (request.getParameter("CLUBPROFILETOITSELF").equals("View Tournaments Page")) {
 		System.out.println("redirected from clubprofiletoitself");

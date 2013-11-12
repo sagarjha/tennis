@@ -8,7 +8,7 @@ public class coachsignup extends HttpServlet{
     public String coachsignupHandler (HttpServletRequest request, HttpSession session, Connection conn) throws SQLException{
         
         String query="";
-        String redirectJsp="";
+        String redirectJsp="/signupAndLogin/success.jsp";
         
         int new_id=0;
         String experience=request.getParameter("experience");
@@ -34,8 +34,20 @@ public class coachsignup extends HttpServlet{
             conn.setAutoCommit(false);
             query="Update Constant set IDValue = IDValue+1 where ConstantName = 'account';";
             stmt.executeUpdate(query);
-            int yearofbirth=0;
-            int coachingstartyear=0;
+
+            //Calculating age and coachingstartyear
+            int currentyear=0;
+            int exp=Integer.parseInt(session.getAttribute("experience").toString());
+            int age=Integer.parseInt(session.getAttribute("age").toString());
+            query = "Select extract(year from (select datevalue from constant where constantname = 'time')) as year;";
+            rs=stmt.executeQuery(query);
+            if(rs.next())
+            {
+                currentyear=rs.getInt("year");
+            }
+            int yearofbirth=currentyear-age;
+            int coachingstartyear=currentyear-exp;
+            
             query="Insert into Coach(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, YearOfBirth, Gender, coachingstartyear) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+yearofbirth+", '"+session.getAttribute("gender")+"', "+coachingstartyear+");";
             stmt.executeUpdate(query);
             query="Insert into teachesat(coachid, clubid) values ("+new_id+", "+session.getAttribute("clubid")+");";
