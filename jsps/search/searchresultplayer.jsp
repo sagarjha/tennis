@@ -9,8 +9,10 @@
   </head>
 
   <body>  
-    <h3 align="center">Search results</h3><hr>
+    <h3 align="center">Search results</h3>
     <form name="searchresultplayer" method ="post" action="../tennis">
+    <td width="399"><br><button type="Submit" name="LOGIN" value = "Login">Back to Profile</button></td>
+    <hr>
     <%
     List<Integer> ids = (List<Integer>)request.getAttribute("playerids");
     List<String> names = (List<String>)request.getAttribute("playernames");
