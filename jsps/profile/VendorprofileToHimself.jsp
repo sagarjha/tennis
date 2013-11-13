@@ -66,7 +66,7 @@ if( request.getAttribute("type3") != null){ %>
 	
 	</tr>
 	<tr>
-   <td width="450"><div align="center"><a href="../tournament/tournament.jsp">Add Item</a></div></td>
+   <td width="450"><div align="center"><a href="../Functionality/additem.jsp">Add Item</a></div></td>
    
    </tr>
    <tr>

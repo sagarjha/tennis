@@ -159,7 +159,7 @@ public class tennis extends HttpServlet{
  		else if (request.getParameter("ADDITEM") != null) {
             if (request.getParameter("ADDITEM").equals("Add")) {
                 System.out.println("come from searchclub.jsp into tennis.java, call searchClub in search.java");
-                String redirectJsp = "./itemadded.jsp";
+                String redirectJsp = ;;/Functionality/;
                 addItem IAH = new addItem();
                 try{
                     redirectJsp = IAH.itemAdditionHandler(request, conn, session);
