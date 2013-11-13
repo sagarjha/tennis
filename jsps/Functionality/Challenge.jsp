@@ -40,7 +40,7 @@
 	<tr>
     	<td width="50%"><div align="center">Select Match Venue</div></td>
 	<td width="50"><div align="center">
-	<select id="clubname" name="clubname">
+	<select id="clubid" name="clubid">
 	<%
     List<Integer> ids = (List<Integer>)request.getAttribute("clubids");
     List<String> names = (List<String>)request.getAttribute("clubnames");

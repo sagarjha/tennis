@@ -7,7 +7,7 @@ public class Login extends HttpServlet{
     public Login () {
 	
     }
-    public String handleLogin (HttpServletRequest request, String username, String password, Connection conn, String type) {
+    public String handleLogin (HttpServletRequest request,HttpSession session, String username, String password, Connection conn, String type) {
 	String vendorProfileJsp = "/profile/VendorprofileToHimself.jsp";
 	String clubProfileJsp = "/profile/ClubProfiletoItself.jsp";
 	String coachProfileJsp = "/profile/CoachProfiletohimeslf.jsp";
@@ -20,7 +20,7 @@ public class Login extends HttpServlet{
 	// Get the password from the request
 	password = request.getParameter("password");
         
-	HttpSession session = request.getSession();
+	
         
 	// Query the database to check the authenticity of the login
 	try {
