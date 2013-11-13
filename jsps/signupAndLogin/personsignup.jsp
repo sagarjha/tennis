@@ -1,3 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Tennis World - Sign Up</title>
@@ -50,7 +55,15 @@
 	</tr>
 	<tr>
 	  <td width="401"><div align="center"><b>Club* : </b></div></td>
-	  <td width="399"><input type="number" name="clubid" required></td>
+	  <td width="399"><input list="clubid" name="clubid">
+   <datalist id="clubid">
+<%
+    List<Integer> clubids = (List<Integer>)request.getAttribute("clubids");
+    List<String> clubnames = (List<String>)request.getAttribute("clubnames");
+    for(int i = 0; i < clubids.size(); i++){ %>
+  <option value="<%= clubids.get(i)%>"><%= clubnames.get(i)%></option>
+  <% } %>
+</datalist></td>
 	</tr>
 	<!-- do autocomplete for club -->
 	<tr>

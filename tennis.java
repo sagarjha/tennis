@@ -144,7 +144,7 @@ public class tennis extends HttpServlet{
                 register reg=new register();
                 try
 		    {
-			redirectJsp = reg.registerHandler(request, session);
+			redirectJsp = reg.registerHandler(request, session,conn);
 		    }
                 catch(Exception regexcp)
 		    {
