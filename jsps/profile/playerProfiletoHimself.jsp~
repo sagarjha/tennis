@@ -89,11 +89,12 @@
 <!---------------------------------------------Register for coaching----------------------->
 
 
-<!--	<div id = 'Coaching' style="margin-top:400px; margin-left:100px; position:absolute"> <a href="http://www.yahoo.com">Register for Coaching</a>
-	</div>	-->
+<!--	<div id = 'Coaching' style="margin-top:400px; margin-left:100px; position:absolute"> <a href="http://www.yahoo.com">Register for Coaching</a></div>	-->
+
+<table border="0" style="margin-top:400px; margin-left:100px; position:absolute">	
 <tr>
    <!--CLubs -->
-   <td width="150"><div align="center">Choose Club</div></td>
+   <td width="50"><div align="left">Choose Club</div></td>
 
    <td width="200"><input list="newclub" name="newclub">
    <datalist id="newclub">
@@ -105,12 +106,14 @@
   <% } %>
 </datalist>
    </td>
-   
+   </tr>
+	  
+	  <tr>
    <!--Coaches -->
-      <td width="150"><div align="center">Choose Coach</div></td>
+      <td width="50"><div align="left">Choose Coach</div></td>
 
    <td width="200"><input list="newcoach" name="newcoach">
-   <datalist id="newclub">
+   <datalist id="newcoach">
 <%
     List<Integer> coachids = (List<Integer>)request.getAttribute("coachids");
     List<String> coachnames = (List<String>)request.getAttribute("coachnames");
@@ -119,20 +122,24 @@
   <% } %>
 </datalist>
    </td>
+   </tr>
+	  
+	  <tr>
 
   <td width="399"><br><input type="Submit" name="PLAYERADDCOACHINGSLOT" value = "Add Coaching Slot"></td>
-   </tr> 
+   </tr>
+   </table> 
 
 <!------------------------------------------------------------------------>
 
 
-	<div id = 'Challenges'  style="margin-top:430px; margin-left:100px; position:absolute "> <a href="http://www.yahoo.com">See Pending Challenges</a>
+	<div id = 'Challenges'  style="margin-top:550px; margin-left:100px; position:absolute "> <a href="http://www.yahoo.com">See Pending Challenges</a>
 	</div>
-	<div id = 'See Tournaments' style="margin-top:460px; margin-left:100px; position:absolute "> <br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
+	<div id = 'See Tournaments' style="margin-top:580px; margin-left:100px; position:absolute "> <br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
 </div>
 <div id = 'See Tournaments' style="margin-top:20px; margin-left:360px; position:absolute "> <a href="../search/search.jsp">Search Page</a>
 </div>
-<div id = 'See Tournaments' style="margin-top:20px; margin-left:460px; position:absolute "> <input type="Submit" name="LOGOUT" value = "Logout"></a>
+<div id = 'See Tournaments' style="margin-top:20px; margin-left:460px; position:absolute "> <input type="Submit" name="LOGOUT" value = "Logout">
 </div>
 </div>
 
@@ -190,3 +197,4 @@
 </div>
 </form>
 </body>
+</html>
