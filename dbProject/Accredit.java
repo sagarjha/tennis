@@ -15,14 +15,31 @@ public class Accredit extends HttpServlet{
 	
 	String toBeAccredited = "";
 
+	int count = 0;
+	
 	while (rs.next()) {
-	    toBeAccredited += "<tr>\n <td>\n" + rs.getString("player1name") + "\n </td>\n <td>\n " + rs.getString("player2name") + "\n </td>\n <td>\n " + rs.getString("dateofmatch") + "\n </td>\n <td>\n " + rs.getString("slotnumber") + "\n </td>\n <td>\n <select>\n <option value=\"1\">select</option>\n <option value=\"2\">Player1</option>\n <option value=\"3\">Player2</option>\n </select>\n </td>\n </tr>\n";
+	    count++;
+	    toBeAccredited += "<tr>\n <td>\n" + rs.getString("player1name") + "\n </td>\n <td>\n " + rs.getString("player2name") + "\n </td>\n <td>\n " + rs.getString("dateofmatch") + "\n </td>\n <td>\n " + rs.getString("slotnumber") + "\n </td>\n <td>\n <select id = \"" + count + "\" name = \"match" + count + "\">\n <option value=\"" + rs.getString("id") + ":1" + "\">select</option>\n <option value=\"" + rs.getString("id") + ":2" + "\">Player1</option>\n <option value=\"" + rs.getString("id") + ":3" + "\">Player2</option>\n </select>\n </td>\n </tr>\n";
 	}
 	request.setAttribute("accreditationRows",toBeAccredited);
     }
     
     public void handleAccreditionOfMatches (int id, HttpServletRequest request, Connection conn) throws SQLException{
-	System.out.println("In handleAccreditionOfMatches");
+	System.out.println("In handleAccreditionOfMatches of Accredit.java");
 	
+	int count = 1;
+
+	while (request.getParameter("match" + count) != null) {
+	    String[] value = request.getParameter("match" + count).toString().split(":");
+	    count++;
+	    int matchid = Integer.parseInt(value[0]);
+	    if (value[1].equals("2")) {
+		
+	    }
+	    else if (value[1].equals("3")) {
+		
+	    }
+	}
+
     }
 }
