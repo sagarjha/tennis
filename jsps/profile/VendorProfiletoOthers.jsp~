@@ -65,21 +65,21 @@ if( request.getAttribute("type3") != null){ %>
 <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
 <tr>
    
-   <td width="350"><div align="left"><h2>All Season Sports</h1></div></td>
+   <td width="350"><div align="left"><h2><%= request.getAttribute("name")%></h1></div></td>
    
    </tr>
    
    <tr>
-   <td width="100" colspan="2"><div align="left">2, Chandra Kunj, J.P Road, Opp Sports Complex, Andheri West, Mumbai- 400058</div></td>
+   <td width="100" colspan="2"><div align="left"><%= request.getAttribute("address")%></div></td>
 </tr>
    <tr>
-   <td width="100" colspan="2"><div align="left">Contact : allseasonsports@gmail.com </div></td>
+   <td width="100" colspan="2"><div align="left">Contact : <%= request.getAttribute("emailid")%> </div></td>
    </tr>
    <tr>
-   <td width="100" colspan="2"><div align="left">Phone : 09876543219</div></td>
+   <td width="100" colspan="2"><div align="left">Phone : <%= request.getAttribute("phoneno")%></div></td>
    </tr>
    <tr>
-   <td width="100" colspan="2"><div align="left">About Them : All Season Sports Fitness sells sports items, gym equipments and sports wear. Its range of products include football,cycle, badminton, tennis and table tennis kits etc. All Season Sports sells products of brands like Reebok, Nike, Adidas, Vector X, Niva, Vilson and Steedo. </div></td>
+   <td width="100" colspan="2"><div align="left">About Them : <%= request.getAttribute("description")%> </div></td>
    </tr>
    </table>
    

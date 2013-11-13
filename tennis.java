@@ -115,6 +115,27 @@ public class tennis extends HttpServlet{
         }
         
         
+        
+        //searchresultvendor.jsp
+        if (request.getParameter("SEARCHRESULTVENDOR") != null) {
+            session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTVENDOR").toString());
+            System.out.println("SEARCHRESULTVENDOR");
+            searchresultvendor L = new searchresultvendor();
+            String redirectJsp="";
+            try
+            {
+                redirectJsp = L.searchresultvendorHandler(request,conn, session);
+            }
+            catch(Exception regexcp)
+            {
+                System.out.println(regexcp);
+            }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+        }
+        
+        
         //Register
         else if (request.getParameter("REGISTER") != null) {
             if(request.getParameter("REGISTER").toString().equals("Proceed")) {
