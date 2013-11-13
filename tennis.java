@@ -175,6 +175,41 @@ public class tennis extends HttpServlet{
             }
         }
         
+        //Player Becoming a member of a club
+        else if (request.getParameter("CLUBPROFILEOTHERS") != null) {
+            System.out.println("CLUBPROFILEOTHERS");
+            String redirectJsp="";
+            addclub ac=new addclub();
+            try{
+                redirectJsp=ac.addclubHandler(request,conn,session);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+            
+        }
+        
+        //Challenging a player by a player
+        else if (request.getParameter("CHALLENGEPLAYER") != null) {
+            System.out.println("CHALLENGEPLAYER");
+            String redirectJsp="/Functionality/Challenge.jsp";
+            challengehandler ch=new challengehandler();
+            try{
+                ch.goToChallengePage(conn,request,session);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+        }
+        
         //personsignup.jsp
         else if (request.getParameter("PERSONSIGNUP") != null) {
             if(request.getParameter("PERSONSIGNUP").toString().equals("Proceed"))

@@ -79,6 +79,19 @@ public class searchresultvendor extends HttpServlet{
         request.setAttribute("price2", price2);
         request.setAttribute("price3", price3);
         
+        //View Stalls
+        query="select Clb.name as clubname, T.name as tname from Club as Clb, Outlet as O, Tournament as T where O.vendorid="+other_id+" and T.ID=O.tournamentid and T.clubid=Clb.ID;";
+        rs = stmt.executeQuery (query);
+        String allStalls="";
+        count=1;
+        while(rs.next())
+        {
+            String clubname=rs.getString("clubname");
+            String tname=rs.getString("tname");
+            allStalls+=count+". Club:"+clubname+"    Tournament:"+tname+"\\n";
+            count++;
+        }
+        request.setAttribute("allStalls",allStalls);
         return redirectJsp;
     }
 }

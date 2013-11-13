@@ -22,7 +22,8 @@
 <!-----------------------------------------------------------Memeber---------------->
 <tr>
       
-<td><div align="centre"><button type="button">Become a Member(only visible to coach and player)</button></div></td>
+<!--<td><div align="centre"><button type="button">Become a Member(only visible to player)</button></div></td> -->
+<td><div align="centre"><input type="Submit" name="CLUBPROFILEOTHERS" value = "Become a Member"></div></td>
 </tr>
 
 

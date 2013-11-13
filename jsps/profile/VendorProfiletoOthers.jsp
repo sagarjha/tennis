@@ -52,10 +52,12 @@ if( request.getAttribute("type3") != null){ %>
   
   
   <!----------------------------------------View stalls------------------------------------->
-<div id = 'Tournament' style="margin-top:300px; margin-left:100px; position:absolute"> <a href="../tournament/tournament.jsp">View Our Stalls</a>
-  </div>  
-  
-  
+<!--<div id = 'Tournament' style="margin-top:300px; margin-left:100px; position:absolute"> <a href="../tournament/tournament.jsp">View Our Stalls</a>
+  </div> -->
+    
+  <div id = 'Tournament' style="margin-top:300px; margin-left:100px; position:absolute">
+  <input type="button" onclick='myFunction("<%= request.getAttribute("allStalls")%>")' value="View Stalls">
+  </div>
   
 </div>
 

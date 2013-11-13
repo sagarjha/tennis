@@ -242,6 +242,8 @@ public class searchresultclub extends HttpServlet{
 	    request.setAttribute("UpcomingMatches",matches);
 	}
         
+        //Showing member button only if a player
+        
         //***************************
         return redirectJsp;
     }
