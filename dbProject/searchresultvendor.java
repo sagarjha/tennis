@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class searchresultvendor extends HttpServlet{
     public String searchresultvendorHandler (HttpServletRequest request, Connection conn, HttpSession session) throws SQLException{
-        String redirectJsp="/profile/playerProfiletoOthers.jsp";
+        String redirectJsp="/profile/VendorProfiletoOthers.jsp";
         
         int other_id=Integer.parseInt(session.getAttribute("searchotherid").toString());
         Statement stmt = conn.createStatement();
