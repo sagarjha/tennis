@@ -7,7 +7,7 @@ import java.sql.*;
 public class addItem extends HttpServlet{
     public String itemAdditionHandler (HttpServletRequest request,Connection conn, HttpSession session) throws SQLException{
     	
-    	String redirectJsp = "./itemadded.jsp";
+    	String redirectJsp = "/Functionality/itemadded.jsp";
         int Vid = Integer.parseInt(session.getAttribute("accountid").toString());
             
         
@@ -16,7 +16,7 @@ public class addItem extends HttpServlet{
         String brandName = request.getParameter("brandName");
         String price = request.getParameter("price");
         
-        String query = "select * from item where brand = '"+brandName+"' and type = "+pType+";";
+        String query = "select * from item where brand = '"+brandName+"' and type = '"+pType+"';";
         int option;
         
         Statement stmt = conn.createStatement();
@@ -28,10 +28,13 @@ public class addItem extends HttpServlet{
 	    
 	    if(option == 0)	{
 			
-			String getAddId = "select idvalue from constant where constantname = item;";
+			String getAddId = "select idvalue from constant where constantname= 'item';";
+			System.out.println(getAddId);
 			rs = stmt.executeQuery (getAddId);
-			System.out.println(query);
-			int id = rs.getInt("idvalue");
+			
+			int id = 1;
+			if(rs.next())
+			id = rs.getInt("idvalue");
 			
 		try{
         
@@ -39,11 +42,11 @@ public class addItem extends HttpServlet{
 			
 			conn.setAutoCommit(false);
 			
-			query="Update Constant  set IDValue = IDValue + 1 where ConstantName = ‘item’;";
+			query="Update Constant  set IDValue = IDValue + 1 where ConstantName = 'item';";
             stmt.executeUpdate(query);	
             System.out.println(query);
             		
-			query = "Insert into Item values("+id+","+ pType+","+ brandName+");";
+			query = "Insert into Item values("+id+",'"+ brandName+"','"+ pType+"');";
 			stmt.executeUpdate(query);	
 			System.out.println(query);
 			
@@ -88,21 +91,23 @@ public class addItem extends HttpServlet{
     
     else	{
     	
-    	query = "select * from item where brand="+brandName+"and type="+pType+";";
+    	query = "select * from item where brand='"+brandName+"' and type= '"+pType+"';";
         System.out.println(query);
 	    rs = stmt.executeQuery (query);
-	    System.out.println(query);
-	    int id = rs.getInt("id");
+	    
+            int id = 0;
+        if(rs.next())
+	    id = rs.getInt("id");
     	
     	
-    	String doesItemExist = "Select * from Sells where vendorId = "+ Vid +"id=" + id + ";";
-    	System.out.println(query);
+    	String doesItemExist = "Select * from Sells where vendorId = "+ Vid +" and id=" + id + ";";
+    	System.out.println(doesItemExist);
 		rs = stmt.executeQuery (doesItemExist);
 		
 		if(rs.next()) {
 			
-			redirectJsp = "./itemAlreadyExists.jsp";
-			System.out.println(query);
+			redirectJsp = "/Functionality/itemadded.jsp";
+			System.out.println("Item existes:");
 			return redirectJsp;
 			
 		}

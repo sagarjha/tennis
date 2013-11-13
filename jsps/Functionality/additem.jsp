@@ -15,15 +15,15 @@
                   <td width="401"><div align="center"><b>Product Type : </b></div></td>
                    <td width="400"><div align="left">
                    <select id="pType" name="pType">
-                     <option value="1">Racquets</option>
-                     <option value="2">Balls</option>
-                     <option value="3">Shoes</option>
-                     <option value="4">Socks</option>
-                     <option value="4">Sweat Bands</option>
-                     <option value="5">Shockers</option>
-                     <option value="6">Grips</option>
-                     <option value="7">Guts</option>
-                     <option value="8">Caps</option>
+                     <option value="Racquet">Racquet</option>
+                     <option value="Ball">Ball</option>
+                     <option value="Shoes">Shoes</option>
+                     <option value="Apparel">Apparel</option>
+                     <option value="Bands">Bands</option>
+                     <option value="Shocker">Shocker</option>
+                     <option value="Grip">Grip</option>
+                     <option value="String">String</option>
+                     
                    </select>
                    </td>
               </tr>
