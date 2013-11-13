@@ -6,10 +6,11 @@ import java.sql.*;
 
 public class addclub extends HttpServlet{
     public String addclubHandler (HttpServletRequest request, Connection conn, HttpSession session) throws SQLException{
+        System.out.println("Entered Addclub\n");
         String redirectJsp="/signupAndLogin/operationsuccessful.jsp";
         int pID=Integer.parseInt(session.getAttribute("accountid").toString());
-        int cID=Integer.parseInt(session.getAttribute("other_id").toString());
-        String query="Insert into Member values("+pID+", "+cID+");";
+        int cID=Integer.parseInt(session.getAttribute("searchotherid").toString());
+        String query="Insert into Member(playerid, clubid) values("+pID+", "+cID+");";
         try
         {
             Statement stmt=conn.createStatement();
@@ -19,6 +20,8 @@ public class addclub extends HttpServlet{
         {
             System.out.println(e);
         }
+        System.out.println("Left Addclub\n");
         return redirectJsp;
+        
     }
 }

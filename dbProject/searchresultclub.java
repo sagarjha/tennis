@@ -243,7 +243,26 @@ public class searchresultclub extends HttpServlet{
 	}
         
         //Showing member button only if a player
-        
+        int my_id=Integer.parseInt(session.getAttribute("accountid").toString());
+        //Check if he is not already a member
+        query="select * from member where playerid="+my_id+" and clubid="+other_id+";";
+//        query="select * from player where id="+my_id+";";
+        rs=stmt.executeQuery(query);
+        int mem=0;
+        if(rs.next())
+        {
+            mem=1;  //Dont show member button
+        }
+        else
+        {
+            query="select * from player where id="+my_id+";";
+            rs=stmt.executeQuery(query);
+            if(rs.next())
+                mem=0;
+            else
+                mem=1;
+        }
+        request.setAttribute("Member",mem);
         //***************************
         return redirectJsp;
     }

@@ -14,12 +14,28 @@ public class Login extends HttpServlet{
 	String umpireProfileJsp = "/profile/UmpireprofiletoHimself.jsp";
 	String playerProfileJsp = "/profile/playerProfiletoHimself.jsp";
 	String loginNotSuccessful = "/loginError.jsp";
-
+        System.out.println("Entered Login");
 	// Get the username from the request
-	username = request.getParameter("username");
-	// Get the password from the request
-	password = request.getParameter("password");
-        
+        try{
+            if(request.getParameter("username")!=null)
+                {
+                   // username = request.getParameter("username");
+                    System.out.println("Entered Username");
+                    session.setAttribute("username",request.getParameter("username"));
+                }
+                // Get the password from the request
+             if(request.getParameter("password")!=null)
+                {
+                    //password = request.getParameter("password");
+                    session.setAttribute("password",request.getParameter("password"));
+                }
+             username = session.getAttribute("username").toString();
+             password = session.getAttribute("password").toString();
+        }
+        catch(Exception e)
+        {
+            System.out.println(e);
+        }
 	
         
 	// Query the database to check the authenticity of the login

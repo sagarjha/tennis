@@ -28,7 +28,11 @@ public class tennis extends HttpServlet{
             if (request.getParameter("LOGIN").toString().equals("Login")) {
                 System.out.println("Matched");
                 Login L = new Login();
+                System.out.println(username);
+                System.out.println(password);
                 String redirectJsp = L.handleLogin(request,session,username,password,conn,type);
+                System.out.println(username);
+                System.out.println(password);
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
