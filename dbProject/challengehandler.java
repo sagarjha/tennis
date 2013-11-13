@@ -92,36 +92,142 @@ public class challengehandler extends HttpServlet{
             }
 
             if(shouldChallengeBeAccepted == 1){
-                // check if players part of any tournament which also runs on that date
-
-            }
-
-            if(shouldChallengeBeAccepted == 1){
-                // check if tournament in that club
-
-            }
-
-            if(shouldChallengeBeAccepted == 1){
-                // check if free court
-
-            }
-
-            if(shouldChallengeBeAccepted == 1){
-                // check if free umpire (in case of competitive)
-                query = "select u.id from umpire u, match m, competitive c where m.id = c.id and u.id = c.umpireid " + 
-                        " and m.clubid = " + clubid  + " and u.clubid = " + clubid + " and m.dateofmatch = '" + date + 
-                        "' and m.slotnumber = " + slot + ";";
-                System.out.println(query);
+                // check if players are part of any tournament which also runs on that date
+                query = "select p.id from player p , plays , tournament t where p.id = plays.playerid " + 
+                        " and (p.id = "+ player1id + " or p.id = " + player2id  + ")" + 
+                        " and t.id = plays.tournamentid and t.startdate < '" + date + "' and" +
+                        " (select max(m.matchdate) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
+                        + date + "' ;";
                 rs = stmt.executeQuery(query);
                 if(rs.next()){
                     shouldChallengeBeAccepted = 0;
                 }
             }
 
+            if(shouldChallengeBeAccepted == 1){
+                // check if tournament in that club which also runs on that date
+                query = "select t.id from tournament t where t.clubid = " + clubid + 
+                        " and t.startdate < '" + date + "' and" +
+                        " (select max(m.matchdate) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
+                        + date + "' ;";
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    shouldChallengeBeAccepted = 0;
+                }
+            }
+
+            if(shouldChallengeBeAccepted == 1){
+                // check if free court
+                int numMatches = 0, numCourts =0;
+                    query= "select count(*) as num from match m where m.dateofmatch ='" + date + "' and m.slotnumber = " +
+                            slot + " and m.clubid=" + clubid + ";";
+                    rs = stmt.executeQuery(query);
+                    if(rs.next()){
+                        numMatches = rs.getInt("num");
+                    }
+                    
+                    query = "select numcourts from club where club.id = " + clubid + ";";
+                    rs = stmt.executeQuery(query);
+                    if(rs.next()){
+                        numCourts = rs.getInt("numcourts");
+                    }
+                    
+                    if(numCourts <= numMatches){
+                        shouldChallengeBeAccepted = 0;
+                    }
+            }
+
+            if(shouldChallengeBeAccepted == 1){
+                // check if free umpire (in case of competitive)
+                if(type.equals("2")){
+                    int numMatches = 0, numUmpires =0;
+                    query= "select count(*) as num from match m where m.dateofmatch ='" + date + "' and m.slotnumber = " +
+                            slot + " and m.clubid=" + clubid + ";";
+                    rs = stmt.executeQuery(query);
+                    if(rs.next()){
+                        numMatches = rs.getInt("num");
+                    }
+                    
+                    query = "select count(*) as num from umpire u where u.clubid = " + clubid + ";";
+                    rs = stmt.executeQuery(query);
+                    if(rs.next()){
+                        numUmpires = rs.getInt("num");
+                    }
+                    
+                    if(numUmpires <= numMatches){
+                        shouldChallengeBeAccepted = 0;
+                    }
+                }
+            }
+
             ////////
             if(shouldChallengeBeAccepted == 1){
                 // add challenge to match table ....
-
+                query = "select idvalue from constant where constantname= 'match';";
+                rs = stmt.executeQuery(query);
+                int newmatchid = 0;
+                if(rs.next()){
+                    newmatchid = rs.getInt("idvalue");
+                }
+                
+                try{
+                    
+                    conn.setAutoCommit(false);
+                    
+                    query="Update Constant  set IDValue = IDValue + 1 where ConstantName = 'match';";
+                    stmt.executeUpdate(query);	
+                    System.out.println(query);
+                    
+                    if(type.equals("1")){
+                        // friendly challenge match
+                        query = "insert into match values (" + newmatchid + "," + clubid + "," + date + "," 
+                                + slot + "," + player1id + "," + player2id + ",'Challenge',NULL,'Friendly');";
+                        stmt.executeUpdate(query);	
+                        System.out.println(query);
+                    }
+                    else{
+                        // competitive challenge match
+                        query = "insert into match values (" + newmatchid + "," + clubid + "," + date + "," 
+                                + slot + "," + player1id + "," + player2id + ",'Challenge',NULL,'Competitive');";
+                        stmt.executeUpdate(query);	
+                        System.out.println(query);
+                        
+                        query = "insert into competitive values("+ newmatchid + ");";
+                        stmt.executeUpdate(query);	
+                        System.out.println(query);
+                    }
+                    
+                    conn.commit();
+                }
+                
+                catch(Exception e)
+                {   
+                    System.out.println(e);
+                    if (conn != null) 
+                    {
+                        try 
+                        {
+                            System.err.print("Transaction is being rolled back");
+                            conn.rollback();
+                        } 
+                        catch(SQLException excep) 
+                        {
+                            System.out.println(excep);
+                        }
+                    }
+                }
+                finally
+                {
+                    try
+                    {
+                        conn.setAutoCommit(true);
+                    }
+                    catch(SQLException excep2)
+                    {
+                        System.out.println(excep2);
+                    }
+                }
+                
                 displayMessage = "You have successfully challenged the player";
 
             }
