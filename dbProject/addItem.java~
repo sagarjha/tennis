@@ -91,7 +91,7 @@ public class addItem extends HttpServlet{
     
     else	{
     	
-    	query = "select * from item where lower(brand) like lower('"+brandName+"') and lower(type) like  lower('"+pType+"');";
+    	query = "select * from item where lower(brand) like lower('"+brandName+"') and lower(type) like lower('"+pType+"');";
         System.out.println(query);
 	    rs = stmt.executeQuery (query);
 	    
@@ -106,7 +106,7 @@ public class addItem extends HttpServlet{
 		
 		if(rs.next()) {
 			
-			redirectJsp = "/Functionality/itemadded.jsp";
+			redirectJsp = "/Functionality/itemAlreadyExists.jsp";
 			System.out.println("Item existes:");
 			return redirectJsp;
 			
