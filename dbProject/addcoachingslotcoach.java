@@ -6,10 +6,18 @@ import java.util.*;
 import java.io.*;
 
 public class addcoachingslotcoach extends HttpServlet{
-    public void addcoachslot(HttpServletRequest request, Connection conn, HttpSession session){
+    public String addcoachslot(HttpServletRequest request, Connection conn, HttpSession session){
         int clubid = Integer.parseInt(request.getParameter("newclub").toString());
         int coachid = Integer.parseInt(session.getAttribute("accountid").toString());
-        
+        String redirectJsp="";        
+        if((request.getParameter("newcoach").toString()=="")|(request.getParameter("newclub").toString()==""))
+        {
+            redirectJsp="/signupAndLogin/operationnotsuccessful.jsp";
+        }
+        else
+        {
+            redirectJsp="/signupAndLogin/operationsuccessful.jsp";
+        }
         try{
             String query = "Insert into teachesat values(" + coachid + ", " + clubid  +");"; 
             Statement stmt = conn.createStatement();
@@ -19,5 +27,6 @@ public class addcoachingslotcoach extends HttpServlet{
         catch(Exception e){
             System.out.println(e);
         }
+        return redirectJsp;
     }
 }

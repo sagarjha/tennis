@@ -94,6 +94,20 @@ public class searchresultcoach extends HttpServlet{
         
         
         //*************************************************************************************
+        // set tournaments organized by club
+        {
+        	query = "select name from tournament where clubid = "+ other_id + ";";
+        	System.out.println(query);
+        	rs = stmt.executeQuery(query);
+        	String tournaments = "";
+        	int count = 1;
+        	while(rs.next()){
+        		tournaments += count + ". " + rs.getString("name") + "\\n";
+        		count++; 	
+        	}
+        	request.setAttribute("moreTournaments" , tournaments);
+        	
+        }
         
         
         	
