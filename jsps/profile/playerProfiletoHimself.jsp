@@ -83,6 +83,8 @@
 	    <td width="400"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("news")%>")' value="See More"> </div></td>
 	  </tr>
 	</table>
+	
+	
 
 
 
@@ -146,6 +148,7 @@
 
 <div id="content" style="color:#EEEEEE;height:600px;width:500px;float:left;">
 
+
   <table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
     <tr>
       
@@ -173,15 +176,15 @@
 
 <table border="0" style="margin-top:300px; margin-left:50px; position:absolute">
   <tr>
-    <th>Recent Results</th>
+    <th><font color="black">Recent Results</th>
   <tr>
-    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes1") %></div></td>
+    <td width="300"><div align="left"><font color="black">&bull; <%= request.getAttribute("publicNotes1") %></div></td>
   </tr>
   <tr>
-    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes2") %></div></td>
+    <td width="300"><div align="left"><font color="black">&bull; <%= request.getAttribute("publicNotes2") %></div></td>
   </tr>
   <tr>
-    <td width="300"><div align="left">&bull; <%= request.getAttribute("publicNotes3") %></div></td>
+    <td width="300"><div align="left"><font color="black">&bull; <%= request.getAttribute("publicNotes3") %></div></td>
   </tr>
   <tr>
     
