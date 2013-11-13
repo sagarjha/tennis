@@ -19,7 +19,9 @@ public class Login extends HttpServlet{
 	username = request.getParameter("username");
 	// Get the password from the request
 	password = request.getParameter("password");
-	
+        
+	HttpSession session = request.getSession();
+        
 	// Query the database to check the authenticity of the login
 	try {
 	    Statement stmt = conn.createStatement();
@@ -36,7 +38,7 @@ public class Login extends HttpServlet{
 		
 		// store the id of the vendor for future queries
 		int id = rs.getInt("id");
-		
+		session.setAttribute("accountid", id);
 		// call the vendor login handler
 		vendorLogin vL = new vendorLogin ();
 		vL.vendorLoginHandler(id,request,rs,stmt);
@@ -55,7 +57,7 @@ public class Login extends HttpServlet{
 		
 		// store the id of the club for future queries
 		int id = rs.getInt("id");
-		
+		session.setAttribute("accountid", id);
 		// call the club login handler
 		clubLogin cL = new clubLogin ();
 		cL.clubLoginHandler(id,request,rs,stmt);
@@ -74,7 +76,7 @@ public class Login extends HttpServlet{
 		
 		// store the id of the coach for future queries
 		int id = rs.getInt("id");
-		
+		session.setAttribute("accountid", id);
 		// call the coach login handler
 		coachLogin cL = new coachLogin ();
 		cL.coachLoginHandler(id,request,rs,stmt,conn);
@@ -93,7 +95,7 @@ public class Login extends HttpServlet{
 
 		// store the id of the umpire for future queries
 		int id = rs.getInt("id");
-		
+		session.setAttribute("accountid", id);
 		// call the umpire login handler
 		umpireLogin uL=new umpireLogin();
                 uL.umpireLoginHandler(id,request,rs,stmt);
@@ -112,7 +114,7 @@ public class Login extends HttpServlet{
 
 		// store the id of the player for future queries
 		int id = rs.getInt("id");
-		
+		session.setAttribute("accountid", id);
 		// call the player login handler
 		playerLogin pL = new playerLogin ();
 		pL.playerLoginHandler (id, request, rs, stmt);
