@@ -113,30 +113,38 @@ class umpireLogin extends HttpServlet{
 		System.out.println(innerQuery);
 		rs1 = stmt1.executeQuery(innerQuery);
 		rs1.next();
-		accreditMatch1 = "name1 - " + rs1.getString("name2") + "\t" + rs.getString("dateofmatch") + "\t<input type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
+		accreditMatch1 = name1 + " - " + rs1.getString("name") + "   " + rs.getString("dateofmatch") + "   <button type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
+		System.out.println(accreditMatch1);
 	    }
 	    if(rs.next()) {
 		Statement stmt1 = conn.createStatement();
 		String innerQuery = "select name from player where id = " + rs.getString("player1id");
 		System.out.println(innerQuery);
 		ResultSet rs1 = stmt1.executeQuery(innerQuery);
+		rs1.next();
 		String name1 = rs1.getString("name");
 		innerQuery = "select name from player where id = " + rs.getString("player2id");
 		System.out.println(innerQuery);
 		rs1 = stmt1.executeQuery(innerQuery);
-		accreditMatch2 = "name1 - " + rs1.getString("name2") + "\t" + rs.getString("dateofmatch") + "\t<input type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
+		rs1.next();
+		accreditMatch2 = name1 + " - " + rs1.getString("name") + "   " + rs.getString("dateofmatch") + "   <button type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
 	    }
 	    if(rs.next()) {
 		Statement stmt1 = conn.createStatement();
 		String innerQuery = "select name from player where id = " + rs.getString("player1id");
 		System.out.println(innerQuery);
 		ResultSet rs1 = stmt1.executeQuery(innerQuery);
+		rs1.next();
 		String name1 = rs1.getString("name");
 		innerQuery = "select name from player where id = " + rs.getString("player2id");
 		System.out.println(innerQuery);
 		rs1 = stmt1.executeQuery(innerQuery);
-		accreditMatch3 = "name1 - " + rs1.getString("name2") + "\t" + rs.getString("dateofmatch") + "\t<input type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
+		rs1.next();
+		accreditMatch3 = name1 + " - " + rs1.getString("name") + "   " + rs.getString("dateofmatch") + "   <button type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
 	    }
+	    request.setAttribute("Accredit1",accreditMatch1);
+	    request.setAttribute("Accredit2",accreditMatch2);
+	    request.setAttribute("Accredit3",accreditMatch3);
 	}
            
     }
