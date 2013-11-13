@@ -15,7 +15,7 @@
     List<Integer> ids = (List<Integer>)request.getAttribute("clubids");
     List<String> names = (List<String>)request.getAttribute("clubnames");
     for(int i = 0; i < ids.size(); i++){ %>
-    <center><input type="text" name="SEARCHRESULTCLUB" value="<%= names.get(i)%>"</center>
+    <center><button type="Submit" name="SEARCHRESULTCLUB" value="<%= ids.get(i)%>"><%= names.get(i)%></button></center>
     <br>
     <% } %>
     </form>
