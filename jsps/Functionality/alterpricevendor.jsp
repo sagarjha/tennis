@@ -1,57 +1,42 @@
 <html>
-  <head>
-    <title>Welcome</title>
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  </head>
-  <h3 align="center">Manage Products</h3><hr>
-  <body bgcolor="#FFFFFF" onLoad="document.loginForm.username.focus()">
-
-    <table width="500" border="0" cellspacing="0" cellpadding="0">
-      <tr>
-	<td> </td>
-      </tr>
-      <tr>
-	<td>
-      </tr>
-      <tr>
-	<td> </td>
-      </tr>
-    </table>
-    
-    <table width="500" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-    	<td width="50%"><div align="center">Product Type</div></td>
-	<td width="50"><div align="center"><select>
-  <option value="volvo">Friendly</option>
-  <option value="saab">Competitive</option>
-	</select> </div></td>
-	</tr>
-	<tr>
-	<td></td>
-	</tr>
-	<tr>
-    	<td width="50%"><div align="center">Product Brand</div></td>
-	<<td width="200"><input list="brand" name="brand">
-   <datalist id="brand">
-
-  <option value="Internet Explorer">
-  <option value="Firefox">
-  <option value="Chrome">
-  <option value="Opera">
-  <option value="Safari">
-</datalist>
-   </td>
-	</tr>
-	<tr>
-    	<td width="50%"><div align="center">New Price</div></td>
-	<td width="50%"><div align="center">
-  <input type="text" name="username"></td> </div></td>
-	</tr>
-                  <tr>
-		<td width="401"> </td>
-		<td width="399"><br><input type="Submit" name="SUBMIT" value = "Change Price"></td>
-	      </tr>
-</table>
-  </body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Tennis World - Manage Items</title>
+        <link href="style.css" rel="stylesheet" type="text/css">        
+    </head>
+    <h3 align="center">
+        Change Prices
+    </h3>
+    <hr>
+    <body>
+        <table width="500" border="0" cellspacing="0" cellpading="0">
+            <form name="alterpricevendor" method="post" action="../tennis">
+              <tr>
+                  <td width="401"><div align="center"><b>Product Type : </b></div></td>
+                   <td width="400"><div align="left">
+                   <select id="pType" name="pType">
+                     <option value="Racquet">Racquet</option>
+                     <option value="Ball">Ball</option>
+                     <option value="Shoes">Shoes</option>
+                     <option value="Apparel">Apparel</option>
+                     <option value="Bands">Bands</option>
+                     <option value="Shocker">Shocker</option>
+                     <option value="Grip">Grip</option>
+                     <option value="String">String</option>
+                     
+                   </select>
+                   </td>
+              </tr>
+              <tr>
+                  <td width="401"><div align="center"><b>Product Brand* : </b></div></td>
+                  <td width="399"><input type="text" name="brandName" required></td>
+              </tr>
+			  <tr>
+                  <td width="401"><div align="center"><b>Price* : </b></div></td>
+                  <td width="399"><input type="text" name="price" required></td>
+              </tr>
+                  <td width="600"><div align="right"><br><input type="Submit" name="CHANGEPRICE" value = "Change"></td>
+              </tr>
+        </table>
+    </body>
 </html>
