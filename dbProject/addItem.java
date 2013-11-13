@@ -16,7 +16,7 @@ public class addItem extends HttpServlet{
         String brandName = request.getParameter("brandName");
         String price = request.getParameter("price");
         
-        String query = "select * from item where brand = '"+brandName+"' and type = '"+pType+"';";
+        String query = "select * from item where lower(brand) like lower('"+brandName+"') and lower(type) like lower('"+pType+"');";
         int option;
         
         Statement stmt = conn.createStatement();
@@ -91,7 +91,7 @@ public class addItem extends HttpServlet{
     
     else	{
     	
-    	query = "select * from item where brand='"+brandName+"' and type= '"+pType+"';";
+    	query = "select * from item where lower(brand) like lower('"+brandName+"') and lower(type) like lower('"+pType+"');";
         System.out.println(query);
 	    rs = stmt.executeQuery (query);
 	    
