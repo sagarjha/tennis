@@ -30,8 +30,8 @@ public class challengehandler extends HttpServlet{
                 clubnames.add(rs.getString("name"));
             }
 
-            request.setAttribute("playerids", clubids);
-            request.setAttribute("playernames", clubnames);
+            request.setAttribute("clubids", clubids);
+            request.setAttribute("clubnames", clubnames);
 
             // get all dates 7 days from now
             query = "select datevalue+1 as d1, datevalue+2 as d2,datevalue+3 as d3,datevalue+4 as d4,datevalue+5 as d5,datevalue+6 as d6, datevalue+7 as d7 from constant where constantname = 'time';";
