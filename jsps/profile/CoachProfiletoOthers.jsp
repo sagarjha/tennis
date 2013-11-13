@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
   </head>
   <body>
-  
+  <form name="loginForm" method="post" action="../tennis">
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
 <img style="display:block;" left = '400'   width='250' height='300' src='images/Lendl.jpg' />
 <div style="margin-left:75px; margin-top:0px;"><p>Ivan Lendl</p></div>
@@ -108,11 +108,9 @@
    
   </table>
    
-  
- 
-  
   </div>
   
-  
-  
+  </form>
+  </body>
+  </html>
   

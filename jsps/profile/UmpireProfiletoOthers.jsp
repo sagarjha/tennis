@@ -11,7 +11,7 @@
     </script>
   </head>
   <body>
-  
+  <form name="loginForm" method="post" action="../tennis">
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
 <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 <div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
@@ -66,13 +66,10 @@
    <td width="100" colspan="2"><div align="left">About Her :<%= request.getAttribute("description")%></div></td>
    </tr>
    </table>
-   
-   
-  
-  
   
   </div>
   
-  
-  
+  </form>
+  </body>
+  </html>
   

@@ -147,13 +147,14 @@
    </tr>
   </table>
   
-  
+  <!-----------------------------View Club's Tournament----------------------->
   
   <div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <a href="../tournament/tournament.jsp">View Club's Tournaments</a>
   </div>
   
   </div>
-  
+  </form>
+  </body>
   
   
   

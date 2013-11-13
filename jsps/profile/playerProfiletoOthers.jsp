@@ -19,9 +19,11 @@
 
 
 <!-- ---************************************Challenge Player: Should be visible only to other player**************************************** -->
+<%if(request.getAttribute("challengeoption").toString().equals("0")){ %>
+<!--<div style="margin-left:65px; margin-top:0px;"><a href="file:///home/rishirajsingh/3.1/dbms/project/jsps/signupAndLogin/Challenge.jsp"><button type="button">Challenge the Player</a></button></div> -->
 
-<div style="margin-left:65px; margin-top:0px;"><a href="file:///home/rishirajsingh/3.1/dbms/project/jsps/signupAndLogin/Challenge.jsp"><button type="button">Challenge the Player</a></button></div>
-
+<div style="margin-left:65px; margin-top:0px;"><input type="Submit" name="CHALLENGEPLAYER" value = "Challenge Player"></div>
+<% } %>
 
 
 
@@ -155,3 +157,4 @@ if(request.getAttribute("club3")!=null)
    
  </form>
 </body>
+</html>
