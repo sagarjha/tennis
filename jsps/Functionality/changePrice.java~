@@ -21,7 +21,7 @@ public class changePrice extends HttpServlet{
 	    ResultSet rs = stmt.executeQuery (query);
 	    
 	    int id = 0;
-	    if(rsnext()) id = rs.getInt("pId");
+	    if(rs.next()) id = rs.getInt("pId");
 	    else {
 	    	
 	    	redirectJsp = "/Functionality/productDoesNotExist.jsp";
@@ -31,9 +31,9 @@ public class changePrice extends HttpServlet{
         
         String query = "Select * from sells where pId = "+id+" and vendorid = " + Vid + ";";
         System.out.println(query);
-	    ResultSet rs = stmt.executeQuery (query);
+	    rs = stmt.executeQuery (query);
 	    
-	    if(rsnext()) id = id + 0;
+	    if(rs.next()) id = id + 0;
 	    else {
 	    	
 	    	redirectJsp = "/Functionality/productDoesNotExist.jsp";
@@ -41,10 +41,15 @@ public class changePrice extends HttpServlet{
         	
         }
         
-        String query = "Update Sells set Price = "+newPrice+" where VendorID = "+Vid+" and itemID =vendorItemID;
+        String query = "Update Sells set Price = "+newPrice+" where VendorID = "+Vid+" and itemID ="+pID +";";
 
         System.out.println(query);
 	    stmt.executeUpdate(query);
+	    
+	    return redirectJSP;
+	    
+	    }
+	   }
 	    
 	    
         

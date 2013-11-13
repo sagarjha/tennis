@@ -369,7 +369,26 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
-        
+      //Changing the price by the vendor
+      
+      else if (request.getParameter("CHANGEPRICE") != null) {
+            if (request.getParameter("CHANGEPRICE").equals("Change")) {
+                System.out.println("come from searchclub.jsp into tennis.java, call searchClub in search.java");
+                String redirectJsp = "./priceChanged.jsp";
+                changePrice CPH = new changePrice();
+                try{
+                    redirectJsp = CPH.changePriceHandler(request, conn, session);
+                }
+                catch(Exception e) {
+		    System.out.println(e);
+		}
+                
+                
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }  
         
 	else if (request.getParameter("VIEWTOURNAMENTSPAGE") != null) {
 	    if (request.getParameter("VIEWTOURNAMENTSPAGE").equals("View Tournaments Page")) {

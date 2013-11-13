@@ -374,7 +374,7 @@ public class tennis extends HttpServlet{
       else if (request.getParameter("CHANGEPRICE") != null) {
             if (request.getParameter("CHANGEPRICE").equals("Change")) {
                 System.out.println("come from searchclub.jsp into tennis.java, call searchClub in search.java");
-                String redirectJsp = "./priceChanged.jsp";
+                String redirectJsp = "/Functionality/priceChanged.jsp";
                 changePrice CPH = new changePrice();
                 try{
                     redirectJsp = CPH.changePriceHandler(request, conn, session);

@@ -14,7 +14,7 @@ public class changePrice extends HttpServlet{
         String brandName = request.getParameter("brandName");
         String price = request.getParameter("price");
         
-        String query = "Select id as pId from items where lower(brand) like lower('"+brandName+"') and type like lower('"+ pType +"') ;";
+        String query = "Select id as pId from item where lower(brand) like lower('"+brandName+"') and lower(type) like lower('"+ pType +"') ;";
         
         Statement stmt = conn.createStatement();
         System.out.println(query);
@@ -29,7 +29,7 @@ public class changePrice extends HttpServlet{
         	
         }
         
-        String query = "Select * from sells where pId = "+id+" and vendorid = " + Vid + ";";
+        query = "Select * from sells where id = "+id+" and vendorid = " + Vid + ";";
         System.out.println(query);
 	    rs = stmt.executeQuery (query);
 	    
@@ -41,12 +41,12 @@ public class changePrice extends HttpServlet{
         	
         }
         
-        String query = "Update Sells set Price = "+newPrice+" where VendorID = "+Vid+" and itemID ="+pID +";";
+        query = "Update Sells set Price = "+price+" where VendorID = "+Vid+" and id ="+id +";";
 
         System.out.println(query);
 	    stmt.executeUpdate(query);
 	    
-	    return redirectJSP;
+	    return redirectJsp;
 	    
 	    }
 	   }
