@@ -11,7 +11,7 @@
     </script>
   </head>
   <body>
-    <form name="loginForm" method="post" action="tennis">
+    <form name="loginForm" method="post" action="../tennis">
       <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
 	<img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 	<div style="margin-left:75px; margin-top:0px;"><p><b><%= request.getAttribute("name")%></b></p></div>
@@ -131,7 +131,7 @@
   
   <tr>
     <td width="200"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("news")%>")' value="See More"></div></td>
-    <td width="200"><div align="left"><a href="http://www.yahoo.com">Add News Items</a></div></td>
+    <td width="200"><div align="left"><a href="../Functionality/">Add News Items</a></div></td>
     
     
   </tr>
@@ -140,7 +140,7 @@
 <div id = 'Tournament' style="margin-top:500px; margin-left:100px; position:absolute"> <a href="../tournament/create.jsp">Schedule a Tournament</a>
 </div>
 
-<div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <td width="399"><br><input type="Submit" name="CLUBPROFILETOITSELF" value = "View Tournaments Page"></td>
+<div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <td width="399"><br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
 </div>
 
 </div>

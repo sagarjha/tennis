@@ -155,7 +155,26 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
+	//Adding news by the club
 	
+	else if (request.getParameter("ADDNEWS") != null) {
+            if (request.getParameter("ADDNEWS").equals("Add News")) {
+                System.out.println("come from searchclub.jsp into tennis.java, call searchClub in search.java");
+                String redirectJsp = "/Functionality/newsAdded.jsp";
+                addNews ANH = new addNews();
+                try{
+                    redirectJsp = ANH.addNewsHandler(request, conn, session);
+                }
+                catch(Exception e) {
+		    System.out.println(e);
+		}
+                
+                
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        } 
 	//Addition of an Item by a vendor
  		
 	else if (request.getParameter("ADDITEM") != null) {

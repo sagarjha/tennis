@@ -5,7 +5,7 @@
         <link href="style.css" rel="stylesheet" type="text/css">        
     </head>
     <h3 align="center">
-        Item has been successfully added
+       News has been added successfully
     </h3>
     <hr>
 </html>

@@ -131,7 +131,7 @@
   
   <tr>
     <td width="200"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("news")%>")' value="See More"></div></td>
-    <td width="200"><div align="left"><a href="http://www.yahoo.com">Add News Items</a></div></td>
+    <td width="200"><div align="left"><a href="../Functionality/addnews.jsp">Add News Items</a></div></td>
     
     
   </tr>
