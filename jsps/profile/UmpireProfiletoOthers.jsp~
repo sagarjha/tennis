@@ -63,7 +63,7 @@
    <td width="100" colspan="2"><div align="left">Phone : <%= request.getAttribute("phoneno")%></div></td>
    </tr>
    <tr>
-   <td width="100" colspan="2"><div align="left">About Her :<%= request.getAttribute("description")%></div></td>
+   <td width="100" colspan="2"><div align="left">About Her : Evanthia (Eva) Asderaki is a Greek tennis Chair Umpire holding a Gold Certification from the International Tennis Federation. Eva umpires on the WTA and ATP tours and at all four Grand Slams. Eva is currently contracted by the WTA.</div></td>
    </tr>
    </table>
    

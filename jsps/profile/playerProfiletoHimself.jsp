@@ -12,7 +12,7 @@
   </head>
   <body>
 
-    <form method="post" action="tennis">
+    <form method="post" action="../tennis">
       <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
 	<img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 	<p><b><%= request.getAttribute("name") %> </b></p>

@@ -22,6 +22,8 @@ public class tennis extends HttpServlet{
         HttpSession session = request.getSession();
         String query="";
         int flag=0;
+        
+        //Login
         if (request.getParameter("LOGIN") != null) {
             if (request.getParameter("LOGIN").toString().equals("Login")) {
                 System.out.println("Matched");
@@ -32,7 +34,87 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
-
+        
+        //searchresultplayer.jsp
+        if (request.getParameter("SEARCHRESULTPLAYER") != null) {
+            session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTPLAYER").toString());
+            System.out.println("SEARCHRESULTPLAYER");
+            searchresultplayer L = new searchresultplayer();
+            String redirectJsp="";
+            try
+            {
+                redirectJsp = L.searchresultplayerHandler(request,conn, session);
+            }
+            catch(Exception regexcp)
+            {
+                System.out.println(regexcp);
+            }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+        }
+        
+        
+        //searchresultcoach.jsp
+        if (request.getParameter("SEARCHRESULTCOACH") != null) {
+            session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTCOACH").toString());
+            System.out.println("SEARCHRESULTCOACH");
+            searchresultcoach L = new searchresultcoach();
+            String redirectJsp="";
+            try
+            {
+                redirectJsp = L.searchresultcoachHandler(request,conn, session);
+            }
+            catch(Exception regexcp)
+            {
+                System.out.println(regexcp);
+            }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+        }
+        
+        
+        //searchresultumpire.jsp
+        if (request.getParameter("SEARCHRESULTUMPIRE") != null) {
+            session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTUMPIRE").toString());
+            System.out.println("SEARCHRESULTUMPIRE");
+            searchresultumpire L = new searchresultumpire();
+            String redirectJsp="";
+            try
+            {
+                redirectJsp = L.searchresultumpireHandler(request,conn, session);
+            }
+            catch(Exception regexcp)
+            {
+                System.out.println(regexcp);
+            }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+        }
+        
+        
+        //searchresultclub.jsp
+        if (request.getParameter("SEARCHRESULTCLUB") != null) {
+            session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTCLUB").toString());
+            System.out.println("SEARCHRESULTCLUB");
+            searchresultclub L = new searchresultclub();
+            String redirectJsp="";
+            try
+            {
+                redirectJsp = L.searchresultclubHandler(request,conn, session);
+            }
+            catch(Exception regexcp)
+            {
+                System.out.println(regexcp);
+            }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+        }
+        
+        
         //Register
         else if (request.getParameter("REGISTER") != null) {
             if(request.getParameter("REGISTER").toString().equals("Proceed")) {
