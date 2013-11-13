@@ -10,8 +10,8 @@ public class challengehandler extends HttpServlet{
         System.out.println("in goToChallengePage function in challengehandler.java");
         
         // tennis.java will set these 2 ids while calling the function
-        int playerChallengingID = Integer.parseInt(request.getAttribute("playerchallengingid").toString());
-        int playerChallengedID = Integer.parseInt(request.getAttribute("playerchallengedid").toString());
+        int playerChallengingID = Integer.parseInt(request.getAttribute("accountid").toString());
+        int playerChallengedID = Integer.parseInt(request.getAttribute("searchotherid").toString());
         
         List <Integer> clubids = new ArrayList<Integer>();
         List <String> clubnames = new ArrayList<String>();
