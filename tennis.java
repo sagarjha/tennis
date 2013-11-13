@@ -316,8 +316,8 @@ public class tennis extends HttpServlet{
         }
         
         
-	else if (request.getParameter("CLUBPROFILETOITSELF") != null) {
-	    if (request.getParameter("CLUBPROFILETOITSELF").equals("View Tournaments Page")) {
+	else if (request.getParameter("VIEWTOURNAMENTSPAGE") != null) {
+	    if (request.getParameter("VIEWTOURNAMENTSPAGE").equals("View Tournaments Page")) {
 		System.out.println("redirected from clubprofiletoitself");
 		tournamentViewHandler TVH = new tournamentViewHandler ();
 		try {
@@ -334,24 +334,6 @@ public class tennis extends HttpServlet{
 	    }
 	}
 
-	else if (request.getParameter("PLAYERPROFILETOHIMSELF") != null) {
-	    if (request.getParameter("PLAYERPROFILETOHIMSELF").equals("View Tournaments Page")) {
-		System.out.println("redirected from playerprofiletohimself");
-		tournamentViewHandler TVH = new tournamentViewHandler ();
-		try {
-		    TVH.handleView (conn,request);
-		}
-		catch (Exception e) {
-		    System.out.println(e);
-		}
-
-		String redirectJsp = "/tournament/tournament.jsp";
-		ServletContext context = getServletContext();
-                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
-                dispatcher.forward(request, response);
-	    }
-	}
-        
 	else if (request.getParameter("TOURNAMENTVIEW") != null) {
 	    showTournamentPageHandler STPH = new showTournamentPageHandler ();
 	    try {
