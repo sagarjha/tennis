@@ -28,7 +28,7 @@ public class tennis extends HttpServlet{
             if (request.getParameter("LOGIN").toString().equals("Login")) {
                 System.out.println("Matched");
                 Login L = new Login();
-                String redirectJsp = L.handleLogin(request,username,password,conn,type);
+                String redirectJsp = L.handleLogin(request,session,username,password,conn,type);
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
@@ -419,6 +419,23 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
+
+        else if (request.getParameter("AccreditUmpire") != null) {	
+	    if (request.getParameter("AccreditUmpire").equals("Matches to be Accredited")) {
+		try{
+		    Accredit A = new Accredit();
+		    A.handleAccredition(Integer.parseInt(session.getAttribute("id").toString()),request);
+                }
+                catch(Exception e) {
+		    System.out.println(e); 
+		}
+                
+                String redirectJsp = "/schedule/umpireAck.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+	}
         
     }
 

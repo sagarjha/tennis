@@ -68,20 +68,7 @@ if( request.getAttribute("match5") != null){ %>
   </table>
   
   <table border="0" style="margin-top:350px; margin-left:100px; position:absolute">
-<tr>
-<th>Matches to be Accredited</th>
-<tr>
-<tr>
-  <th> <%= request.getAttribute("Accredit1") %> <th>
-</tr>
-<tr>
-  <th> <%= request.getAttribute("Accredit2") %> <th>
-</tr>
-<tr>
-  <th> <%= request.getAttribute("Accredit3") %> <th>
-</tr>
-
-   <td width="500"><div align="left"><br><input type="Submit" name="AccreditUmpire" value = "See More"> </div></td>
+   <td width="300"><div align="left"><br><input type="Submit" name="AccreditUmpire" value = "Matches to be Accredited"> </div></td>
    </tr>
   </table>
   

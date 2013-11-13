@@ -1,0 +1,9 @@
+package dbProject;
+import java.io.*;
+import javax.servlet.http.*;
+import javax.servlet.*;
+import java.sql.*;
+
+class playerLogin extends HttpServlet{
+    public void playerLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt) throws SQLException{
+	System.out.println("In playerLogin.java");
