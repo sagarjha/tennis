@@ -118,15 +118,15 @@
 
 <table border="0" style="margin-top:350px; margin-left:0px; position:absolute">
   <tr>
-    <td width="200" colspan="2" align="center"><b>Recent News</b></th><td>
+    <td width="300" colspan="2" align="center"><b>Recent News</b></th><td>
   <tr>
-    <td width="200" colspan="2" ><div align="left">&bull; <%= request.getAttribute("news1")%></div></td>
+    <td width="300" colspan="2" ><div align="left">&bull; <%= request.getAttribute("news1")%></div></td>
   </tr>
   <tr>
-    <td width="200" colspan="2" ><div align="left">&bull; <%= request.getAttribute("news2")%></div></td>
+    <td width="300" colspan="2" ><div align="left">&bull; <%= request.getAttribute("news2")%></div></td>
   </tr>
   <tr>
-    <td width="200" colspan="2"><div align="left">&bull; <%= request.getAttribute("news3")%></div></td>
+    <td width="300" colspan="2"><div align="left">&bull; <%= request.getAttribute("news3")%></div></td>
   </tr>
   
   <tr>
