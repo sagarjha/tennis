@@ -5,7 +5,9 @@
   </head>
   
   <body>
-    <form method="post" action = "tennis">
+    <form method="post" action = "../tennis">
+     <td width="399"><br><button type="Submit" name="LOGIN" value = "Login">Back to Profile</button></td>
+ 
       <center> <b> Upcoming Tournaments <br><br></b>
 	<table width="1000" border="1">
 	  <tr>

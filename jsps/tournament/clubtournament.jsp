@@ -1,11 +1,13 @@
 <html>
   <head>
+  <form method ="post" action="../tennis">
     <title><%= request.getAttribute("name")%></title>
+    <td width="399"><br><button type="Submit" name="LOGIN" value = "Login">Back to Profile</button></td>
     <center><h1><%= request.getAttribute("name")%></h1></center>
     <link href="tournament/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <form method ="post" action="../tennis">
+    
     <div id="info" style="color:#00FFFF">
       <center>
 	<table width="400">

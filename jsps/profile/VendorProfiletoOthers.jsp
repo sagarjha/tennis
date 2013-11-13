@@ -24,6 +24,11 @@
   <table border="0" style="margin-top:50px; margin-left:50px; position:absolute">
 <tr>
 <caption>Available Products</caption>
+<tr>
+   <td width="150"><div align="center"><b> Type<b></div></td>
+   <td width="150"><div align="center"><b> Brand<b>	</div></td>
+   <td width="150"><div align="center"><b> Price<b></div></td>
+   </tr>
 <% if(request.getAttribute("type1") != null){ %>	
 	<tr>
    <td width="150"><div align="center"> <%= request.getAttribute("type1") %></div></td>
