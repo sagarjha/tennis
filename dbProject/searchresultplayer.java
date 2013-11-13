@@ -13,22 +13,26 @@ public class searchresultplayer extends HttpServlet{
         
         //***************Challenge Player Option**************
         int my_id=Integer.parseInt(session.getAttribute("accountid").toString());
-        String query="select * from match where status='Challenge' and (player1id=my_id and player2id=other_id) or (player1id=other_id and player2id=my_id);";
-        ResultSet rs=stmt.executeQuery (query);
+        String query="select * from match where status='Challenge' and (player1id="+my_id+" and player2id="+other_id+") or (player1id="+other_id +"and player2id="+my_id+");";
+        ResultSet rs=stmt.executeQuery(query);
+        int co=0;
         if(rs.next())
-            request.setAttribute("challengeoption",1);  //Dont show challenge option
+            co=1;  //Dont show challenge option
         else
         {
-            query="select * from player where id=other_id;";
+            query="select * from player where id="+my_id+";";
             rs=stmt.executeQuery (query);
             if(rs.next())
-            request.setAttribute("challengeoption",0);  //Only if other_id is player show challenge option
+                co=0;  //Only if other_id is player show challenge option
+            else
+                co=1; 
         }
+        request.setAttribute("challengeoption",co);
         //********************************************************
         
         
         query="select * from player where id="+other_id+";";
-        rs = stmt.executeQuery (query);
+        rs = stmt.executeQuery(query);
         int yearOfbirth=0;
         
         if(rs.next())
