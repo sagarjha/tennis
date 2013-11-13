@@ -29,6 +29,6 @@
 	</table>
       </center>
       <br> <br>
-      <center> <input type="Submit" style="color: blue; background-color: grey" name="Accredit" value = "Accredit"> </center>
+      <center> <input type="Submit" style="color: blue; background-color: grey" name="AccreditUmpire" value = "Accredit"> </center>
     </form>
   </body>

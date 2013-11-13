@@ -20,4 +20,9 @@ public class Accredit extends HttpServlet{
 	}
 	request.setAttribute("accreditationRows",toBeAccredited);
     }
+    
+    public void handleAccreditionOfMatches (int id, HttpServletRequest request, Connection conn) throws SQLException{
+	System.out.println("In handleAccreditionOfMatches");
+	
+    }
 }

@@ -42,13 +42,13 @@ public class tennis extends HttpServlet{
             searchresultplayer L = new searchresultplayer();
             String redirectJsp="";
             try
-            {
-                redirectJsp = L.searchresultplayerHandler(request,conn, session);
-            }
+		{
+		    redirectJsp = L.searchresultplayerHandler(request,conn, session);
+		}
             catch(Exception regexcp)
-            {
-                System.out.println(regexcp);
-            }
+		{
+		    System.out.println(regexcp);
+		}
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
             dispatcher.forward(request, response);
@@ -62,13 +62,13 @@ public class tennis extends HttpServlet{
             searchresultcoach L = new searchresultcoach();
             String redirectJsp="";
             try
-            {
-                redirectJsp = L.searchresultcoachHandler(request,conn, session);
-            }
+		{
+		    redirectJsp = L.searchresultcoachHandler(request,conn, session);
+		}
             catch(Exception regexcp)
-            {
-                System.out.println(regexcp);
-            }
+		{
+		    System.out.println(regexcp);
+		}
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
             dispatcher.forward(request, response);
@@ -82,13 +82,13 @@ public class tennis extends HttpServlet{
             searchresultumpire L = new searchresultumpire();
             String redirectJsp="";
             try
-            {
-                redirectJsp = L.searchresultumpireHandler(request,conn, session);
-            }
+		{
+		    redirectJsp = L.searchresultumpireHandler(request,conn, session);
+		}
             catch(Exception regexcp)
-            {
-                System.out.println(regexcp);
-            }
+		{
+		    System.out.println(regexcp);
+		}
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
             dispatcher.forward(request, response);
@@ -102,13 +102,13 @@ public class tennis extends HttpServlet{
             searchresultclub L = new searchresultclub();
             String redirectJsp="";
             try
-            {
-                redirectJsp = L.searchresultclubHandler(request,conn, session);
-            }
+		{
+		    redirectJsp = L.searchresultclubHandler(request,conn, session);
+		}
             catch(Exception regexcp)
-            {
-                System.out.println(regexcp);
-            }
+		{
+		    System.out.println(regexcp);
+		}
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
             dispatcher.forward(request, response);
@@ -123,13 +123,13 @@ public class tennis extends HttpServlet{
             searchresultvendor L = new searchresultvendor();
             String redirectJsp="";
             try
-            {
-                redirectJsp = L.searchresultvendorHandler(request,conn, session);
-            }
+		{
+		    redirectJsp = L.searchresultvendorHandler(request,conn, session);
+		}
             catch(Exception regexcp)
-            {
-                System.out.println(regexcp);
-            }
+		{
+		    System.out.println(regexcp);
+		}
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
             dispatcher.forward(request, response);
@@ -142,21 +142,21 @@ public class tennis extends HttpServlet{
                 String redirectJsp="";
                 register reg=new register();
                 try
-                {
-                    redirectJsp = reg.registerHandler(request, session);
-                }
+		    {
+			redirectJsp = reg.registerHandler(request, session);
+		    }
                 catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
+		    {
+			System.out.println(regexcp);
+		    }
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
             }
         }
- 		//Addition of an Item by a vendor
+	//Addition of an Item by a vendor
  		
- 		else if (request.getParameter("ADDITEM") != null) {
+	else if (request.getParameter("ADDITEM") != null) {
             if (request.getParameter("ADDITEM").equals("Add")) {
                 System.out.println("come from searchclub.jsp into tennis.java, call searchClub in search.java");
                 String redirectJsp = "./itemadded.jsp";
@@ -178,41 +178,41 @@ public class tennis extends HttpServlet{
         //personsignup.jsp
         else if (request.getParameter("PERSONSIGNUP") != null) {
             if(request.getParameter("PERSONSIGNUP").toString().equals("Proceed"))
-            {
-                String redirectJsp="";
-                personsignup su=new personsignup();
-                try
-                {
-                    redirectJsp = su.personsignupHandler(request, session, conn);
-                }
-                catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
-                ServletContext context = getServletContext();
-                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
-                dispatcher.forward(request, response);
-            }
+		{
+		    String redirectJsp="";
+		    personsignup su=new personsignup();
+		    try
+			{
+			    redirectJsp = su.personsignupHandler(request, session, conn);
+			}
+		    catch(Exception regexcp)
+			{
+			    System.out.println(regexcp);
+			}
+		    ServletContext context = getServletContext();
+		    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+		    dispatcher.forward(request, response);
+		}
         }
         
         //vendorsignup.jsp
         else if (request.getParameter("VENDORSIGNUP") != null) {
             if(request.getParameter("VENDORSIGNUP").toString().equals("Proceed"))
-            {
-                String redirectJsp="";
-                vendorsignup su=new vendorsignup();
-                try
-                {
-                    redirectJsp = su.vendorsignupHandler(request, session, conn);
-                }
-                catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
-                ServletContext context = getServletContext();
-                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
-                dispatcher.forward(request, response);
-            }
+		{
+		    String redirectJsp="";
+		    vendorsignup su=new vendorsignup();
+		    try
+			{
+			    redirectJsp = su.vendorsignupHandler(request, session, conn);
+			}
+		    catch(Exception regexcp)
+			{
+			    System.out.println(regexcp);
+			}
+		    ServletContext context = getServletContext();
+		    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+		    dispatcher.forward(request, response);
+		}
         }
         
         //clubsignup.jsp
@@ -221,13 +221,13 @@ public class tennis extends HttpServlet{
                 String redirectJsp="";
                 clubsignup su=new clubsignup();
                 try
-                {
-                    redirectJsp = su.clubsignupHandler(request, session, conn);
-                }
+		    {
+			redirectJsp = su.clubsignupHandler(request, session, conn);
+		    }
                 catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
+		    {
+			System.out.println(regexcp);
+		    }
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
@@ -241,13 +241,13 @@ public class tennis extends HttpServlet{
                 String redirectJsp="";
                 playersignup su=new playersignup();
                 try
-                {
-                    redirectJsp = su.playersignupHandler(request, session, conn);
-                }
+		    {
+			redirectJsp = su.playersignupHandler(request, session, conn);
+		    }
                 catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
+		    {
+			System.out.println(regexcp);
+		    }
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
@@ -257,18 +257,18 @@ public class tennis extends HttpServlet{
         
         
         //coachsignup.jsp: need to change age and experience
-         else if (request.getParameter("COACHSIGNUP") != null) {
+	else if (request.getParameter("COACHSIGNUP") != null) {
             if(request.getParameter("COACHSIGNUP").toString().equals("Sign Up")){
                 String redirectJsp="";
                 coachsignup su=new coachsignup();
                 try
-                {
-                    redirectJsp = su.coachsignupHandler(request, session, conn);
-                }
+		    {
+			redirectJsp = su.coachsignupHandler(request, session, conn);
+		    }
                 catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
+		    {
+			System.out.println(regexcp);
+		    }
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
@@ -283,13 +283,13 @@ public class tennis extends HttpServlet{
                 String redirectJsp="";
                 umpiresignup su=new umpiresignup();
                 try
-                {
-                    redirectJsp = su.umpiresignupHandler(request, session, conn);
-                }
+		    {
+			redirectJsp = su.umpiresignupHandler(request, session, conn);
+		    }
                 catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
+		    {
+			System.out.println(regexcp);
+		    }
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
@@ -302,13 +302,13 @@ public class tennis extends HttpServlet{
                 String redirectJsp="";
                 clubsignup2 su=new clubsignup2();
                 try
-                {
-                    redirectJsp = su.clubsignup2Handler(request, session, conn);
-                }
+		    {
+			redirectJsp = su.clubsignup2Handler(request, session, conn);
+		    }
                 catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
+		    {
+			System.out.println(regexcp);
+		    }
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
@@ -322,13 +322,13 @@ public class tennis extends HttpServlet{
                 String redirectJsp="";
                 vendorsignup2 su=new vendorsignup2();
                 try
-                {
-                    redirectJsp = su.vendorsignup2Handler(request, session, conn);
-                }
+		    {
+			redirectJsp = su.vendorsignup2Handler(request, session, conn);
+		    }
                 catch(Exception regexcp)
-                {
-                    System.out.println(regexcp);
-                }
+		    {
+			System.out.println(regexcp);
+		    }
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
@@ -455,6 +455,16 @@ public class tennis extends HttpServlet{
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
             }
+	    
+	    else if (request.getParameter("AccreditUmpire").equals("Accredit")) {
+		try{
+		    Accredit A = new Accredit();
+		    A.handleAccreditionOfMatches(Integer.parseInt(session.getAttribute("accountid").toString()),request,conn);
+		}
+		catch(Exception e) {
+		    System.out.println(e);
+		}
+	    }
 	}
         
     }
