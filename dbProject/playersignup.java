@@ -29,7 +29,6 @@ public class playersignup extends HttpServlet{
             if(rs.next())
             {    
                 new_id=rs.getInt("idvalue");
-                System.out.println(new_id);
             }
             conn.setAutoCommit(false);
             query="Update Constant set IDValue = IDValue+1 where ConstantName = 'account';";

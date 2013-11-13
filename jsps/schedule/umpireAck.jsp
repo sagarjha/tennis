@@ -5,89 +5,30 @@
   </head>
 
   <body>
-    <center> <b>Matches to be Accredited<br><br></b>
-      <table width="1000" border="1">
-	<tr>
-	  <th width="200">
-	    Player1
-	  </th>
-	  <th width="200">
-	    Player2
-	  </th>
-	  <th width="200">
-	    Date
-	  </th>
-	  <th width="200">
-	    Slot
-	  </th>
-	  <th width="200">
-	    Choose Winner
-	  </th>
-	</tr>
-	<tr>
-	  <td>
-	    Sahil
-	  </td>
-	  <td>
-	    Sagar
-	  </td>
-	  <td>
-	    10/11/2013
-	  <td>
-	    13
-	  </td>
-	  <td>
-	    <select>
-	      <option value="1">select</option>
-	      <option value="2">Player1</option>
-	      <option value="3">Player2</option>
-	    </select>
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-	    Raghav
-	  </td>
-	  <td>
-	    Ayush
-	  </td>
-	  <td>
-	    12/10/2013
-	  </td>
-	  <td>
-	    1
-	  </td>
-	  <td>
-	    <select>
-	      <option value="1">select</option>
-	      <option value="2">Player1</option>
-	      <option value="3">Player2</option>
-	    </select>
-	  </td>
-	</tr>
-	<tr>
-	  <td>
-	    Anoop
-	  </td>
-	  <td>
-	    Pranav
-	  </td>
-	  <td>
-	    12/10/2013
-	  </td>
-	  <td>
-	    9
-	  </td>
-	  <td>
-	    <select>
-	      <option value="1">select</option>
-	      <option value="2">Player1</option>
-	      <option value="3">Player2</option>
-	    </select>
-	  </td>
-	</tr>
-      </table>
-    </center>
-    <br> <br>
-    <center> <input type="Submit" style="color: blue; background-color: grey" name="Accredit" value = "Accredit"> </center>
+    <form method="POST" action="tennis">
+      <center> <b>Matches to be Accredited<br><br></b>
+	<table width="1000" border="1">
+	  <tr>
+	    <th width="200">
+	      Player1
+	    </th>
+	    <th width="200">
+	      Player2
+	    </th>
+	    <th width="200">
+	      Date
+	    </th>
+	    <th width="200">
+	      Slot
+	    </th>
+	    <th width="200">
+	      Choose Winner
+	    </th>
+	  </tr>
+	  <%= request.getAttribute("accreditationRows") %>
+	</table>
+      </center>
+      <br> <br>
+      <center> <input type="Submit" style="color: blue; background-color: grey" name="Accredit" value = "Accredit"> </center>
+    </form>
   </body>

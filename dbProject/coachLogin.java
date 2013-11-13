@@ -11,7 +11,6 @@ class coachLogin extends HttpServlet{
         int yearOfbirth = rs.getInt("yearOfBirth");
         request.setAttribute("name",rs.getString("name"));		    
 	request.setAttribute("gender",rs.getString("gender"));
-//	request.setAttribute("age",2013 - rs.getInt("yearOfBirth"));
 	request.setAttribute("address", rs.getString("address"));
 	request.setAttribute("emailid", rs.getString("emailid"));
 	request.setAttribute("phoneno", rs.getString("phonenum"));
@@ -20,22 +19,18 @@ class coachLogin extends HttpServlet{
 	request.setAttribute("rating",rs.getString("rating"));
 
 	String pictureFile = "../webapps/ROOT/profile/images/" + rs.getString("username");
-	System.out.println(pictureFile);
 	request.setAttribute("profilePicUrl","profile/images/defaultCoachPic.jpeg");
 	File f = new File(pictureFile+".jpeg");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpeg");
 	}
 
 	f = new File(pictureFile+".jpg");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpg");
 	}
 
 	f = new File(pictureFile+".png");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".png");
 	}
@@ -122,7 +117,6 @@ class coachLogin extends HttpServlet{
                 }
                 
 	    }
-	    System.out.println(records);
             request.setAttribute("morenews",record_news);
 	    request.setAttribute("moreclub",records);
 	}

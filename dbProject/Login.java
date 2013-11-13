@@ -118,7 +118,6 @@ public class Login extends HttpServlet{
 		// call the player login handler
 		playerLogin pL = new playerLogin ();
 		pL.playerLoginHandler (id, request, rs, stmt);
-		System.out.println("player login complete");
 		return playerProfileJsp;
 	    }
 

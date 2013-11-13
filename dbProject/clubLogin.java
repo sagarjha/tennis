@@ -16,22 +16,18 @@ class clubLogin extends HttpServlet{
 	request.setAttribute("numcourts",rs.getString("numcourts"));
 	request.setAttribute("coachingslot",rs.getString("coachingslot"));
 	String pictureFile = "../webapps/ROOT/profile/images/" + rs.getString("username");
-	System.out.println(pictureFile);
 	request.setAttribute("profilePicUrl","profile/images/defaultClubPic.jpg");
 	File f = new File(pictureFile+".jpeg");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpeg");
 	}
 
 	f = new File(pictureFile+".jpg");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpg");
 	}
 
 	f = new File(pictureFile+".png");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".png");
 	}
@@ -69,7 +65,6 @@ class clubLogin extends HttpServlet{
 		    news += count + ". " + rs.getString("description") + "\\n";
 		    count++;
 		}
-		System.out.println(news);
 
 		request.setAttribute("news",news);
 		request.setAttribute("news1",news1);
@@ -109,7 +104,6 @@ class clubLogin extends HttpServlet{
 		    player += count + ". " + rs.getString("name") + "\\n";
 		    count++;
 		}
-		System.out.println(player);
 
 		request.setAttribute("player",player);
 		request.setAttribute("player1",player1);
@@ -151,7 +145,6 @@ class clubLogin extends HttpServlet{
 			coach += count + ". " + rs.getString("name") + "\\n";
 			count++;
 		    }
-		    System.out.println(coach);
 
 		    request.setAttribute("coach",coach);
 		    request.setAttribute("coach1",coach1);
@@ -192,7 +185,6 @@ class clubLogin extends HttpServlet{
 			umpire += count + ". " + rs.getString("name") + "\\n";
 			count++;
 		    }
-		    System.out.println(umpire);
 
 		    request.setAttribute("umpire",umpire);
 		    request.setAttribute("umpire1",umpire1);
@@ -240,7 +232,6 @@ class clubLogin extends HttpServlet{
 		    count++;
 		}
 	    }
-	    System.out.println(matches);
 	    request.setAttribute("UpcomingMatches",matches);
 	}
         

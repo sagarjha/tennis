@@ -21,22 +21,18 @@ class playerLogin extends HttpServlet{
 	request.setAttribute("rating",rs.getString("rating"));
 	request.setAttribute("highestRatingAchieved",rs.getString("highestRatingAchieved"));
 	String pictureFile = "../webapps/ROOT/profile/images/" + rs.getString("username");
-	System.out.println(pictureFile);
 	request.setAttribute("profilePicUrl","profile/images/defaultPic.jpeg");
 	File f = new File(pictureFile+".jpeg");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpeg");
 	}
 
 	f = new File(pictureFile+".jpg");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".jpg");
 	}
 
 	f = new File(pictureFile+".png");
-	System.out.println(f.exists());
 	if (f.exists()) {
 	    request.setAttribute("profilePicUrl","profile/images/"+rs.getString("username")+".png");
 	}
@@ -52,7 +48,6 @@ class playerLogin extends HttpServlet{
 		records += count + ". " + rs.getString("description") + "\\n";
 		count++;
 	    }
-	    System.out.println(records);
 	    request.setAttribute("privateNotes",records);
 	}
 
@@ -82,7 +77,6 @@ class playerLogin extends HttpServlet{
 		records += count + ". " + rs.getString("description") + "\\n";
 		count++;
 	    }
-	    System.out.println(records);
 	    request.setAttribute("publicNotes",records);
 	}
 
@@ -144,7 +138,6 @@ class playerLogin extends HttpServlet{
 		    count++;
 		}
 	    }
-	    System.out.println(matches);
 	    request.setAttribute("UpcomingMatches",matches);
 	}
         
@@ -188,7 +181,6 @@ class playerLogin extends HttpServlet{
 		news += count + ". " + rs.getString("description") + "\\n";
 		count++;
 	    }
-	    System.out.println(news);
 	    request.setAttribute("news",news);
 	}
     }
