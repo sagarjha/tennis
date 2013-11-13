@@ -10,8 +10,8 @@ public class challengehandler extends HttpServlet{
         System.out.println("in goToChallengePage function in challengehandler.java");
         
         // tennis.java will set these 2 ids while calling the function
-        int playerChallengingID = Integer.parseInt(request.getAttribute("playerchallengingid"));
-        int playerChallengedID = Integer.parseInt(request.getAttribute("playerchallengedid"));
+        int playerChallengingID = Integer.parseInt(request.getAttribute("accountid").toString());
+        int playerChallengedID = Integer.parseInt(request.getAttribute("searchotherid").toString());
         
         List <Integer> clubids = new ArrayList<Integer>();
         List <String> clubnames = new ArrayList<String>();
@@ -23,6 +23,7 @@ public class challengehandler extends HttpServlet{
         // get all clubs of the player who challenges
         query = "Select c.id as id, c.name as name from club c, player p, member m where p.id =" + 
                 playerChallengingID + " and m.playerid = p.id and m.clubid = c.id;";
+        System.out.println(query);
         ResultSet rs = stmt.executeQuery(query);
         while (rs.next()){
             clubids.add(rs.getInt("id"));
@@ -34,6 +35,7 @@ public class challengehandler extends HttpServlet{
         
         // get all dates 7 days from now
         query = "select datevalue as d1, datevalue+1 as d2,datevalue+2 as d3,datevalue+3 as d4,datevalue+4 as d5,datevalue+5 as d6, datevalue+6 as d7 from constant where constantname = 'time';";
+        System.out.println(query);
         rs = stmt.executeQuery(query);
         if(rs.next()){
             dates.add(rs.getString("d1"));
@@ -46,4 +48,12 @@ public class challengehandler extends HttpServlet{
         }
         request.setAttribute("dates", dates);
     }
+    
+    
+    public void challengeDetailsFilled(Connection conn, ServletRequest request) throws SQLException{
+        // check if challenge can be added, if so add the challenge
+        System.out.println("in challengeDetailsFilled function in challengehandler.java");
+        
+    }
+    
 }
