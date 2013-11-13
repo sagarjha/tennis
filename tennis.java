@@ -525,6 +525,22 @@ public class tennis extends HttpServlet{
 	    }
 	}
         
+        else if (request.getParameter("CHALLENGE") != null) {
+            if (request.getParameter("CHALLENGE").equals("Challenge")) {
+                try{
+                   challengehandler ch = new  challengehandler();
+                   ch.challengeDetailsFilled(conn,request,session);
+                }
+                catch(Exception e) {
+		    System.out.println(e); 
+		}
+                String redirectJsp = "/schedule/umpireAck.jsp";// put correct jsp
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
+        
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response)	throws ServletException, IOException{
