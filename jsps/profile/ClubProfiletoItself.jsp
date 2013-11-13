@@ -140,7 +140,7 @@
 <div id = 'Tournament' style="margin-top:500px; margin-left:100px; position:absolute"> <a href="../tournament/create.jsp">Schedule a Tournament</a>
 </div>
 
-<div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <td width="399"><br><input type="Submit" name="CLUBPROFILETOITSELF" value = "View Tournaments Page"></td>
+<div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <td width="399"><br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
 </div>
 
 </div>

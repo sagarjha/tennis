@@ -11,7 +11,7 @@
     </script>
   </head>
   <body>
-  
+    <form method="POST" action="tennis">
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
    <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 <div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
@@ -112,7 +112,7 @@ if( request.getAttribute("match5") != null){ %>
    </table>
    
    
-  <div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <a href="../tournament/tournament.jsp">View Upcoming Tournaments</a>
+<div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <td width="399"><br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
   
   
   </div>
