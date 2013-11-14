@@ -180,14 +180,14 @@ public class challengehandler extends HttpServlet{
                     
                     if(type.equals("1")){
                         // friendly challenge match
-                        query = "insert into match values (" + newmatchid + "," + clubid + "," + date + "," 
+                        query = "insert into match values (" + newmatchid + "," + clubid + ",'" + date + "'," 
                                 + slot + "," + player1id + "," + player2id + ",'Challenge',NULL,'Friendly');";
                         stmt.executeUpdate(query);	
                         System.out.println(query);
                     }
                     else{
                         // competitive challenge match
-                        query = "insert into match values (" + newmatchid + "," + clubid + "," + date + "," 
+                        query = "insert into match values (" + newmatchid + "," + clubid + ",'" + date + "'," 
                                 + slot + "," + player1id + "," + player2id + ",'Challenge',NULL,'Competitive');";
                         stmt.executeUpdate(query);	
                         System.out.println(query);
