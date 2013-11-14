@@ -5,7 +5,7 @@ import javax.servlet.*;
 import java.sql.*;
 
 public class coachRatedByPlayer extends HttpServlet{
-    public String coachRated (HttpServletRequest request, Connection conn, HttpSession session) throws SQLException{
+    public void coachRated (HttpServletRequest request, Connection conn, HttpSession session) throws SQLException{
         int playerid = Integer.parseInt(session.getAttribute("accountid").toString());
         int coachid =  Integer.parseInt(session.getAttribute("searchotherid").toString());
         String rating = request.getParameter("coachrating").toString();
