@@ -577,6 +577,7 @@ public class tennis extends HttpServlet{
         
          else if(request.getParameter("addcoachingslot") != null){
             if (request.getParameter("addcoachingslot").equals("Add Coaching Slot")) {
+                System.out.println("Add coaching slot in coach");
                 try{
                     addcoachingslotcoach ac = new addcoachingslotcoach();
                     ac.addcoachslot(request,conn,session);

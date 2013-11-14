@@ -1,3 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Tennis World</title>
@@ -11,7 +16,7 @@
     </script>
   </head>
   <body>
-  
+  <form method="post" action="../tennis">
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
    <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 <div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
@@ -32,7 +37,7 @@
 
 <div id="Details" style="color:#FFD700;height:600px;width:537px;float:right;">
 
-<div id = 'See Tournaments' style="margin-top:20px; margin-left:360px; position:absolute "> <a href="http://www.yahoo.com">Search Page</a>
+<div id = 'See Tournaments' style="margin-top:20px; margin-left:360px; position:absolute "> <a href="../search/search.jsp">Search Page</a>
   </div>
    <div id = 'See Tournaments' style="margin-top:20px; margin-left:460px; position:absolute "> <a href="file:///home/rishirajsingh/3.1/dbms/project/jsps/signupAndLogin/login.jsp">Logout</a>
   </div>
@@ -165,18 +170,18 @@ if(request.getAttribute("club3")!=null)
    
 
    -->
-   <td width="200"><input list="newclub" name="newclub">
+   <td width="200"><input list="newclub" name="newclub" required>
    <datalist id="newclub">
-
-  <option value="Internet Explorer">IE</option>
-  <option value="Firefox">Fire</option>
-  <option value="Chrome">Google</option>
-  <option value="Opera">Mac</option>
-  <option value="Safari">Mac2</option>
+<%
+    List<Integer> ids = (List<Integer>)request.getAttribute("coachids");
+    List<String> names = (List<String>)request.getAttribute("coachnames");
+    for(int i = 0; i < ids.size(); i++){ %>
+  <option value="<%= ids.get(i)%>"><%= names.get(i)%></option>
+  <% } %>
 </datalist>
    </td>
 <!--   	<td width="150"><div align="center"><Button>Add Coaching Slot</Button></div></td> -->
-  <td width="399"><br><input type="Submit" name="addcoachingslot" value = "Add Coaching SLot"></td>
+  <td width="399"><br><input type="Submit" name="addcoachingslot" value = "Add Coaching Slot"></td>
    </tr>   
   </table>
    
