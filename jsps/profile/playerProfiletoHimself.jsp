@@ -46,7 +46,7 @@
       </div>
 
 
-      <div id="Details" style="color:#FFD700;height:600px;width:537px;float:right;">
+      <div id="Details" style="color:#EEEEEE;height:600px;width:537px;float:right;">
 	<table border="0" style="margin-top:50px; margin-left:100px; position:absolute">
 	  <tr>
 	    <th>Upcoming Matches</th>
@@ -89,11 +89,12 @@
 <!---------------------------------------------Register for coaching----------------------->
 
 
-<!--	<div id = 'Coaching' style="margin-top:400px; margin-left:100px; position:absolute"> <a href="http://www.yahoo.com">Register for Coaching</a>
-	</div>	-->
+<!--	<div id = 'Coaching' style="margin-top:400px; margin-left:100px; position:absolute"> <a href="http://www.yahoo.com">Register for Coaching</a></div>	-->
+
+<table border="0" style="margin-top:400px; margin-left:100px; position:absolute">	
 <tr>
    <!--CLubs -->
-   <td width="150"><div align="center">Choose Club</div></td>
+   <td width="50"><div align="left">Choose Club</div></td>
 
    <td width="200"><input list="newclub" name="newclub">
    <datalist id="newclub">
@@ -105,9 +106,11 @@
   <% } %>
 </datalist>
    </td>
-   
+   </tr>
+	  
+	  <tr>
    <!--Coaches -->
-      <td width="150"><div align="center">Choose Coach</div></td>
+      <td width="50"><div align="left">Choose Coach</div></td>
 
    <td width="200"><input list="newcoach" name="newcoach">
    <datalist id="newcoach">
@@ -119,16 +122,24 @@
   <% } %>
 </datalist>
    </td>
+   </tr>
+	  
+	  <tr>
 
   <td width="399"><br><input type="Submit" name="PLAYERADDCOACHINGSLOT" value = "Add Coaching Slot"></td>
-   </tr> 
+   </tr>
+   </table> 
 
 <!------------------------------------------------------------------------>
 
 
+<<<<<<< HEAD
 <div id = 'Challenges'  style="margin-top:430px; margin-left:100px; position:absolute "> <button type="Submit" name="SEEPENDINGCHALLENGES" value = "See Pending Challenges"> See Pending Challenges
+=======
+	<div id = 'Challenges'  style="margin-top:550px; margin-left:100px; position:absolute "> <a href="http://www.yahoo.com">See Pending Challenges</a>
+>>>>>>> c6406926ef21a82564947fc35a6b7009aa38e33d
 	</div>
-	<div id = 'See Tournaments' style="margin-top:460px; margin-left:100px; position:absolute "> <br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
+	<div id = 'See Tournaments' style="margin-top:580px; margin-left:100px; position:absolute "> <br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
 </div>
 <div id = 'See Tournaments' style="margin-top:20px; margin-left:360px; position:absolute "> <a href="../search/search.jsp">Search Page</a>
 </div>

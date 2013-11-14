@@ -233,6 +233,7 @@ class playerLogin extends HttpServlet{
             request.setAttribute("clubids", clubids);
             request.setAttribute("clubnames", clubnames);
             
+            //Coaches in all the above clubs
             query="select ch.name as name, ch.id as id from coach as ch,teachesat as ta where ta.coachid=ch.id and ta.clubid in (select id from club except select clb.id as id from member as m, club as clb where m.playerid="+id+" and m.clubid=clb.id);";
             List <Integer> coachids = new ArrayList<Integer>();
             List <String> coachnames = new ArrayList<String>();
