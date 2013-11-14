@@ -15,7 +15,7 @@
     <form method="post" action="../tennis">
       <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
 	<img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
-	<p><b><%= request.getAttribute("name") %> </b></p>
+	<p><font color="black"><b><%= request.getAttribute("name") %> </font></b></p>
 	<table border="0" style="margin-top:1px; margin-left:1px; position:absolute">
 	  <tr>
 	    <td width="150"><div align="left">Matches Played</div></td>
@@ -56,7 +56,7 @@
 	    <td width="300"><div align="left">&bull; <%= request.getAttribute("UpcomingMatches3") %> </div></td>
 	  </tr>
 	  <tr>
-	    <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("UpcomingMatches")%>")' value="See all results"> </div></td>
+	    <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("UpcomingMatches")%>")' value="See all Upcoming Matches"> </div></td>
 	  </tr>
 	</table>
 	
@@ -135,9 +135,12 @@
     
     <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("publicNotes")%>")' value="See all results"> </div></td>
 </table>
-<div id = 'Coaching' style="margin-top:440px; margin-left:50px; position:absolute"> <a href="Functionality/addprivaterecord.jsp">Add Private Records</a>
+<div id = 'Coaching' style="margin-top:440px; margin-left:50px; position:absolute"> <font color="black"> &bull;<%= request.getAttribute("club1") %> </font></div>
+<div id = 'Coaching' style="margin-top:460px; margin-left:50px; position:absolute"> <font color="black">&bull; <%= request.getAttribute("club2") %> </font></div>
+<div id = 'Coaching' style="margin-top:480px; margin-left:50px; position:absolute"> <font color="black"> &bull; <%= request.getAttribute("club3") %> </font></div>
+<div id = 'Coaching' style="margin-top:500px; margin-left:50px; position:absolute"> <input type="button" onclick='myFunction("<%= request.getAttribute("allclubs")%>")' value="View all clubs">
 </div>
-<div id = 'Coaching' style="margin-top:470px; margin-left:50px; position:absolute"> <a href="http://www.yahoo.com">View/Add Club</a>
+<div id = 'Coaching' style="margin-top:530px; margin-left:50px; position:absolute"> <a href="Functionality/addprivaterecord.jsp">Add Private Records</a>
 </div>
 </div>
 </form>

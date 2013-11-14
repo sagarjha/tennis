@@ -86,7 +86,7 @@ class playerLogin extends HttpServlet{
 	    rs.next();
 	    String date = rs.getString("datevalue");
 	    
-	    String query = "select P1.Name as player1, P2.Name as player2, Clb.Name as club, M.DateOfMatch, M.SlotNumber, matchtype from Match as M, Player as P1, Player as P2, Club as Clb where (M.Player1ID=" + id + " or M.Player2ID=" + id + ") and P2.ID=M.Player1ID and P1.ID=M.Player2ID and Clb.ID=M.ClubID and dateofmatch > '" + date + "' order by dateofmatch;";
+	    String query = "select P1.Name as player1, P2.Name as player2, Clb.Name as club, M.DateOfMatch, M.SlotNumber, matchtype from Match as M, Player as P1, Player as P2, Club as Clb where (M.Player1ID=" + id + " or M.Player2ID=" + id + ") and P2.ID=M.Player1ID and P1.ID=M.Player2ID and Clb.ID=M.ClubID and status = 'Upcoming' and dateofmatch > '" + date + "' order by dateofmatch;";
 	    
 	    System.out.println(query);
 	    rs = stmt.executeQuery (query);
@@ -156,7 +156,7 @@ class playerLogin extends HttpServlet{
 	    String query = "select description from member, news where member.playerid="+id+" and member.clubid=news.clubid;";
 	    System.out.println(query);
 	    rs = stmt.executeQuery (query);
-            String news=null;
+            String news="";
             String news1=null;
             String news2=null;
             String news3=null;
@@ -182,6 +182,39 @@ class playerLogin extends HttpServlet{
 		count++;
 	    }
 	    request.setAttribute("news",news);
+	}
+
+	// Club Names
+	{
+	    String query = "select name from member, club where member.playerid="+id+" and member.clubid=club.id";
+	    System.out.println(query);
+	    rs = stmt.executeQuery (query);
+            String club="";
+            String club1=null;
+            String club2=null;
+            String club3=null;
+
+	    int count = 1;
+	    if (rs.next()) {
+		request.setAttribute("club1",rs.getString("name"));
+		club += count + ". " + rs.getString("name") + "\\n";
+		count++;
+	    }
+	    if (rs.next()) {
+		request.setAttribute("club2",rs.getString("name"));
+		club += count + ". " + rs.getString("name") + "\\n";
+		count++;
+	    }
+	    if (rs.next()) {
+		request.setAttribute("club3",rs.getString("name"));
+		club += count + ". " + rs.getString("name") + "\\n";
+		count++;
+	    }
+	    while (rs.next()) {
+		club += count + ". " + rs.getString("name") + "\\n";
+		count++;
+	    }
+	    request.setAttribute("allclubs",club);
 	}
     }
 }
