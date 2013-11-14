@@ -93,59 +93,5 @@ class umpireLogin extends HttpServlet{
         request.setAttribute("match4", match4);
         request.setAttribute("match5", match5);
         request.setAttribute("allMatches", allMatches);
-     
-	{
-	    query = "select match.id,dateofmatch,slotnumber,player1id,player2id from competitive,match where competitive.id=match.id and umpireid = " + request.getAttribute("id") + " and status = 'Accreditation Pending';";
-	    System.out.println(query);
-	    rs = stmt.executeQuery(query);
-	    String accreditMatch1="";
-	    String accreditMatch2="";
-	    String accreditMatch3="";
-	    
-	    if(rs.next()) {
-		Statement stmt1 = conn.createStatement();
-		String innerQuery = "select name from player where id = " + rs.getString("player1id");
-		System.out.println(innerQuery);
-		ResultSet rs1 = stmt1.executeQuery(innerQuery);
-		rs1.next();
-		String name1 = rs1.getString("name");
-		innerQuery = "select name from player where id = " + rs.getString("player2id");
-		System.out.println(innerQuery);
-		rs1 = stmt1.executeQuery(innerQuery);
-		rs1.next();
-		accreditMatch1 = name1 + " - " + rs1.getString("name") + "   " + rs.getString("dateofmatch") + "   <button type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
-		System.out.println(accreditMatch1);
-	    }
-	    if(rs.next()) {
-		Statement stmt1 = conn.createStatement();
-		String innerQuery = "select name from player where id = " + rs.getString("player1id");
-		System.out.println(innerQuery);
-		ResultSet rs1 = stmt1.executeQuery(innerQuery);
-		rs1.next();
-		String name1 = rs1.getString("name");
-		innerQuery = "select name from player where id = " + rs.getString("player2id");
-		System.out.println(innerQuery);
-		rs1 = stmt1.executeQuery(innerQuery);
-		rs1.next();
-		accreditMatch2 = name1 + " - " + rs1.getString("name") + "   " + rs.getString("dateofmatch") + "   <button type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
-	    }
-	    if(rs.next()) {
-		Statement stmt1 = conn.createStatement();
-		String innerQuery = "select name from player where id = " + rs.getString("player1id");
-		System.out.println(innerQuery);
-		ResultSet rs1 = stmt1.executeQuery(innerQuery);
-		rs1.next();
-		String name1 = rs1.getString("name");
-		innerQuery = "select name from player where id = " + rs.getString("player2id");
-		System.out.println(innerQuery);
-		rs1 = stmt1.executeQuery(innerQuery);
-		rs1.next();
-		accreditMatch3 = name1 + " - " + rs1.getString("name") + "   " + rs.getString("dateofmatch") + "   <button type=\"Submit\" style=\"color: blue; background-color: grey\" name=\"Accredit\" value = " + rs.getString("id") +"> Accredit"; 
-	    }
-	    request.setAttribute("Accredit1",accreditMatch1);
-	    request.setAttribute("Accredit2",accreditMatch2);
-	    request.setAttribute("Accredit3",accreditMatch3);
-	}
-           
     }
 }
