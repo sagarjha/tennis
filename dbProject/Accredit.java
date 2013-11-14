@@ -79,8 +79,8 @@ public class Accredit extends HttpServlet{
 		    rs.next();
 		    String loserName = rs.getString("name");
 		
-		    String winnerRecord = "Defeated " + loserName + "at " + clubName + " on " + date;
-		    String loserRecord = "Lost to " + winnerName + "at " + clubName + " on " + date;
+		    String winnerRecord = "Defeated " + loserName + " at " + clubName + " on " + date;
+		    String loserRecord = "Lost to " + winnerName + " at " + clubName + " on " + date;
 		    
 		    query = "Insert into Record values(" + numRecords + ", 'Public', '" + winnerRecord + "', " + winnerID + ")";
 		    System.out.println(query);
@@ -112,7 +112,7 @@ public class Accredit extends HttpServlet{
 		    System.out.println(query);
 		    stmt.execute(query);
 
-		    query = "Update Player Set highestratingachieved = max(rating+1,highestratingachieved) where ID =" + winnerID;
+		    query = "Update Player Set highestratingachieved = greatest(rating+1,highestratingachieved) where ID =" + winnerID;
 		    System.out.println(query);
 		    stmt.execute(query);
 		    
@@ -144,7 +144,7 @@ public class Accredit extends HttpServlet{
 		    rs.next();
 		    String currentSlot = rs.getString("Slotvalue");
 
-		    query = "Update Match Set Status = 'Accreditation Pending' where Match.DateOfMatch < '" + currentDate + "'OR ( Match.DateOfMatch = '" + currentDate + "' AND Match.SlotNumber < " + currentSlot + ") AND Match.status = 'Upcoming'";
+		    query = "Update Match Set Status = 'Accreditation Pending' where (Match.DateOfMatch < '" + currentDate + "'OR ( Match.DateOfMatch = '" + currentDate + "' AND Match.SlotNumber < " + currentSlot + ")) AND Match.status = 'Upcoming' and id <> " + matchid;
 		    System.out.println(query);
 		    stmt.execute(query);
 		    
