@@ -280,6 +280,15 @@ public class challengehandler extends HttpServlet{
     }
 
     public void querySqlOnAcceptReject(Connection conn, HttpServletRequest request, HttpSession session) throws SQLException{
+		System.out.println("In querySqlOnAcceptReject of challengehandler.java");
+		Statement stmt = conn.createStatement();
+		ResultSet rs;
 	
+		int count = 1;
+	
+		while (request.getParameter("" + count) != null) {
+		        String[] value = request.getParameter("match" + count).toString().split(":");
+			count++;
+		}
     }
 }

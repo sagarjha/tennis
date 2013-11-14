@@ -1,3 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Tennis World</title>
@@ -14,7 +19,7 @@
     </script>
   </head>
   <body>
-  
+  <form method="post" action="../tennis">
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
 
 <img style="display:block;" left = '400' width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
@@ -171,36 +176,31 @@ if(request.getAttribute("club3")!=null)
 
 
 <!-- Rate the coach---------------------------------------------------------------------->
+
+<% if(Integer.parseInt(session.getAttribute("playerTaughtByCoach").toString()) == 1) { %>
 <tr>
         <td width="100%" colspan="3"><div align="center"><b>Rate this Coach </b></div></td>
-
-
-        
-        </tr>
-        <tr>
+</tr>
+<tr>
    <td width="150"><div align="center">Choose rating</div></td>
 
 
-   <td width="200"><div align="center"><select>
+   <td width="200"><div align="center"><select id = "coachrating" name="coachrating">
 
-  <option value="volvo">1</option>
-  <option value="saab">2</option>
-  <option value="mercedes">3</option>
-
-
-  <option value="audi">4</option>
-        </select> </div></td>
-        <td width="150"><div align="center"><Button>Go</Button></div></td>
-
-
-   
-   
-   </tr>
-   
-   
-  </table>
-   
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
   
- 
-  
-  </div>
+   </select> </div></td>
+   
+   <td width="150"><div align="center"><input type ="Submit" name="RATECOACHBYPLAYER" value="Give Rating"></div></td>
+</tr>
+   
+<% } %>   
+</table>
+</div>
+</form>
+</body>
+</html>
