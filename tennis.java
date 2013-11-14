@@ -428,6 +428,7 @@ public class tennis extends HttpServlet{
             }
         }  
         
+      
 	else if (request.getParameter("VIEWTOURNAMENTSPAGE") != null) {
 	    if (request.getParameter("VIEWTOURNAMENTSPAGE").equals("View Tournaments Page")) {
 		System.out.println("redirected from clubprofiletoitself");
