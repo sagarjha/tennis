@@ -574,6 +574,22 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
+        
+         else if(request.getParameter("addcoachingslot") != null){
+            if (request.getParameter("addcoachingslot").equals("Add Coaching Slot")) {
+                try{
+                    addcoachingslotcoach ac = new addcoachingslotcoach();
+                    ac.addcoachslot(request,conn,session);
+                }
+                catch(Exception e) {
+		    System.out.println(e); 
+		}
+                String redirectJsp = "/signupAndLogin/operationsuccessful.jsp";// put correct jsp
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
 
 	    else if (request.getParameter("LOGOUT") != null) {
 		session.invalidate();
