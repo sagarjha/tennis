@@ -1,3 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Tennis World</title>
@@ -167,16 +172,16 @@ if(request.getAttribute("club3")!=null)
    -->
    <td width="200"><input list="newclub" name="newclub">
    <datalist id="newclub">
-
-  <option value="Internet Explorer">IE</option>
-  <option value="Firefox">Fire</option>
-  <option value="Chrome">Google</option>
-  <option value="Opera">Mac</option>
-  <option value="Safari">Mac2</option>
+<%
+    List<Integer> ids = (List<Integer>)request.getAttribute("coachids");
+    List<String> names = (List<String>)request.getAttribute("coachnames");
+    for(int i = 0; i < ids.size(); i++){ %>
+  <option value="<%= ids.get(i)%>"><%= names.get(i)%></option>
+  <% } %>
 </datalist>
    </td>
 <!--   	<td width="150"><div align="center"><Button>Add Coaching Slot</Button></div></td> -->
-  <td width="399"><br><input type="Submit" name="addcoachingslot" value = "Add Coaching SLot"></td>
+  <td width="399"><br><input type="Submit" name="addcoachingslot" value = "Add Coaching Slot"></td>
    </tr>   
   </table>
    

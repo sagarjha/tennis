@@ -3,6 +3,7 @@ import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
 import java.io.*;
+import java.util.*;
 
 class coachLogin extends HttpServlet{
     public void coachLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt, Connection conn) throws SQLException{
@@ -130,6 +131,23 @@ class coachLogin extends HttpServlet{
                 request.setAttribute("age", rs.getInt("year") - yearOfbirth);
                 request.setAttribute("experience",rs.getInt("year") - coachingStartYear);
             }
+        }
+        
+        // calculate all clubs at which coach does not teach
+        {
+            List <Integer> coachids = new ArrayList<Integer>();
+            List <String> coachnames = new ArrayList<String>();
+            
+            String query = "select name, id from club except select c.name as name, c.id as id from club c, teachesat t " + 
+                    " where c.id = t.clubid and t.coachid = " + id  +";";
+            rs=stmt.executeQuery(query);
+            System.out.println(query);
+            while(rs.next()){
+                coachids.add(rs.getInt("id"));
+                coachnames.add(rs.getString("name"));
+            }
+            request.setAttribute("coachids", coachids);
+            request.setAttribute("coachnames", coachnames);
         }
         
 	
