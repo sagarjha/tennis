@@ -605,6 +605,7 @@ public class tennis extends HttpServlet{
                 catch(Exception e) {
 		    System.out.println(e); 
 		}
+                System.out.println(redirectJsp);
 		ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
