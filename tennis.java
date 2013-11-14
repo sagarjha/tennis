@@ -679,6 +679,36 @@ public class tennis extends HttpServlet{
              }
          } 
          
+         // vendor adds stall
+         else if(request.getParameter("CLUBTOURNAMENTADDSTALL") != null){
+             if (request.getParameter("CLUBTOURNAMENTADDSTALL").equals("Add Stall")) {
+                 System.out.println("Add stall by vendor");
+                 try{
+                     setUpStall s = new setUpStall;
+                     s.setStall(request,conn,session);
+                 }
+                 catch(Exception e) {
+		    System.out.println(e); 
+		}
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
+                dispatcher.forward(request, response); 
+             }
+         }
+         
+         // player registers for tournament
+         else if(request.getParameter("CLUBTOURNAMENTREGISTER") != null){
+             if (request.getParameter("CLUBTOURNAMENTREGISTER").equals("Add Stall")) {
+                System.out.println("Player registers for tournament");
+                String redirectJsp = "";
+                try{
+                    // make object and call appropriate function
+                }
+                catch(Exception e) {
+		    System.out.println(e); 
+		}
+             }
+         }    
          
          //Logout: Session Invalidate
         else if (request.getParameter("LOGOUT") != null) {

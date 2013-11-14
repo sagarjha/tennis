@@ -49,11 +49,26 @@
     </div>
     
    <% if(request.getAttribute("registerstall").toString().equals("1")){%>
-    <center> <input type="Submit" style="color: red; background-color: grey" name="Register" value = "Register"> </center>
+    <center> <input type="Submit" style="color: red; background-color: grey" name="CLUBTOURNAMENTREGISTER" value = "Register"> </center>
 	<% }%>
 	
 	<% if(request.getAttribute("registerstall").toString().equals("2")){%>
-    <center> <input type="Submit" style="color: red; background-color: grey" name="Register" value = "Add Stall"> </center>
+	<div align="center"> Choose Discount for the Stall </div>
+	<div align="center"><select id = "discount" name="discount">
+
+  	<option value="10">10</option>
+  	<option value="20">20</option>
+  	<option value="30">30</option>
+  	<option value="40">40</option>
+  	<option value="50">50</option>
+  	<option value="60">60</option>
+  	<option value="70">70</option>
+  	<option value="80">80</option>
+  	<option value="90">90</option>
+  
+   </select> </div>
+	
+    <center> <input type="Submit" style="color: red; background-color: grey" name="CLUBTOURNAMENTADDSTALL" value = "Add Stall"> </center>
 	<% }%>
 	
 	</form>
