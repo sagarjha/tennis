@@ -11,8 +11,8 @@ public class addcoachingslotplayer extends HttpServlet{
         String sameJsp="/profile/playerProfiletoHimself.jsp";
         String query="";
         
-        String clubid=request.getParameter("club");
-        String coachid=request.getParameter("coach");
+        String clubid=request.getParameter("newclub");
+        String coachid=request.getParameter("newcoach");
         int my_id=Integer.parseInt(session.getAttribute("accountid").toString());
         int flag=0; //If this stays 0 till the end then we dont update;
         
@@ -22,6 +22,7 @@ public class addcoachingslotplayer extends HttpServlet{
         if(rs.next())
         {
             flag=1;
+            System.out.println("1");
         }
         
         if(flag==1)

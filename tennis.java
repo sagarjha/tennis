@@ -575,7 +575,7 @@ public class tennis extends HttpServlet{
             }
         }
         
-        //
+        //Add coaching slot for coach
          else if(request.getParameter("addcoachingslot") != null){
             if (request.getParameter("addcoachingslot").equals("Add Coaching Slot")) {
                 System.out.println("Add coaching slot in coach");
@@ -592,7 +592,27 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
-
+         
+         //Add coach for player
+         else if(request.getParameter("PLAYERADDCOACHINGSLOT") != null){
+            if (request.getParameter("PLAYERADDCOACHINGSLOT").equals("Add Coaching Slot")) {
+                System.out.println("Add coaching slot in player");
+                String redirectJsp = "";
+                try{
+                    addcoachingslotplayer ac = new addcoachingslotplayer();
+                    redirectJsp=ac.addcoachingslotplayerHandler(request,session,conn);
+                }
+                catch(Exception e) {
+		    System.out.println(e); 
+		}
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+            }
+        }
+         
+         
+         //Logout: Session Invalidate
         else if (request.getParameter("LOGOUT") != null) {
             session.invalidate();
             String redirectJsp = "/login.jsp";// put correct jsp

@@ -170,7 +170,7 @@ if(request.getAttribute("club3")!=null)
    
 
    -->
-   <td width="200"><input list="newclub" name="newclub" required>
+   <td width="200"><input list="newclub" name="newclub" >
    <datalist id="newclub">
 <%
     List<Integer> ids = (List<Integer>)request.getAttribute("coachids");
