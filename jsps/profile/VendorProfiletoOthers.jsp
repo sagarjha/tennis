@@ -59,6 +59,8 @@ if( request.getAttribute("type3") != null){ %>
   <input type="button" onclick='myFunction("<%= request.getAttribute("allStalls")%>")' value="View Stalls">
   </div>
   
+  <div id = 'See Tournaments' style="margin-top:20px; margin-left:420px; position:absolute "> <button type="Submit" name="LOGIN" value = "Login">Back to Profile</button></div>  
+  
 </div>
 
 

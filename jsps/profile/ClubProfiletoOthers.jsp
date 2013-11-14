@@ -92,7 +92,8 @@
    <td width="150"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("player")%>")' value="See More"></div></td>
 	    <td width="150"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("coach")%>")' value="See More"></div></td>
 	    <td width="150"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("umpire")%>")' value="See More"></div></td>
-   
+  
+  <div id = 'See Tournaments' style="margin-top:20px; margin-left:420px; position:absolute "> <button type="Submit" name="LOGIN" value = "Login">Back to Profile</button></div>
    
    </tr>
   </table>

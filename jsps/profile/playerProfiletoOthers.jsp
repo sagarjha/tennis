@@ -108,7 +108,7 @@ if(request.getAttribute("club3")!=null)
    
    </tr>
   </table>
-  
+ <div id = 'See Tournaments' style="margin-top:20px; margin-left:420px; position:absolute "> <button type="Submit" name="LOGIN" value = "Login">Back to Profile</button></div>   
   
   
 </div>
