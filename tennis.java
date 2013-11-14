@@ -684,7 +684,7 @@ public class tennis extends HttpServlet{
              if (request.getParameter("CLUBTOURNAMENTADDSTALL").equals("Add Stall")) {
                  System.out.println("Add stall by vendor");
                  try{
-                     setUpStall s = new setUpStall;
+                     setUpStall s = new setUpStall();
                      s.setStall(request,conn,session);
                  }
                  catch(Exception e) {
