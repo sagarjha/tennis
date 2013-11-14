@@ -600,19 +600,18 @@ public class tennis extends HttpServlet{
 
 	else if (request.getParameter("REPLYTOCHALLENGE") != null) {
 	    try {
-		    challengehandler ch = new challengehandler();
-		    boolean res = ch.querySqlOnAcceptReject(conn,request,session);
-		}
-
-		catch (Exception e) {
-		    System.out.println(e);    
-		}
-		
-		String redirectJsp = "/signupAndLogin/operationsuccessful.jsp";
-		ServletContext context = getServletContext();
-                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
-                dispatcher.forward(request, response);
+		challengehandler ch = new challengehandler();
+		boolean res = ch.querySqlOnAcceptReject(conn,request,session);
 	    }
+
+	    catch (Exception e) {
+		System.out.println(e);    
+	    }
+		
+	    String redirectJsp = "/signupAndLogin/operationsuccessful.jsp";
+	    ServletContext context = getServletContext();
+	    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+	    dispatcher.forward(request, response);
 	}
         
         //Add coaching slot for coach

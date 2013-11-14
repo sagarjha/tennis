@@ -22,7 +22,7 @@ public class challengehandler extends HttpServlet{
 
             // get all clubs of the player who challenges
             query = "Select c.id as id, c.name as name from club c, player p, member m where p.id =" + 
-                    playerChallengingID + " and m.playerid = p.id and m.clubid = c.id;";
+		playerChallengingID + " and m.playerid = p.id and m.clubid = c.id;";
             System.out.println(query);
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()){
@@ -74,7 +74,7 @@ public class challengehandler extends HttpServlet{
 
             // check if both the players are free at that time
             query = "select * from match where (player1id = " + player1id + " or player2id = " + player1id + 
-                    " ) and dateofmatch = '" + date + "' and slotnumber = " + slot + " and status = 'Upcoming';";
+		" ) and dateofmatch = '" + date + "' and slotnumber = " + slot + " and status = 'Upcoming';";
             System.out.println(query);
             rs = stmt.executeQuery(query);
             if(rs.next()){
@@ -83,7 +83,7 @@ public class challengehandler extends HttpServlet{
 
             if(shouldChallengeBeAccepted == 1){
                 query = "select * from match where (player1id = " + player2id + " or player2id = " + player2id + 
-                        " ) and dateofmatch = '" + date + "' and slotnumber = " + slot + " and status = 'Upcoming';";
+		    " ) and dateofmatch = '" + date + "' and slotnumber = " + slot + " and status = 'Upcoming';";
                 System.out.println(query);
                 rs = stmt.executeQuery(query);
                 if(rs.next()){
@@ -94,10 +94,10 @@ public class challengehandler extends HttpServlet{
             if(shouldChallengeBeAccepted == 1){
                 // check if players are part of any tournament which also runs on that date
                 query = "select p.id from player p , plays , tournament t where p.id = plays.playerid " + 
-                        " and (p.id = "+ player1id + " or p.id = " + player2id  + ")" + 
-                        " and t.id = plays.tournamentid and t.startdate < '" + date + "' and" +
-                        " (select max(m.dateofmatch) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
-                        + date + "' ;";
+		    " and (p.id = "+ player1id + " or p.id = " + player2id  + ")" + 
+		    " and t.id = plays.tournamentid and t.startdate < '" + date + "' and" +
+		    " (select max(m.dateofmatch) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
+		    + date + "' ;";
                 rs = stmt.executeQuery(query);
                 if(rs.next()){
                     shouldChallengeBeAccepted = 0;
@@ -107,9 +107,9 @@ public class challengehandler extends HttpServlet{
             if(shouldChallengeBeAccepted == 1){
                 // check if tournament in that club which also runs on that date
                 query = "select t.id from tournament t where t.clubid = " + clubid + 
-                        " and t.startdate < '" + date + "' and" +
-                        " (select max(m.dateofmatch) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
-                        + date + "' ;";
+		    " and t.startdate < '" + date + "' and" +
+		    " (select max(m.dateofmatch) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
+		    + date + "' ;";
                 rs = stmt.executeQuery(query);
                 if(rs.next()){
                     shouldChallengeBeAccepted = 0;
@@ -119,22 +119,22 @@ public class challengehandler extends HttpServlet{
             if(shouldChallengeBeAccepted == 1){
                 // check if free court
                 int numMatches = 0, numCourts =0;
-                    query= "select count(*) as num from match m where m.dateofmatch ='" + date + "' and m.slotnumber = " +
-                            slot + " and m.clubid=" + clubid + ";";
-                    rs = stmt.executeQuery(query);
-                    if(rs.next()){
-                        numMatches = rs.getInt("num");
-                    }
+		query= "select count(*) as num from match m where m.dateofmatch ='" + date + "' and m.slotnumber = " +
+		    slot + " and m.clubid=" + clubid + ";";
+		rs = stmt.executeQuery(query);
+		if(rs.next()){
+		    numMatches = rs.getInt("num");
+		}
                     
-                    query = "select numcourts from club where club.id = " + clubid + ";";
-                    rs = stmt.executeQuery(query);
-                    if(rs.next()){
-                        numCourts = rs.getInt("numcourts");
-                    }
+		query = "select numcourts from club where club.id = " + clubid + ";";
+		rs = stmt.executeQuery(query);
+		if(rs.next()){
+		    numCourts = rs.getInt("numcourts");
+		}
                     
-                    if(numCourts <= numMatches){
-                        shouldChallengeBeAccepted = 0;
-                    }
+		if(numCourts <= numMatches){
+		    shouldChallengeBeAccepted = 0;
+		}
             }
 
             if(shouldChallengeBeAccepted == 1){
@@ -142,7 +142,7 @@ public class challengehandler extends HttpServlet{
                 if(type.equals("2")){
                     int numMatches = 0, numUmpires =0;
                     query= "select count(*) as num from match m where m.dateofmatch ='" + date + "' and m.slotnumber = " +
-                            slot + " and m.clubid=" + clubid + ";";
+			slot + " and m.clubid=" + clubid + ";";
                     rs = stmt.executeQuery(query);
                     if(rs.next()){
                         numMatches = rs.getInt("num");
@@ -181,14 +181,14 @@ public class challengehandler extends HttpServlet{
                     if(type.equals("1")){
                         // friendly challenge match
                         query = "insert into match values (" + newmatchid + "," + clubid + ",'" + date + "'," 
-                                + slot + "," + player1id + "," + player2id + ",'Challenge',NULL,'Friendly');";
+			    + slot + "," + player1id + "," + player2id + ",'Challenge',NULL,'Friendly');";
                         stmt.executeUpdate(query);	
                         System.out.println(query);
                     }
                     else{
                         // competitive challenge match
                         query = "insert into match values (" + newmatchid + "," + clubid + ",'" + date + "'," 
-                                + slot + "," + player1id + "," + player2id + ",'Challenge',NULL,'Competitive');";
+			    + slot + "," + player1id + "," + player2id + ",'Challenge',NULL,'Competitive');";
                         stmt.executeUpdate(query);	
                         System.out.println(query);
                         
@@ -198,32 +198,32 @@ public class challengehandler extends HttpServlet{
                 }
                 
                 catch(Exception e)
-                {   
-                    System.out.println(e);
-                    if (conn != null) 
-                    {
-                        try 
-                        {
-                            System.err.print("Transaction is being rolled back");
-                            conn.rollback();
-                        } 
-                        catch(SQLException excep) 
-                        {
-                            System.out.println(excep);
-                        }
-                    }
-                }
+		    {   
+			System.out.println(e);
+			if (conn != null) 
+			    {
+				try 
+				    {
+					System.err.print("Transaction is being rolled back");
+					conn.rollback();
+				    } 
+				catch(SQLException excep) 
+				    {
+					System.out.println(excep);
+				    }
+			    }
+		    }
                 finally
-                {
-                    try
-                    {
-                        conn.setAutoCommit(true);
-                    }
-                    catch(SQLException excep2)
-                    {
-                        System.out.println(excep2);
-                    }
-                }
+		    {
+			try
+			    {
+				conn.setAutoCommit(true);
+			    }
+			catch(SQLException excep2)
+			    {
+				System.out.println(excep2);
+			    }
+		    }
                 
                 displayMessage = "You have successfully challenged the player";
 
@@ -281,49 +281,102 @@ public class challengehandler extends HttpServlet{
     }
 
     public boolean querySqlOnAcceptReject(Connection conn, HttpServletRequest request, HttpSession session) throws SQLException{
-		System.out.println("In querySqlOnAcceptReject of challengehandler.java");
-		Statement stmt = conn.createStatement();
-		ResultSet rs;
+	System.out.println("In querySqlOnAcceptReject of challengehandler.java");
+	Statement stmt = conn.createStatement();
+	ResultSet rs;
 	
-		String[] value = request.getParameter("challenge").toString().split(":");
-		int matchid = Integer.parseInt(value[0]);
-		try {
-		    conn.setAutoCommit(false);
-		    String query="";
-		    query = "Select clubid,dateofmatch,slotnumber from match where id = " + matchid;
+	String[] value = request.getParameter("challenge").toString().split(":");
+	int matchid = Integer.parseInt(value[0]);
+	try {
+	    conn.setAutoCommit(false);
+	    String query="";
+	    query = "Select clubid,dateofmatch,slotnumber,player1id,player2id from match where id = " + matchid;
+	    System.out.println(query);
+	    rs = stmt.executeQuery(query);
+	    rs.next();
+	    int clubID = rs.getInt("clubid"), slotnumber = rs.getInt("slotnumber");
+	    String date = rs.getString("datemofmatch");
+	    int player1id = rs.getInt("player1id"), player2id = rs.getInt("player2id");
+	    // challenge accepted
+	    if (value[1].equals("1")) {
+		query = "Select ( (Select NumCourts from Club where ID = " + clubID + ") - ( Select count(*) from Match where ClubID = " + clubID + " and DateOfMatch = '" + date + "' and SlotNumber = " + slotnumber + " and Status = 'Upcoming')) as NumFreeCourts";
+		System.out.println(query);
+		rs = stmt.executeQuery(query);
+		rs.next();
+		if (rs.getInt("NumFreeCourts") <= 0) {
+		    query = "Delete from match where id = " + matchid;
+		    System.out.println(query);
+		    stmt.execute(query);
+		    conn.rollback();
+		    return false;
+		}
+		query = "select matchtype from match where id = " + matchid;
+		System.out.println(query);
+		rs = stmt.executeQuery(query);
+		rs.next();
+		String type = rs.getString("matchtype");
+			
+		if (type.equals("Friendly")) {
+		    query = "Update Match Set Status = 'Upcoming' where ID = " + matchid;
+		    System.out.println(query);
+		    stmt.execute(query);
+		    query = "Delete from Match where (Player1ID = " + player1id + " or Player1ID = " + player2id + " or Player2ID = " + player1id + " or Player2ID = " + player2id + ") and DateOfMatch = " + date + " and SlotNumber = " + slotnumber + "and Status = 'Challenge'";
+		    System.out.println(query);
+		    stmt.execute(query);
+		}
+			
+		else {
+		    query = "(Select ID from Umpire where ClubID =" + clubID + ") except (Select UmpireID as ID from Competitive, Match where Competitive.ID = " + matchid + " and Match.DateOfMatch = " + date + " and Match.SlotNumber = " + slotnumber + ");";
 		    System.out.println(query);
 		    rs = stmt.executeQuery(query);
-		    rs.next();
-		    int clubID = rs.getInt("clubid"), slotnumber = rs.getString("slotnumber");
-		    String date = rs.getString("datemofmatch");
-		    // challenge accepted
-		    if (value[1].equals("1")) {
-			query = "Select ( (Select NumCourts from Club where ID = " + clubID + ") - ( Select count(*) from Match where ClubID = " + clubID + " and DateOfMatch = '" + date + "' and SlotNumber = " + slotnuber + " and Status = 'Upcoming')) as NumFreeCourts";
+		    if (rs.next()) {
+			int umpireid = rs.getInt("id");
+			query = "Update Match Set Status = 'Upcoming' where ID = " + matchid;
 			System.out.println(query);
-			rs = stmt.executeQuery(query);
-			rs.next();
-			if (rs.getInt("NumFreeCourts") <= 0) {
-			    query = "Delete from match where id = " + matchid;
-			    System.out.println(query);
-			    stmt.execute(query);
-			    return false;
-			}
-			query = "select matchtype from match where id = " + matchid;
+			stmt.execute(query);
+			query = "Delete from Match where (Player1ID = " + player1id + " or Player1ID = " + player2id + " or Player2ID = " + player1id + " or Player2ID = " + player2id + ") and DateOfMatch = " + date + " and SlotNumber = " + slotnumber + "and Status = 'Challenge'";
 			System.out.println(query);
-			rs = stmt.executeQuery(query);
-			rs.next();
-			int type = rs.get("matchtype");
-			
+			stmt.execute(query);
+			query = "Insert into Competitive (id,umpireid) values (" + matchid + ", " + umpireid + ")";
+			System.out.println(query);
+			stmt.execute(query);
 		    }
-		    // challenge rejected
 		    else {
-				    
-			    }
-			}
-			catch {
-				
-			}
-		    }
-		    return true;
+			conn.rollback();
+			return false;
+		    }				
 		}
+	    }
+	    // challenge rejected
+	    else {
+		query = "Delete from match where id = " + matchid;
+	    }
+	}
+	catch (Exception e) {
+	    System.out.println(e);
+	    if (conn != null) 
+		{
+		    try 
+			{
+			    System.err.print("Transaction is being rolled back");
+			    conn.rollback();
+			} 
+		    catch(SQLException excep) 
+			{
+			    System.out.println(excep);
+			}
+		}
+	}
+	finally {
+	    try
+		{
+		    conn.setAutoCommit(true);
+		}
+	    catch(SQLException excep2)
+		{
+		    System.out.println(excep2);
+		}
+	}
+	return true;
     }
+}
