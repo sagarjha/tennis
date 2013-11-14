@@ -583,6 +583,24 @@ public class tennis extends HttpServlet{
 	    if (request.getParameter("SEEPENDINGCHALLENGES").equals("See Pending Challenges")) {
 		try {
 		    challengehandler ch = new challengehandler();
+		    ch.querySqlOnAcceptReject(conn,request,session);
+		}
+
+		catch (Exception e) {
+		    System.out.println(e);    
+		}
+		
+		String redirectJsp = "/schedule/pendingChallengesPlayer.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+	    }
+	}
+
+	else if (request.getParameter("REPLYTOCHALLENGE") != null) {
+	    if (request.getParameter("REPLYTOCHALLENGE").equals("acceptReject")) {
+		try {
+		    challengehandler ch = new challengehandler();
 		    ch.acceptRejectChallenge(conn,request,session);
 		}
 
