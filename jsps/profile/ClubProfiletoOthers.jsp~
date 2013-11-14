@@ -151,7 +151,7 @@
   
   <!-----------------------------View Club's Tournament----------------------->
   
-  <div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <a href="../tournament/tournament.jsp">View Club's Tournaments</a>
+  <div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"><input type="button" onclick='myFunction("<%= request.getAttribute("tournaments")%>")' value="See Club's Tournaments">
   </div>
   
   </div>
