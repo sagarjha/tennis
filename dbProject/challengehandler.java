@@ -278,5 +278,8 @@ public class challengehandler extends HttpServlet{
 	}
 	request.setAttribute("pendingChallenges",pendingChallenges);
     }
-    
+
+    public void querySqlOnAcceptReject(Connection conn, HttpServletRequest request, HttpSession session) throws SQLException{
+	
+    }
 }
