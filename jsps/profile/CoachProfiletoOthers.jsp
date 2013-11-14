@@ -156,7 +156,7 @@ if(request.getAttribute("club3")!=null)
 <!-- <td width="400"><div align="center"><a href="http://www.yahoo.com">See More</a></div></td> -->
 
 
-     <td width="400"><div align="left"> <input type="button" onclick='myFunction("<%= request.getAttribute("moreclubs")%>")' value="More Clubs"> </div></td>
+     <td width="400"><div align="left"> <input type="button" onclick='myFunction("<%= request.getAttribute("moreClubs")%>")' value="More Clubs"> </div></td>
 
 
    

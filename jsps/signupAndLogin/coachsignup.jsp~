@@ -20,8 +20,8 @@
                   <td width="399"><textarea id="text" name="description"></textarea></td>
               </tr>
               <tr>
-                  <td width="401"><div align="center"><b>Experience (in years)* : </b></div></td>
-                  <td width="399"><input type="number" name="experience" min="1" required></td>
+                  <td width="401"><div align="center"><b>Experience (in years) : </b></div></td>
+                  <td width="399"><input type="number" name="experience" min="1"></td>
               </tr>
               <tr>
                   <td width="600"><div align="right"><br><input type="Submit" name="COACHSIGNUP" value = "Sign Up"></td>
