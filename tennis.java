@@ -599,18 +599,28 @@ public class tennis extends HttpServlet{
 	}
 
 	else if (request.getParameter("REPLYTOCHALLENGE") != null) {
+	    boolean res = true;
 	    try {
 		challengehandler ch = new challengehandler();
-		boolean res = ch.querySqlOnAcceptReject(conn,request,session);
+		res = ch.querySqlOnAcceptReject(conn,request,session);
 	    }
 
 	    catch (Exception e) {
 		System.out.println(e);    
 	    }
-		
-	    String redirectJsp = "/signupAndLogin/operationsuccessful.jsp";
-	    ServletContext context = getServletContext();
-	    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+	    
+	    String redirectJsp = "/Functionality/challengeStatus.jsp";// put correct jsp
+	    
+	    if (res == true) {
+		request.setAttribute("display","Operation Successful");
+	    }
+
+	    else {
+		request.setAttribute("display","Either courts or umpires not free");
+	    }
+
+		ServletContext context = getServletContext();
+		RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
 	    dispatcher.forward(request, response);
 	}
         
