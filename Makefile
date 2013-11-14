@@ -9,7 +9,7 @@ all:
 	cd ../tennis/bin;\
 	./shutdown.sh;\
 	./startup.sh
-
-clean:
-	rm *~
-	rm */*~
+	rm -f *~
+	rm -f */*~
+	rm -f */*/*~
+	rm -f */*/*/*~
