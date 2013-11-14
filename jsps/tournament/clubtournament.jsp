@@ -53,8 +53,13 @@
 	<% }%>
 	
 	<% if(request.getAttribute("registerstall").toString().equals("2")){%>
-	<div align="center"> Choose Discount for the Stall </div>
-	<div align="center"><select id = "discount" name="discount">
+	
+	
+	<table border="0" style="margin-top:50px; margin-left:450px; position:absolute">
+	<tr>
+	<td width="399"><div align="left"><font color="yellow"> Choose Discount for the Stall
+	
+	<select id = "discount" name="discount">
 
   	<option value="10">10</option>
   	<option value="20">20</option>
@@ -66,10 +71,18 @@
   	<option value="80">80</option>
   	<option value="90">90</option>
   
-   </select> </div>
-	
-    <center> <input type="Submit" style="color: red; background-color: grey" name="CLUBTOURNAMENTADDSTALL" value = "Add Stall"> </center>
-	<% }%>
-	
+   </select> </div></td>
+   </tr>
+	<tr>
+	</tr>
+	<tr>
+	</tr>
+	<tr>
+	</tr>
+	<tr>	
+	<td width="399">
+     <input type="Submit" style="color: red; background-color: grey" name="CLUBTOURNAMENTADDSTALL" value = "Add Stall"> </center>
+	<% }%></td>
+	</tr>
 	</form>
   </body>
