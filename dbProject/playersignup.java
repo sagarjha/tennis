@@ -45,7 +45,7 @@ public class playersignup extends HttpServlet{
             }
             int yearofbirth=currentyear-age;
             
-            query="Insert into Player(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, YearOfBirth, Gender, RoleModel) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+yearofbirth+", '"+session.getAttribute("gender")+"', '"+session.getAttribute("rolemodel")+"');";
+            query="Insert into Player(ID,Name, Username, Password,  Address, Description,PhoneNum,EmailID, YearOfBirth, Gender, RoleModel,rating) values ("+new_id+", '"+session.getAttribute("name")+"', '"+session.getAttribute("username")+"', '"+session.getAttribute("password")+"','" +session.getAttribute("address")+"', '"+session.getAttribute("description")+"', '"+session.getAttribute("phoneno")+"', '"+session.getAttribute("emailaddress")+"', "+yearofbirth+", '"+session.getAttribute("gender")+"', '"+session.getAttribute("rolemodel")+"',1200);";
             stmt.executeUpdate(query);
             query="Insert into member(playerid, clubid) values ("+new_id+", "+session.getAttribute("clubid")+");";
             stmt.executeUpdate(query);

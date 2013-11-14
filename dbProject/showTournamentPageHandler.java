@@ -8,9 +8,9 @@ public class showTournamentPageHandler extends HttpServlet{
     public void handleShow (Connection conn, ServletRequest request, HttpSession session) throws SQLException{
 	System.out.println("In showTournamentPageHandler.java");
 	Statement stmt = conn.createStatement();
-	String tournamentName = request.getParameter ("TOURNAMENTVIEW");
+	
 	String id = request.getParameter("TOURNAMENTVIEW");
-	System.out.println("tournamentName");
+	session.setAttribute("tournamentid",id);
 	String query = "select * from tournament where id =" + id + ";";
 	System.out.println(query);
 	ResultSet rs = stmt.executeQuery(query);
@@ -35,11 +35,18 @@ public class showTournamentPageHandler extends HttpServlet{
         if(rs.next())
             request.setAttribute("registerstall",1);        //1 means register button for player
         
+        
+        
         //Show add stall button if vendor
         query="select * from vendor where id="+my_id+";";
         rs = stmt.executeQuery(query);
         if(rs.next())
-            request.setAttribute("registerstall",2);        //2 means register button for vendor
-        
+        {
+            query="Select * from Outlet where vendorID ="+ my_id+" and TournamentID ="+ id+";";
+            rs = stmt.executeQuery(query);
+            if(rs.next()){}
+            else
+                request.setAttribute("registerstall",2);        //2 means register button for vendor
+        }
     }
 }
