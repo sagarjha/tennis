@@ -116,6 +116,7 @@ if( request.getAttribute("type3") != null){ %>
   
   
   </div>
+  </div>
   </form>
   </body>
 </html>
