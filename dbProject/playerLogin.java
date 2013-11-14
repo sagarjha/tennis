@@ -3,6 +3,8 @@ import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 class playerLogin extends HttpServlet{
     public void playerLoginHandler (int id, HttpServletRequest request, ResultSet rs, Statement stmt) throws SQLException{
@@ -216,5 +218,31 @@ class playerLogin extends HttpServlet{
 	    }
 	    request.setAttribute("allclubs",club);
 	}
+        
+        //Clubs in which he is not a member
+        {
+            String query="select name,id from club except select clb.name as name,clb.id as id from member as m, club as clb where m.playerid="+id+" and m.clubid=clb.id;";
+            
+            List <Integer> clubids = new ArrayList<Integer>();
+            List <String> clubnames = new ArrayList<String>();
+            rs=stmt.executeQuery(query);
+            while(rs.next()){
+                clubids.add(rs.getInt("id"));
+                clubnames.add(rs.getString("name"));
+            }
+            request.setAttribute("clubids", clubids);
+            request.setAttribute("clubnames", clubnames);
+            
+            query="select ch.name as name, ch.id as id from coach as ch,teachesat as ta where ta.coachid=ch.id and ta.clubid in (select id from club except select clb.id as id from member as m, club as clb where m.playerid="+id+" and m.clubid=clb.id);";
+            List <Integer> coachids = new ArrayList<Integer>();
+            List <String> coachnames = new ArrayList<String>();
+            rs=stmt.executeQuery(query);
+            while(rs.next()){
+                coachids.add(rs.getInt("id"));
+                coachnames.add(rs.getString("name"));
+            }
+            request.setAttribute("coachids", coachids);
+            request.setAttribute("coachnames", coachnames);
+        }
     }
 }

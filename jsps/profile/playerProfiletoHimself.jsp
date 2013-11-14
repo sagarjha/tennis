@@ -1,3 +1,8 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="java.io.*" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.util.*" %>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Tennis World</title>
@@ -79,8 +84,48 @@
 	  </tr>
 	</table>
 
-	<div id = 'Coaching' style="margin-top:400px; margin-left:100px; position:absolute"> <a href="http://www.yahoo.com">Register for Coaching</a>
-	</div>
+
+
+<!---------------------------------------------Register for coaching----------------------->
+
+
+<!--	<div id = 'Coaching' style="margin-top:400px; margin-left:100px; position:absolute"> <a href="http://www.yahoo.com">Register for Coaching</a>
+	</div>	-->
+<tr>
+   <!--CLubs -->
+   <td width="150"><div align="center">Choose Club</div></td>
+
+   <td width="200"><input list="newclub" name="newclub">
+   <datalist id="newclub">
+<%
+    List<Integer> clubids = (List<Integer>)request.getAttribute("clubids");
+    List<String> clubnames = (List<String>)request.getAttribute("clubnames");
+    for(int i = 0; i < clubids.size(); i++){ %>
+  <option value="<%= clubids.get(i)%>"><%= clubnames.get(i)%></option>
+  <% } %>
+</datalist>
+   </td>
+   
+   <!--Coaches -->
+      <td width="150"><div align="center">Choose Coach</div></td>
+
+   <td width="200"><input list="newcoach" name="newcoach">
+   <datalist id="newcoach">
+<%
+    List<Integer> coachids = (List<Integer>)request.getAttribute("coachids");
+    List<String> coachnames = (List<String>)request.getAttribute("coachnames");
+    for(int i = 0; i < coachids.size(); i++){ %>
+  <option value="<%= coachids.get(i)%>"><%= coachnames.get(i)%></option>
+  <% } %>
+</datalist>
+   </td>
+
+  <td width="399"><br><input type="Submit" name="PLAYERADDCOACHINGSLOT" value = "Add Coaching Slot"></td>
+   </tr> 
+
+<!------------------------------------------------------------------------>
+
+
 	<div id = 'Challenges'  style="margin-top:430px; margin-left:100px; position:absolute "> <a href="http://www.yahoo.com">See Pending Challenges</a>
 	</div>
 	<div id = 'See Tournaments' style="margin-top:460px; margin-left:100px; position:absolute "> <br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
