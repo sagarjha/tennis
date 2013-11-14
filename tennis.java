@@ -690,12 +690,28 @@ public class tennis extends HttpServlet{
                  catch(Exception e) {
 		    System.out.println(e); 
 		}
-                ServletContext context = getServletContext();
-                RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
-                dispatcher.forward(request, response); 
+		 ServletContext context = getServletContext();
+		 RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
+		 dispatcher.forward(request, response); 
              }
          }
          
+	// club creates a tournament
+         else if(request.getParameter("CLUBTOURNAMENTREGISTER") != null){
+	     try {
+		 createTournament CT = new createTournament();
+		 CT.handleCreateTournament (conn, request);
+	     }
+
+	     catch (Exception e) {
+		 System.out.println(e);
+	     }
+
+	     ServletContext context = getServletContext();
+	     RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
+	     dispatcher.forward(request, response); 
+	 }
+
          // player registers for tournament
          else if(request.getParameter("CLUBTOURNAMENTREGISTER") != null){
              if (request.getParameter("CLUBTOURNAMENTREGISTER").equals("Add Stall")) {
@@ -708,7 +724,7 @@ public class tennis extends HttpServlet{
 		    System.out.println(e); 
 		}
              }
-         }    
+         }
          
          //Logout: Session Invalidate
         else if (request.getParameter("LOGOUT") != null) {

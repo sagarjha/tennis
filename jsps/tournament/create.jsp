@@ -7,7 +7,7 @@
   
   <body>
     <table width="500" border="0" cellspacing="0" cellpading="0">
-      <form action="creationsuccessful.jsp">
+      <form method = "POST" action = "tennis">
 	<tr>
 	  <td width="400"><div align="right"><b><h3>Select no. of rounds:</h3></b> </div>
 	  </td>
@@ -54,7 +54,7 @@
 	  </td>
 	</tr>
 	<tr>
-	  <td width="600"><div align="right"><br><input type="Submit" name="SUBMIT" value = "Proceed"></td></div>
+	  <td width="600"><div align="right"><br><button type="Submit" name="CREATETOURNAMENT" value = <%= session.getAttribute("accountid") %> %>Proceed</td></div>
 	</tr>
       </form>
     </table>
