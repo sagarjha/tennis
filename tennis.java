@@ -534,7 +534,7 @@ public class tennis extends HttpServlet{
                 catch(Exception e) {
 		    System.out.println(e); 
 		}
-                String redirectJsp = "/schedule/umpireAck.jsp";// put correct jsp
+                String redirectJsp = "/Functionality/challengeStatus.jsp";// put correct jsp
 		ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
