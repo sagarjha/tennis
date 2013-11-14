@@ -581,8 +581,15 @@ public class tennis extends HttpServlet{
 
 	else if (request.getParameter("SEEPENDINGCHALLENGES") != null) {
 	    if (request.getParameter("SEEPENDINGCHALLENGES").equals("See Pending Challenges")) {
-		challengehandler ch = new challengehandler();
-		ch.acceptRejectChallenge(conn,request,session);
+		try {
+		    challengehandler ch = new challengehandler();
+		    ch.acceptRejectChallenge(conn,request,session);
+		}
+
+		catch (Exception e) {
+		    System.out.println(e);    
+		}
+		
 		String redirectJsp = "/schedule/pendingChallengesPlayer.jsp";
 		ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
