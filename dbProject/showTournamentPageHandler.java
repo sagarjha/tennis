@@ -11,7 +11,7 @@ public class showTournamentPageHandler extends HttpServlet{
 	String tournamentName = request.getParameter ("TOURNAMENTVIEW");
 	String id = request.getParameter("TOURNAMENTVIEW");
 	System.out.println("tournamentName");
-	String query = "select * from tournament where id = '" + id + "'";
+	String query = "select * from tournament where id =" + id + ";";
 	System.out.println(query);
 	ResultSet rs = stmt.executeQuery(query);
 	rs.next();
@@ -29,8 +29,9 @@ public class showTournamentPageHandler extends HttpServlet{
         int my_id=Integer.parseInt(session.getAttribute("accountid").toString());
         
         //Show register button if player
-        query="select * from player where id=;"+my_id+";";
+        query="select * from player where id="+my_id+";";
         rs = stmt.executeQuery(query);
+        request.setAttribute("registerstall",0);
         if(rs.next())
             request.setAttribute("registerstall",1);        //1 means register button for player
         
