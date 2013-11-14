@@ -87,7 +87,7 @@
 </div>
 <div id = 'See Tournaments' style="margin-top:20px; margin-left:360px; position:absolute "> <a href="../search/search.jsp">Search Page</a>
 </div>
-<div id = 'See Tournaments' style="margin-top:20px; margin-left:460px; position:absolute "> <a href="file:///home/rishirajsingh/3.1/dbms/project/jsps/signupAndLogin/login.jsp">Logout</a>
+<div id = 'See Tournaments' style="margin-top:20px; margin-left:460px; position:absolute "> <input type="Submit" name="LOGOUT" value = "Logout"></a>
 </div>
 </div>
 

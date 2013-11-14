@@ -555,6 +555,14 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
+
+	    else if (request.getParameter("LOGOUT") != null) {
+		session.invalidate();
+		String redirectJsp = "/login.jsp";// put correct jsp
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+	    }
 	
 	else {
 	    // check if some user is logged in
@@ -573,7 +581,6 @@ public class tennis extends HttpServlet{
 		    dispatcher.forward(request, response);
 		}
 	    }
-	    
 	    else {
 		String redirectJsp = "/login.jsp";
 		ServletContext context = getServletContext();
