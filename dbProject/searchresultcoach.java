@@ -95,6 +95,21 @@ public class searchresultcoach extends HttpServlet{
         
         //*************************************************************************************
         
+        // set whether to display rate this coach or not
+        {
+        
+        query = "select * from training where playerid = " + Integer.parseInt(session.getAttribute("accountid").toString())
+                + " and coachid = "  + other_id + ";";
+        rs = stmt.executeQuery(query);
+        System.out.println(query);
+        if(rs.next()){
+            session.setAttribute("playerTaughtByCoach", 1);
+        }
+        else {
+            session.setAttribute("playerTaughtByCoach", 0);
+        }
+            
+        }
         
         	
         return redirectJsp;
