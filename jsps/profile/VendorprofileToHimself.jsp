@@ -111,7 +111,7 @@ if( request.getAttribute("type3") != null){ %>
    
    
    
-   <div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <a href="../tournament/tournament.jsp">View Upcoming Tournaments</a>
+   <div id = 'Tournament' style="margin-top:530px; margin-left:100px; position:absolute"> <input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page">
   
   
   
