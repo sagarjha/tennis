@@ -96,7 +96,7 @@ public class challengehandler extends HttpServlet{
                 query = "select p.id from player p , plays , tournament t where p.id = plays.playerid " + 
                         " and (p.id = "+ player1id + " or p.id = " + player2id  + ")" + 
                         " and t.id = plays.tournamentid and t.startdate < '" + date + "' and" +
-                        " (select max(m.matchdate) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
+                        " (select max(m.dateofmatch) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
                         + date + "' ;";
                 rs = stmt.executeQuery(query);
                 if(rs.next()){
@@ -108,7 +108,7 @@ public class challengehandler extends HttpServlet{
                 // check if tournament in that club which also runs on that date
                 query = "select t.id from tournament t where t.clubid = " + clubid + 
                         " and t.startdate < '" + date + "' and" +
-                        " (select max(m.matchdate) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
+                        " (select max(m.dateofmatch) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) > '"
                         + date + "' ;";
                 rs = stmt.executeQuery(query);
                 if(rs.next()){
@@ -192,9 +192,9 @@ public class challengehandler extends HttpServlet{
                         stmt.executeUpdate(query);	
                         System.out.println(query);
                         
-                        query = "insert into competitive values("+ newmatchid + ");";
+                        /*query = "insert into competitive values("+ newmatchid + ");";
                         stmt.executeUpdate(query);	
-                        System.out.println(query);
+                        System.out.println(query);*/
                     }
                     
                     conn.commit();
