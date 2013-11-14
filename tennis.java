@@ -197,6 +197,23 @@ public class tennis extends HttpServlet{
             
         }
         
+        //Player adding private records
+        else if (request.getParameter("ADDPRIVATERECORD") != null) {
+            System.out.println("ADDPRIVATERECORD");
+            String redirectJsp="";
+            addprivaterecord pv=new addprivaterecord();
+            try{
+                redirectJsp=pv.addprivaterecordHandler(request,session,conn);
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+        }
+        
         //Challenging a player by a player
         else if (request.getParameter("CHALLENGEPLAYER") != null) {
             System.out.println("CHALLENGEPLAYER");

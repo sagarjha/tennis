@@ -9,7 +9,6 @@
     </h3>
     <hr>
     <body>
-    <form name="loginForm" method="post" action="../tennis">
         <table width="500" border="0" cellspacing="0" cellpading="0">
             <form name="playersignup" method="post" action="Assgmt">
               <tr>

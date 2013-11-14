@@ -135,7 +135,7 @@
     
     <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("publicNotes")%>")' value="See all results"> </div></td>
 </table>
-<div id = 'Coaching' style="margin-top:440px; margin-left:50px; position:absolute"> <a href="http://www.yahoo.com">Add Private Records</a>
+<div id = 'Coaching' style="margin-top:440px; margin-left:50px; position:absolute"> <a href="Functionality/addprivaterecord.jsp">Add Private Records</a>
 </div>
 <div id = 'Coaching' style="margin-top:470px; margin-left:50px; position:absolute"> <a href="http://www.yahoo.com">View/Add Club</a>
 </div>
