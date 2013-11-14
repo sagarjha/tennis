@@ -350,6 +350,8 @@ public class challengehandler extends HttpServlet{
 	    // challenge rejected
 	    else {
 		query = "Delete from match where id = " + matchid;
+		System.out.println(query);
+		stmt.execute(query);
 	    }
 	}
 	catch (Exception e) {
@@ -377,6 +379,7 @@ public class challengehandler extends HttpServlet{
 		    System.out.println(excep2);
 		}
 	}
+	conn.commit();
 	return true;
     }
 }
