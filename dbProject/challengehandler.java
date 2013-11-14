@@ -246,12 +246,37 @@ public class challengehandler extends HttpServlet{
     public void acceptRejectChallenge(Connection conn, HttpServletRequest request, HttpSession session) throws SQLException{
 	System.out.println("In acceptRejectChallenge of challengehandler.java");
 	Statement stmt = conn.createStatement();
-	int playerID = 1;
-	ResultSet rs = stmt.executeQuery ("select M.Player1ID, M.Player2ID, Clb.Name, M.DateOfMatch, M.SlotNumber from Match as M, Club as Clb where ((M.player1ID=" + playerID + ") or (M.Player2ID=" + playerID+ ")) and M.ClubID=Clb.ID and M.Status='Challenge';");
+	int playerID = Integer.parseInt(session.getAttribute("accountid").toString());
+	String query = "select M.Player1ID, M.Player2ID,M.id, Clb.Name as clubname, M.DateOfMatch, M.SlotNumber from Match as M, Club as Clb where ((M.player1ID=" + playerID + ") or (M.Player2ID=" + playerID+ ")) and M.ClubID=Clb.ID and M.Status='Challenge';";
+	System.out.println(query);
+	ResultSet rs = stmt.executeQuery (query);
 	String pendingChallenges = "";
+	int count = 0;
 	while (rs.next()) {
-	    pendingChallenges += "<tr>\n <td>\n Sahil\n </td>\n <td>\n Sagar Club\n </td>\n <td>\n 10/11/2013\n <td>\n 13\n </td>\n <td>\n <select>\n <option value=\"1\">select</option>\n <option value=\"2\">Accept</option>\n <option value=\"3\">Reject</option>\n </select>\n </tr>\n </td>";
+	    System.out.println(rs.getString("player1id"));
+	    System.out.println(rs.getString("player2id"));
+	    count++;
+	    String opponentName = "";
+	    if (Integer.parseInt(rs.getString("player1ID")) == playerID) {
+		Statement stmt1 = conn.createStatement();
+		query = "select name from player where id = " + rs.getString("player2ID");
+		System.out.println(query);
+		ResultSet rs1 = stmt1.executeQuery(query);
+		rs1.next ();
+		opponentName = rs1.getString("name");
+	    }
+
+	    else {
+		Statement stmt1 = conn.createStatement();
+		query = "select name from player where id = " + rs.getString("player1ID");
+		System.out.println(query);
+		ResultSet rs1 = stmt1.executeQuery(query);
+		rs1.next ();
+		opponentName = rs1.getString("name"); 
+	    }
+	    pendingChallenges += "<tr>\n <td>\n " + opponentName + "\n </td>\n <td>\n " + rs.getString("clubname") + "\n </td>\n <td>\n<center>" + rs.getString("dateofmatch") +"</center>\n <td>\n <center>" + rs.getString("slotnumber") +"</center>\n </td>\n <td>\n <center> <select id = \"" + count + "\" name=\"challenge" + count + "\">\n <option value=\"" + rs.getString("id") + ":1" + "\">select</option>\n <option value=\"" + rs.getString("id") + ":2" + "\">Accept</option>\n <option value=\"" + rs.getString("id") + ":3" + "\">Reject</option>\n </select> </center>\n </tr>\n </td>";
 	}
+	request.setAttribute("pendingChallenges",pendingChallenges);
     }
     
 }
