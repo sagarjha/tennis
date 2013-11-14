@@ -594,14 +594,14 @@ public class tennis extends HttpServlet{
          else if(request.getParameter("addcoachingslot") != null){
             if (request.getParameter("addcoachingslot").equals("Add Coaching Slot")) {
                 System.out.println("Add coaching slot in coach");
+                String redirectJsp="";
                 try{
                     addcoachingslotcoach ac = new addcoachingslotcoach();
-                    ac.addcoachslot(request,conn,session);
+                    redirectJsp=ac.addcoachslot(request,conn,session);
                 }
                 catch(Exception e) {
 		    System.out.println(e); 
 		}
-                String redirectJsp = "/signupAndLogin/operationsuccessful.jsp";// put correct jsp
 		ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
