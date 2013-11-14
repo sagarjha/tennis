@@ -449,7 +449,7 @@ public class tennis extends HttpServlet{
 	else if (request.getParameter("TOURNAMENTVIEW") != null) {
 	    showTournamentPageHandler STPH = new showTournamentPageHandler ();
 	    try {
-		STPH.handleShow(conn,request);
+		STPH.handleShow(conn,request, session);
 	    }
 	    catch (Exception e) {
 		System.out.println(e);
@@ -651,6 +651,24 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
+         
+         //player rates the coach
+         else if(request.getParameter("RATECOACHBYPLAYER") != null){
+             if (request.getParameter("RATECOACHBYPLAYER").equals("Give Rating")) {
+                 System.out.println("Rate coach by player");
+                 try{
+                     coachRatedByPlayer c = new coachRatedByPlayer();
+                     c.coachRated(request,conn,session);
+                 }
+                 catch(Exception e) {
+		    System.out.println(e); 
+		}
+                ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
+                dispatcher.forward(request, response); 
+                 
+             }
+         } 
          
          
          //Logout: Session Invalidate
