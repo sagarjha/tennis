@@ -3,11 +3,13 @@
     <title>Search for vendors</title>
   </head>
 
-  <h3 align="center">Search for vendors</h3><hr>
+  <h3 align="center">Search for vendors</h3>
 
   <body>
    <form name="searchvendor" method ="post" action="../tennis">
     <table width="350" border="0" cellspacing="0" cellpading="0">
+    
+      
       <tr>
 	<td width="200"> <div align="left">
 	    Search String

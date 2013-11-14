@@ -142,7 +142,7 @@
     </tr>
    
    <tr>
-   <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("news")%>")' value="See More"></div></td>
+   <td width="200"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("news")%>")' value="See More"></div></td>
   
    
    

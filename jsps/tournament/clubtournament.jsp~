@@ -53,7 +53,9 @@
 	<% }%>
 	
 	<% if(request.getAttribute("registerstall").toString().equals("2")){%>
+	
     <center> <input type="Submit" style="color: red; background-color: grey" name="Register" value = "Add Stall"> </center>
+	
 	<% }%>
 	
 	</form>
