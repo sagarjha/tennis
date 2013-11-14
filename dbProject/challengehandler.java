@@ -192,9 +192,6 @@ public class challengehandler extends HttpServlet{
                         stmt.executeUpdate(query);	
                         System.out.println(query);
                         
-                        /*query = "insert into competitive values("+ newmatchid + ");";
-                        stmt.executeUpdate(query);	
-                        System.out.println(query);*/
                     }
                     
                     conn.commit();
@@ -274,21 +271,59 @@ public class challengehandler extends HttpServlet{
 		rs1.next ();
 		opponentName = rs1.getString("name"); 
 	    }
-	    pendingChallenges += "<tr>\n <td>\n " + opponentName + "\n </td>\n <td>\n " + rs.getString("clubname") + "\n </td>\n <td>\n<center>" + rs.getString("dateofmatch") +"</center>\n <td>\n <center>" + rs.getString("slotnumber") +"</center>\n </td>\n <td>\n <center> <select id = \"" + count + "\" name=\"challenge" + count + "\">\n <option value=\"" + rs.getString("id") + ":1" + "\">select</option>\n <option value=\"" + rs.getString("id") + ":2" + "\">Accept</option>\n <option value=\"" + rs.getString("id") + ":3" + "\">Reject</option>\n </select> </center>\n </tr>\n </td>";
+
+	    int id = rs.getInt("id");
+	    
+	    pendingChallenges += "<tr>\n <td>\n " + opponentName + "\n </td>\n <td>\n " + rs.getString("clubname") + "\n </td>\n <td>\n<center>" + rs.getString("dateofmatch") +"</center>\n <td>\n <center>" + rs.getString("slotnumber") +"</center>\n </td>\n <td>\n <center> <button type=\"Submit\" name=\"REPLYTOCHALLENGE\" value = \"" + id + ":1\">accept </center>\n </td>\n<td> <button type=\"Submit\" name=\"REPLYTOCHALLENGE\" value = \"" + id + ":2\">reject </td>\n";
+	    // <input type="Submit" name="REPLYTOCHALLENGE" value = "acceptReject"> 
 	}
 	request.setAttribute("pendingChallenges",pendingChallenges);
     }
 
-    public void querySqlOnAcceptReject(Connection conn, HttpServletRequest request, HttpSession session) throws SQLException{
+    public boolean querySqlOnAcceptReject(Connection conn, HttpServletRequest request, HttpSession session) throws SQLException{
 		System.out.println("In querySqlOnAcceptReject of challengehandler.java");
 		Statement stmt = conn.createStatement();
 		ResultSet rs;
 	
-		int count = 1;
-	
-		while (request.getParameter("" + count) != null) {
-		        String[] value = request.getParameter("match" + count).toString().split(":");
-			count++;
+		String[] value = request.getParameter("challenge").toString().split(":");
+		int matchid = Integer.parseInt(value[0]);
+		try {
+		    conn.setAutoCommit(false);
+		    String query="";
+		    query = "Select clubid,dateofmatch,slotnumber from match where id = " + matchid;
+		    System.out.println(query);
+		    rs = stmt.executeQuery(query);
+		    rs.next();
+		    int clubID = rs.getInt("clubid"), slotnumber = rs.getString("slotnumber");
+		    String date = rs.getString("datemofmatch");
+		    // challenge accepted
+		    if (value[1].equals("1")) {
+			query = "Select ( (Select NumCourts from Club where ID = " + clubID + ") - ( Select count(*) from Match where ClubID = " + clubID + " and DateOfMatch = '" + date + "' and SlotNumber = " + slotnuber + " and Status = 'Upcoming')) as NumFreeCourts";
+			System.out.println(query);
+			rs = stmt.executeQuery(query);
+			rs.next();
+			if (rs.getInt("NumFreeCourts") <= 0) {
+			    query = "Delete from match where id = " + matchid;
+			    System.out.println(query);
+			    stmt.execute(query);
+			    return false;
+			}
+			query = "select matchtype from match where id = " + matchid;
+			System.out.println(query);
+			rs = stmt.executeQuery(query);
+			rs.next();
+			int type = rs.get("matchtype");
+			
+		    }
+		    // challenge rejected
+		    else {
+				    
+			    }
+			}
+			catch {
+				
+			}
+		    }
+		    return true;
 		}
     }
-}

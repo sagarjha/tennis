@@ -39,7 +39,6 @@ public class Accredit extends HttpServlet{
 	    if (!value[1].equals("1")) {
 		try {
 		    conn.setAutoCommit(false);
-		
 		    String query = "select player1id,player2id,dateofmatch,slotnumber from match where id = " + matchid;
 		    System.out.println(query);
 		    rs = stmt.executeQuery(query);

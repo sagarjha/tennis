@@ -598,10 +598,9 @@ public class tennis extends HttpServlet{
 	}
 
 	else if (request.getParameter("REPLYTOCHALLENGE") != null) {
-	    if (request.getParameter("REPLYTOCHALLENGE").equals("acceptReject")) {
-		try {
+	    try {
 		    challengehandler ch = new challengehandler();
-		    ch.querySqlOnAcceptReject(conn,request,session);
+		    boolean res = ch.querySqlOnAcceptReject(conn,request,session);
 		}
 
 		catch (Exception e) {
