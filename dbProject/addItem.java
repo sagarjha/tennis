@@ -106,7 +106,7 @@ public class addItem extends HttpServlet{
 		
 		if(rs.next()) {
 			
-			redirectJsp = "/Functionality/itemadded.jsp";
+			redirectJsp = "/Functionality/itemAlreadyExists.jsp";
 			System.out.println("Item existes:");
 			return redirectJsp;
 			

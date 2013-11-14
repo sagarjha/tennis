@@ -11,7 +11,7 @@
     </script>
   </head>
   <body>
-    <form method="POST" action="tennis">
+    <form method="POST" action="../tennis">
  <div id="menu" style="color:#EEEEEE;height:600px;width:300px;float:left;">
    <img style="display:block;" left = '400'   width='250' height='300' src= <%= request.getAttribute("profilePicUrl") %> />
 <div style="margin-left:75px; margin-top:0px;"><p><%= request.getAttribute("name")%></p></div>
@@ -75,7 +75,7 @@ if( request.getAttribute("match5") != null){ %>
   
  <div id = 'See Tournaments' style="margin-top:20px; margin-left:360px; position:absolute "> <a href="../search/search.jsp">Search Page</a>
   </div>
-   <div id = 'See Tournaments' style="margin-top:20px; margin-left:460px; position:absolute "> <a href="file:///home/rishirajsingh/3.1/dbms/project/jsps/signupAndLogin/login.jsp">Logout</a>
+   <div id = 'See Tournaments' style="margin-top:20px; margin-left:460px; position:absolute "> <input type="Submit" name="LOGOUT" value = "Logout">
   </div>
 </div>
 
@@ -112,6 +112,9 @@ if( request.getAttribute("match5") != null){ %>
   
   
   </div>
+    </form>
+  </body>
+</html>
   
   
   
