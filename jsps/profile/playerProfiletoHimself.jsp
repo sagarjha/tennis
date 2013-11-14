@@ -126,7 +126,7 @@
 <!------------------------------------------------------------------------>
 
 
-	<div id = 'Challenges'  style="margin-top:430px; margin-left:100px; position:absolute "> <a href="http://www.yahoo.com">See Pending Challenges</a>
+<div id = 'Challenges'  style="margin-top:430px; margin-left:100px; position:absolute "> <button type="Submit" name="SEEPENDINGCHALLENGES" value = "See Pending Challenges"> See Pending Challenges
 	</div>
 	<div id = 'See Tournaments' style="margin-top:460px; margin-left:100px; position:absolute "> <br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
 </div>

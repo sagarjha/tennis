@@ -196,8 +196,6 @@ public class Accredit extends HttpServlet{
 			    }
 		    }
 	    }
-	    
 	}
-
     }
 }

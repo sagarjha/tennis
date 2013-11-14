@@ -556,6 +556,10 @@ public class tennis extends HttpServlet{
 		catch(Exception e) {
 		    System.out.println(e);
 		}
+		String redirectJsp = "/signupAndLogin/operationsuccessful.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
 	    }
 	}
         
@@ -574,6 +578,17 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
+
+	else if (request.getParameter("SEEPENDINGCHALLENGES") != null) {
+	    if (request.getParameter("SEEPENDINGCHALLENGES").equals("See Pending Challenges")) {
+		challengehandler ch = new challengehandler();
+		ch.acceptRejectChallenge(conn,request,session);
+		String redirectJsp = "/schedule/pendingChallengesPlayer.jsp";
+		ServletContext context = getServletContext();
+                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+                dispatcher.forward(request, response);
+	    }
+	}
         
         //Add coaching slot for coach
          else if(request.getParameter("addcoachingslot") != null){

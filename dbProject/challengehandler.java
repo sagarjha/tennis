@@ -242,5 +242,14 @@ public class challengehandler extends HttpServlet{
             System.out.println(e);
         }
     }
+
+    public void acceptRejectChallenge(Connection conn, HttpServletRequest request, HttpSession session){
+	System.out.println("In acceptRejectChallenge of challengehandler.java");
+	Statement stmt = conn.createStatement();
+	ResultSet rs = stmt.executeQuery ("select M.Player1ID, M.Player2ID, Clb.Name, M.DateOfMatch, M.SlotNumber from Match as M, Club as Clb where ((M.player1ID=" + playerID + ") or (M.Player2ID=" + playerID+ ")) and M.ClubID=Clb.ID and M.Status='Challenge';");
+	while (rs.next()) {
+	    
+	}
+    }
     
 }
