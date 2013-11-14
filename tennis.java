@@ -583,7 +583,7 @@ public class tennis extends HttpServlet{
 	    if (request.getParameter("SEEPENDINGCHALLENGES").equals("See Pending Challenges")) {
 		try {
 		    challengehandler ch = new challengehandler();
-		    ch.querySqlOnAcceptReject(conn,request,session);
+		    ch.acceptRejectChallenge(conn,request,session);
 		}
 
 		catch (Exception e) {
@@ -601,14 +601,14 @@ public class tennis extends HttpServlet{
 	    if (request.getParameter("REPLYTOCHALLENGE").equals("acceptReject")) {
 		try {
 		    challengehandler ch = new challengehandler();
-		    ch.acceptRejectChallenge(conn,request,session);
+		    ch.querySqlOnAcceptReject(conn,request,session);
 		}
 
 		catch (Exception e) {
 		    System.out.println(e);    
 		}
 		
-		String redirectJsp = "/schedule/pendingChallengesPlayer.jsp";
+		String redirectJsp = "/signupAndLogin/operationsuccessful.jsp";
 		ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
                 dispatcher.forward(request, response);
