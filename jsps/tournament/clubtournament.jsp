@@ -5,10 +5,11 @@
     <link href="tournament/style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
+    <form method ="post" action="../tennis">
     <div id="info" style="color:#00FFFF">
       <center>
 	<table width="400">
-	<form action=tennis>
+	
 	  <tr>
 	    <td>
 	      Club:
@@ -46,6 +47,13 @@
       <br>
       <center><img src="tournament/images/draw.jpg" align="center"></center>
     </div>
+    
+   <% if(request.getAttribute("registerstall").toString().equals("1")){%>
     <center> <input type="Submit" style="color: red; background-color: grey" name="Register" value = "Register"> </center>
+	<% }%>
+	
+	<% if(request.getAttribute("registerstall").toString().equals("2")){%>
+    <center> <input type="Submit" style="color: red; background-color: grey" name="Register" value = "Add Stall"> </center>
+	<% }%>
 	</form>
   </body>
