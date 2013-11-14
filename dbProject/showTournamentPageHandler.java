@@ -51,12 +51,14 @@ public class showTournamentPageHandler extends HttpServlet{
                 System.out.println(query);
                 rs.next();
                 end_date=rs.getString("enddate");
+                session.setAttribute("tEndDate",end_date);
                 System.out.println("Printing end date:"+end_date);
                 query="select startdate from tournament where id="+id+";";
                 rs = stmt.executeQuery(query);
                 System.out.println(query);
                 rs.next();
                 start_date=rs.getString("startdate");
+                session.setAttribute("tStartDate",start_date);
                 
                 
                 //Checking matches which belong in that period
@@ -77,14 +79,16 @@ public class showTournamentPageHandler extends HttpServlet{
                         query="select count(*) as num from plays where tournamentid="+id+";";
                         rs = stmt.executeQuery(query);
                         System.out.println(query);
+                        rs.next();
                         int num_players=rs.getInt("num");
                         query="select numplayers from tournament where id="+id+";";
                         System.out.println(query);
                         rs = stmt.executeQuery(query);
+                        rs.next();
                         int cap_players=rs.getInt("numplayers");
                         if((cap_players-num_players)>0)
                         {
-                            
+                            System.out.println("setting 1");
                             request.setAttribute("registerstall",1);        //1 means register button for player  
                         }
                                               
