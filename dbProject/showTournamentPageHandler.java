@@ -5,7 +5,7 @@ import javax.servlet.*;
 import java.sql.*;
 
 public class showTournamentPageHandler extends HttpServlet{
-    public void handleShow (Connection conn, ServletRequest request) throws SQLException{
+    public void handleShow (Connection conn, ServletRequest request, HttpSession session) throws SQLException{
 	System.out.println("In showTournamentPageHandler.java");
 	Statement stmt = conn.createStatement();
 	String tournamentName = request.getParameter ("TOURNAMENTVIEW");
@@ -25,5 +25,20 @@ public class showTournamentPageHandler extends HttpServlet{
 	ResultSet rs1 = stmt.executeQuery(query);
 	rs1.next();
 	request.setAttribute("club",rs1.getString("name"));
+        
+        int my_id=Integer.parseInt(session.getAttribute("accountid").toString());
+        
+        //Show register button if player
+        query="select * from player where id=;"+my_id+";";
+        rs = stmt.executeQuery(query);
+        if(rs.next())
+            request.setAttribute("registerstall",1);        //1 means register button for player
+        
+        //Show add stall button if vendor
+        query="select * from vendor where id="+my_id+";";
+        rs = stmt.executeQuery(query);
+        if(rs.next())
+            request.setAttribute("registerstall",2);        //2 means register button for vendor
+        
     }
 }

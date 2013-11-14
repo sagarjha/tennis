@@ -46,7 +46,7 @@
       <br>
       <center><img src="tournament/images/draw.jpg" align="center"></center>
     </div>
-    <% %>
+    <%
     <center> <input type="Submit" style="color: red; background-color: grey" name="Register" value = "Register"> </center>
 	<% }%>
 	</form>
