@@ -46,7 +46,7 @@
       </div>
 
 
-      <div id="Details" style="color:#FFD700;height:600px;width:537px;float:right;">
+      <div id="Details" style="color:#EEEEEE;height:600px;width:537px;float:right;">
 	<table border="0" style="margin-top:50px; margin-left:100px; position:absolute">
 	  <tr>
 	    <th>Upcoming Matches</th>
@@ -96,8 +96,8 @@
    <!--CLubs -->
    <td width="50"><div align="left">Choose Club</div></td>
 
-   <td width="200"><input list="newclub" name="newclub">
-   <datalist id="newclub">
+   <td width="200"><input list="newclubplayer" name="newclubplayer">
+   <datalist id="newclubplayer">
 <%
     List<Integer> clubids = (List<Integer>)request.getAttribute("clubids");
     List<String> clubnames = (List<String>)request.getAttribute("clubnames");
@@ -112,8 +112,8 @@
    <!--Coaches -->
       <td width="50"><div align="left">Choose Coach</div></td>
 
-   <td width="200"><input list="newcoach" name="newcoach">
-   <datalist id="newcoach">
+   <td width="200"><input list="newcoachplayer" name="newcoachplayer">
+   <datalist id="newcoachplayer">
 <%
     List<Integer> coachids = (List<Integer>)request.getAttribute("coachids");
     List<String> coachnames = (List<String>)request.getAttribute("coachnames");
@@ -130,10 +130,9 @@
    </tr>
    </table> 
 
-<!------------------------------------------------------------------------>
 
+<div id = 'Challenges'  style="margin-top:430px; margin-left:100px; position:absolute "> <button type="Submit" name="SEEPENDINGCHALLENGES" value = "See Pending Challenges"> See Pending Challenges
 
-	<div id = 'Challenges'  style="margin-top:550px; margin-left:100px; position:absolute "> <a href="http://www.yahoo.com">See Pending Challenges</a>
 	</div>
 	<div id = 'See Tournaments' style="margin-top:580px; margin-left:100px; position:absolute "> <br><input type="Submit" name="VIEWTOURNAMENTSPAGE" value = "View Tournaments Page"></td>
 </div>
