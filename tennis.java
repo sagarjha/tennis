@@ -575,6 +575,7 @@ public class tennis extends HttpServlet{
             }
         }
         
+        //
          else if(request.getParameter("addcoachingslot") != null){
             if (request.getParameter("addcoachingslot").equals("Add Coaching Slot")) {
                 System.out.println("Add coaching slot in coach");
@@ -592,13 +593,13 @@ public class tennis extends HttpServlet{
             }
         }
 
-	    else if (request.getParameter("LOGOUT") != null) {
-		session.invalidate();
-		String redirectJsp = "/login.jsp";// put correct jsp
-		ServletContext context = getServletContext();
-                RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
-                dispatcher.forward(request, response);
-	    }
+        else if (request.getParameter("LOGOUT") != null) {
+            session.invalidate();
+            String redirectJsp = "/login.jsp";// put correct jsp
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+        }
 	
 	else {
 	    // check if some user is logged in
