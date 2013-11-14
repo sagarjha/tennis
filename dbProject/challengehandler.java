@@ -235,7 +235,7 @@ public class challengehandler extends HttpServlet{
                 // not add anything
                 displayMessage = "Challenge is not successful. Either club refuses to host the match or the players are not free at that time.";
             }
-
+            System.out.println(displayMessage);
             request.setAttribute("display", displayMessage);
         }
         catch(Exception e){

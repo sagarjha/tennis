@@ -7,7 +7,7 @@
     <body>    
     <form name="challengeStatus" method="post" action="../tennis">
     <h3 align="center">
-       <%= request.getAttribute("displayMessage") %>
+       <%= request.getAttribute("display") %>
     </h3>
     <hr>
 	<td width="399"><br><button type="Submit" name="LOGIN" value = "Login">Back to Profile</button></td>
