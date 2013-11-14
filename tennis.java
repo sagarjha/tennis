@@ -15,10 +15,7 @@ public class tennis extends HttpServlet{
     
 
     public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException{
-        
-        
-        
-        System.out.println("doGet");
+	System.out.println("doGet");
         HttpSession session = request.getSession();
         String query="";
         int flag=0;
@@ -40,7 +37,7 @@ public class tennis extends HttpServlet{
         }
         
         //searchresultplayer.jsp
-        if (request.getParameter("SEARCHRESULTPLAYER") != null) {
+        else if (request.getParameter("SEARCHRESULTPLAYER") != null) {
             session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTPLAYER").toString());
             System.out.println("SEARCHRESULTPLAYER");
             searchresultplayer L = new searchresultplayer();
@@ -60,7 +57,7 @@ public class tennis extends HttpServlet{
         
         
         //searchresultcoach.jsp
-        if (request.getParameter("SEARCHRESULTCOACH") != null) {
+        else if (request.getParameter("SEARCHRESULTCOACH") != null) {
             session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTCOACH").toString());
             System.out.println("SEARCHRESULTCOACH");
             searchresultcoach L = new searchresultcoach();
@@ -80,7 +77,7 @@ public class tennis extends HttpServlet{
         
         
         //searchresultumpire.jsp
-        if (request.getParameter("SEARCHRESULTUMPIRE") != null) {
+        else if (request.getParameter("SEARCHRESULTUMPIRE") != null) {
             session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTUMPIRE").toString());
             System.out.println("SEARCHRESULTUMPIRE");
             searchresultumpire L = new searchresultumpire();
@@ -100,7 +97,7 @@ public class tennis extends HttpServlet{
         
         
         //searchresultclub.jsp
-        if (request.getParameter("SEARCHRESULTCLUB") != null) {
+        else if (request.getParameter("SEARCHRESULTCLUB") != null) {
             session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTCLUB").toString());
             System.out.println("SEARCHRESULTCLUB");
             searchresultclub L = new searchresultclub();
@@ -121,7 +118,7 @@ public class tennis extends HttpServlet{
         
         
         //searchresultvendor.jsp
-        if (request.getParameter("SEARCHRESULTVENDOR") != null) {
+        else if (request.getParameter("SEARCHRESULTVENDOR") != null) {
             session.setAttribute("searchotherid",request.getParameter("SEARCHRESULTVENDOR").toString());
             System.out.println("SEARCHRESULTVENDOR");
             searchresultvendor L = new searchresultvendor();
@@ -158,6 +155,7 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
+	
 	//Addition of an Item by a vendor
  		
 	else if (request.getParameter("ADDITEM") != null) {
@@ -557,7 +555,32 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
-        
+	
+	else {
+	    // check if some user is logged in
+	    if (session.getAttribute("username") != null) {
+		if (!session.getAttribute("username").equals("")) {
+		    Login L = new Login();
+		    String redirectJsp = L.handleLogin(request,session,username,password,conn,type);
+		    ServletContext context = getServletContext();
+		    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+		    dispatcher.forward(request, response);
+		}
+		else {
+		    String redirectJsp = "/login.jsp";
+		    ServletContext context = getServletContext();
+		    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+		    dispatcher.forward(request, response);
+		}
+	    }
+	    
+	    else {
+		String redirectJsp = "/login.jsp";
+		ServletContext context = getServletContext();
+		RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+		dispatcher.forward(request, response);
+	    }
+        }
     }
 
     public void doPost(HttpServletRequest request,HttpServletResponse response)	throws ServletException, IOException{
@@ -576,7 +599,7 @@ public class tennis extends HttpServlet{
         }
 
         // Enter the connection details
-        String hostname = "10.105.14.237";	// IP address of the machine running the PostgreSQL
+        String hostname = "10.105.15.169"; // IP address of the machine running the PostgreSQL
         String username = "postgres"; // PostgreSQL username
         String password = "dbproject"; // PostgreSQL password
         String dbName = "postgres"; // Name of the database
