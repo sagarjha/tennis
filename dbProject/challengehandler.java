@@ -285,7 +285,7 @@ public class challengehandler extends HttpServlet{
 	Statement stmt = conn.createStatement();
 	ResultSet rs;
 	
-	String[] value = request.getParameter("challenge").toString().split(":");
+	String[] value = request.getParameter("REPLYTOCHALLENGE").toString().split(":");
 	int matchid = Integer.parseInt(value[0]);
 	try {
 	    conn.setAutoCommit(false);
@@ -295,7 +295,7 @@ public class challengehandler extends HttpServlet{
 	    rs = stmt.executeQuery(query);
 	    rs.next();
 	    int clubID = rs.getInt("clubid"), slotnumber = rs.getInt("slotnumber");
-	    String date = rs.getString("datemofmatch");
+	    String date = rs.getString("dateofmatch");
 	    int player1id = rs.getInt("player1id"), player2id = rs.getInt("player2id");
 	    // challenge accepted
 	    if (value[1].equals("1")) {
@@ -320,13 +320,13 @@ public class challengehandler extends HttpServlet{
 		    query = "Update Match Set Status = 'Upcoming' where ID = " + matchid;
 		    System.out.println(query);
 		    stmt.execute(query);
-		    query = "Delete from Match where (Player1ID = " + player1id + " or Player1ID = " + player2id + " or Player2ID = " + player1id + " or Player2ID = " + player2id + ") and DateOfMatch = " + date + " and SlotNumber = " + slotnumber + "and Status = 'Challenge'";
+		    query = "Delete from Match where (Player1ID = " + player1id + " or Player1ID = " + player2id + " or Player2ID = " + player1id + " or Player2ID = " + player2id + ") and DateOfMatch = '" + date + "' and SlotNumber = " + slotnumber + "and Status = 'Challenge'";
 		    System.out.println(query);
 		    stmt.execute(query);
 		}
 			
 		else {
-		    query = "(Select ID from Umpire where ClubID =" + clubID + ") except (Select UmpireID as ID from Competitive, Match where Competitive.ID = " + matchid + " and Match.DateOfMatch = " + date + " and Match.SlotNumber = " + slotnumber + ");";
+		    query = "(Select ID from Umpire where ClubID =" + clubID + ") except (Select UmpireID as ID from Competitive, Match where Competitive.ID = " + matchid + " and Match.DateOfMatch = '" + date + "' and Match.SlotNumber = " + slotnumber + ");";
 		    System.out.println(query);
 		    rs = stmt.executeQuery(query);
 		    if (rs.next()) {
@@ -334,7 +334,7 @@ public class challengehandler extends HttpServlet{
 			query = "Update Match Set Status = 'Upcoming' where ID = " + matchid;
 			System.out.println(query);
 			stmt.execute(query);
-			query = "Delete from Match where (Player1ID = " + player1id + " or Player1ID = " + player2id + " or Player2ID = " + player1id + " or Player2ID = " + player2id + ") and DateOfMatch = " + date + " and SlotNumber = " + slotnumber + "and Status = 'Challenge'";
+			query = "Delete from Match where (Player1ID = " + player1id + " or Player1ID = " + player2id + " or Player2ID = " + player1id + " or Player2ID = " + player2id + ") and DateOfMatch = '" + date + "' and SlotNumber = " + slotnumber + "and Status = 'Challenge'";
 			System.out.println(query);
 			stmt.execute(query);
 			query = "Insert into Competitive (id,umpireid) values (" + matchid + ", " + umpireid + ")";
