@@ -95,7 +95,7 @@ public class Accredit extends HttpServlet{
 		    System.out.println(query);
 		    stmt.execute(query);
 		    
-		    query = "Update Match Set WinnerID =" + winnerID + "where ID = " + matchid;
+		    query = "Update Match Set WinnerID =" + winnerID + " where ID = " + matchid;
 		    System.out.println(query);
 		    stmt.execute(query);
 
@@ -151,20 +151,57 @@ public class Accredit extends HttpServlet{
 		    System.out.println(query);
 		    stmt.execute(query);
 		    
-		    query = "Select C.TournamentID from Tournament as T, Competitive as  C where C.ID = " + matchid + " AND C.TournamentID = T.ID AND C.Round = log(T.numPlayers)/log(2)";
+		    // check if the match being accredited is part of some tournament
+		    query = "Select C.TournamentID,T.numplayers,C.Round from Tournament as T, Competitive as  C where C.ID = " + matchid + " AND C.TournamentID = T.ID";
 		    System.out.println(query);
 		    rs = stmt.executeQuery(query);
-		    while(rs.next()) {
-			int tournamentID = rs.getInt("id");
-			query = "Delete from Outlet where TournamentID = " + tournamentID;
-			System.out.println(query);
-			stmt.execute(query);
-			query = "Update tournament set winnerid = " + winnerID + ", runnerID = " + loserID + " where ID = " + tournamentID;
-			System.out.println(query);
-			stmt.execute(query);
+		    if (rs.next()) {
+			int tournamentID = rs.getInt("tournamentid");
+			int round = rs.getInt("round");
+			int numPlayers = rs.getInt("numPlayers");
+			// Check if the tournament ends with this
+			if ((numPlayers == 8 & round == 3) | (numPlayers == 16 & round == 4) | (numPlayers == 32 & round == 5)) {
+			    query = "Delete from Outlet where TournamentID = " + tournamentID;
+			    System.out.println(query);
+			    stmt.execute(query);
+			    query = "Update tournament set winnerid = " + winnerID + ", runnerupID = " + loserID + " where ID = " + tournamentID;
+			    System.out.println(query);
+			    stmt.execute(query);
+			}
+			else {
+			    // check if the round has ended
+			    query = "select count(*) as cnt from match, competitive where match.id=competitive.id and winnerid is null and tournamentid = " + tournamentID +" and round = " + round;
+			    System.out.println(query);
+			    Statement stmt1 = conn.createStatement();    
+			    ResultSet rs1 = stmt1.executeQuery(query);
+			    rs1.next();
+			    int count1 = rs1.getInt("cnt");
+			    if (count1 == 0) {
+				query = "select winnerid,rating from match, competitive, player where match.id=competitive.id and tournamentid = " + tournamentID +" and round = " + round + " order by rating";
+				System.out.println(query);
+				rs1 = stmt1.executeQuery(query);
+				query = "Select min(m.id) as minmatchid from match m, competitive c where m.id=c.id and c.round = " + (round + 1) + " and c.tournamentid = " + tournamentID;
+				System.out.println(query);
+				Statement stmt2 = conn.createStatement();
+				ResultSet rs2 = stmt2.executeQuery(query);
+				rs2.next();
+				int minmatchid = rs2.getInt("minmatchid");
+				int runningMatchID = minmatchid;
+				while(rs1.next()) {
+				    int pid1 = rs1.getInt("winnerid");
+				    rs1.next();
+				    int pid2 = rs1.getInt("winnerid");
+				    query = "update match set player1id = " + pid1 + ", player2id = " + pid2 + " where id = " + runningMatchID;
+				    System.out.println(query);
+				    stmt2.execute(query);
+				    runningMatchID++;
+				}
+			    }
+			}
 		    }
 
 		    conn.commit();
+		    
 		}
 		
 		catch(SQLException e)

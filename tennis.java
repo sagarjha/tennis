@@ -533,7 +533,8 @@ public class tennis extends HttpServlet{
             }
         }
 
-        else if (request.getParameter("AccreditUmpire") != null) {	
+        else if (request.getParameter("AccreditUmpire") != null) {
+	    System.out.println(request.getParameter("AccreditUmpire"));
 	    if (request.getParameter("AccreditUmpire").equals("Matches to be Accredited")) {
 		try{
 		    Accredit A = new Accredit();
