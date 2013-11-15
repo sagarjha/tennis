@@ -177,7 +177,7 @@ public class Accredit extends HttpServlet{
 			    rs1.next();
 			    int count1 = rs1.getInt("cnt");
 			    if (count1 == 0) {
-				query = "select winnerid,rating from match, competitive, player where match.id=competitive.id and tournamentid = " + tournamentID +" and round = " + round + " order by rating";
+				query = "select winnerid from match, competitive where match.id=competitive.id and tournamentid = " + tournamentID +" and round = " + round;
 				System.out.println(query);
 				rs1 = stmt1.executeQuery(query);
 				query = "Select min(m.id) as minmatchid from match m, competitive c where m.id=c.id and c.round = " + (round + 1) + " and c.tournamentid = " + tournamentID;
