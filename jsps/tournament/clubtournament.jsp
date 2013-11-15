@@ -47,7 +47,6 @@
       </center>
       <br>
       <br>
-      <center><img src="tournament/images/draw.jpg" align="center"></center>
     </div>
     
    <% if(request.getAttribute("registerstall").toString().equals("1")){%>
