@@ -7,7 +7,7 @@
   
   <body>
     <table width="500" border="0" cellspacing="0" cellpading="0">
-      <form method = "POST" action = "tennis">
+      <form method = "POST" action = "../tennis">
 	<tr>
 	  <td width="400"><div align="right"><b><h3>Select no. of rounds:</h3></b> </div>
 	  </td>

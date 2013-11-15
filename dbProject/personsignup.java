@@ -3,6 +3,8 @@ import java.io.*;
 import javax.servlet.http.*;
 import javax.servlet.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class personsignup extends HttpServlet{
     public String personsignupHandler (HttpServletRequest request, HttpSession session, Connection conn) throws SQLException{
@@ -16,6 +18,10 @@ public class personsignup extends HttpServlet{
         String umpiresignup="/signupAndLogin/umpiresignup.jsp";
         
         
+        
+       
+        
+        
         String name=request.getParameter("name");
         String age=request.getParameter("age");
         String gender=request.getParameter("gender");
@@ -27,6 +33,7 @@ public class personsignup extends HttpServlet{
         String clubid=request.getParameter("clubid");
 
         try{
+            
             Statement stmt = conn.createStatement();
             flag=0;
             //if((session.getAttribute("type").equals("1")))
