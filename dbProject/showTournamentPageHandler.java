@@ -62,7 +62,7 @@ public class showTournamentPageHandler extends HttpServlet{
                 
                 
                 //Checking matches which belong in that period
-                query="select * from match where (player1id="+my_id+" or player2id="+my_id+") and (dateofmatch < '"+end_date+"' and dateofmatch > '"+start_date+"');";
+                query="select * from match where status = 'Upcoming' and (player1id="+my_id+" or player2id="+my_id+") and (dateofmatch < '"+end_date+"' and dateofmatch > '"+start_date+"');";
                 rs = stmt.executeQuery(query);
                 System.out.println(query);
                 if(rs.next()){}

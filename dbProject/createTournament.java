@@ -29,6 +29,7 @@ public class createTournament extends HttpServlet{
 	System.out.println("In createTournament.java");
 	int clubid = Integer.parseInt(request.getParameter("CREATETOURNAMENT"));
 	int numRounds = Integer.parseInt(request.getParameter("round"));
+	System.out.println("The value of numRounds is " + numRounds);
 	int numPlayers;
 	if (numRounds == 3) {
 	    numPlayers = 8;
@@ -53,17 +54,10 @@ public class createTournament extends HttpServlet{
 	rs.next();
 	int tournamentid = rs.getInt("idvalue");
 	stmt = conn.createStatement();
-	String query = "Select * from club where id = " + clubid;
-	System.out.println(query);
-	rs = stmt.executeQuery(query);
-	rs.next();
-	query = "Select id from umpire where clubid = " + clubid;
-	System.out.println(query);
-	ResultSet rs1 = stmt1.executeQuery(query);
-	rs1.next();
-	String insert = genTournMatches(rs,rs1,numRounds,startingSlot,startDate,matchid, stmt1,request,tournamentid);
+	
+	String insert = genTournMatches(numRounds,startingSlot,startDate,matchid, stmt, stmt1,request,tournamentid);
 	System.out.println(insert);
-	query = "select count(*) as cnt from tournament t where t.clubid=" + clubid + " and not ((select max(m.dateofmatch) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) < '" + startDate + "') and not (t.startdate > (date '" + startDate + "' + integer '" + request.getAttribute("span") + "'));";
+	String query = "select count(*) as cnt from tournament t where t.clubid=" + clubid + " and not ((select max(m.dateofmatch) from match m, competitive c where m.id = c.id and c.tournamentid = t.id) < '" + startDate + "') and not (t.startdate > (date '" + startDate + "' + integer '" + request.getAttribute("span") + "'));";
 	System.out.println(query);
 	rs = stmt.executeQuery(query);
 	rs.next();
@@ -122,7 +116,20 @@ public class createTournament extends HttpServlet{
 	return true;
     }
     
-    String genTournMatches (ResultSet rs, ResultSet rs1, int numRounds, int startingSlot, String startDate, int matchid, Statement stmt1, ServletRequest request, int tournamentid) throws SQLException{
+    String genTournMatches (int numRounds, int startingSlot, String startDate, int matchid, Statement stmt, Statement stmt1, ServletRequest request, int tournamentid) throws SQLException{
+
+	System.out.println("In genTournMatches");
+
+	int clubid = Integer.parseInt(request.getParameter("CREATETOURNAMENT"));
+	String query = "Select * from club where id = " + clubid;
+	System.out.println(query);
+	ResultSet rs = stmt.executeQuery(query);
+	query = "Select id from umpire where clubid = " + clubid;
+	System.out.println(query);
+	ResultSet rs1 = stmt1.executeQuery(query);
+	
+	rs.next();
+	rs1.next();
 
 	String insert = "";
 	int id = rs.getInt("id");
@@ -148,9 +155,10 @@ public class createTournament extends HttpServlet{
 	    for (int i = 0; i < numPlayers; i+=2) {
 		insert += "insert into match (id,clubid,dateofmatch,slotnumber,status,matchtype) values (" +  matchid + ", " + id + ", (select date '" + startDate + "' + integer '" + dayT + "'), " + runningSlot + ", 'Upcoming', 'Competitive');\n";
 		insert += "insert into competitive (id, umpireid, round, tournamentid) values (" + matchid + "," + rs1.getInt("id") + ", " + round + ", " + tournamentid + ");\n";
+		System.out.println(insert);
 		if (courtsOccupied == courts | !rs1.next()) {
 		    // reset rs1
-		    String query = "Select id from umpire where clubid = " + id;
+		    query = "Select id from umpire where clubid = " + id;
 		    System.out.println(query);
 		    rs1 = stmt1.executeQuery(query);
 		    rs1.next();
@@ -170,7 +178,7 @@ public class createTournament extends HttpServlet{
 	    runningSlot = startingSlot;
 	    round++;
 	    // reset rs1
-	    String query = "Select id from umpire where clubid = " + id;
+	    query = "Select id from umpire where clubid = " + id;
 	    System.out.println(query);
 	    rs1 = stmt1.executeQuery(query);
 	    rs1.next();

@@ -18,13 +18,52 @@ public class registertournamentplayer extends HttpServlet{
             {
                 conn.setAutoCommit(false);
                 query="Insert into Plays values("+my_id+", "+tournamentid+");";
+		System.out.println(query);
                 stmt.executeUpdate(query);
+		System.out.println(query);
                 query="delete from Match where (player1id="+my_id+" or player2id="+my_id+") and dateofmatch > '"+start_date+"' and dateofmatch < '"+end_date+"' and status='Challenge';";
                 stmt.executeUpdate(query);
                 
                 //******************************************************************
                 //If the number of players in the tournament equal the required
-                
+		query = "Select numPlayers from tournament where id = " + tournamentid;
+		ResultSet rs = stmt.executeQuery(query);
+		rs.next();
+		int numPlayers = rs.getInt("numplayers");
+		query = "Select count(*) as cnt from plays where tournamentid = " + tournamentid;
+		rs = stmt.executeQuery(query);
+		rs.next();
+		int numParticipants = rs.getInt("cnt");
+
+		if (numParticipants == numPlayers) {
+		    int minMatchID,maxMatchID;
+		    query = "Select min(m.id) as minmatchid from match m, competitive c where m.id=c.id and c.tournamentid = " + tournamentid;
+		    System.out.println(query);
+		    rs = stmt.executeQuery(query);
+		    rs.next();
+		    minMatchID = rs.getInt("minmatchid");
+		    query = "Select max(m.id) as maxmatchid from match m, competitive c where m.id=c.id and c.tournamentid = " + tournamentid;
+		    System.out.println(query);
+		    rs = stmt.executeQuery(query);
+		    rs.next();
+		    maxMatchID = rs.getInt("maxmatchid");
+
+		    query = "Select playerid,rating from player,plays where plays.playerid = player.id and plays.tournamentid = " + tournamentid + " order by rating";
+		    System.out.println(query);
+		    rs = stmt.executeQuery(query);
+		    Statement stmt1 = conn.createStatement();
+		    int runningMatchID = minMatchID;
+		    while(rs.next()) {
+			int pid1 = rs.getInt("playerid");
+			rs.next();
+			int pid2 = rs.getInt("playerid");
+			query = "update match set player1id = " + pid1 + ", player2id = " + pid2 + " where id = " + runningMatchID;
+			System.out.println(query);
+			stmt1.execute(query);
+			runningMatchID++;
+		    }
+		    
+		}
                 
                 //******************************************************************
                 
