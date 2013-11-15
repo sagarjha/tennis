@@ -144,7 +144,7 @@ public class tennis extends HttpServlet{
                 register reg=new register();
                 try
 		    {
-			redirectJsp = reg.registerHandler(request, session);
+			redirectJsp = reg.registerHandler(request, session,conn);
 		    }
                 catch(Exception regexcp)
 		    {
@@ -205,9 +205,9 @@ public class tennis extends HttpServlet{
                 redirectJsp=ac.addclubHandler(request,conn,session);
             }
             catch(Exception e)
-            {
-                System.out.println(e);
-            }
+		{
+		    System.out.println(e);
+		}
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
             dispatcher.forward(request, response);
@@ -223,9 +223,9 @@ public class tennis extends HttpServlet{
                 redirectJsp=pv.addprivaterecordHandler(request,session,conn);
             }
             catch(Exception e)
-            {
-                System.out.println(e);
-            }
+		{
+		    System.out.println(e);
+		}
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
             dispatcher.forward(request, response);
@@ -240,9 +240,9 @@ public class tennis extends HttpServlet{
                 ch.goToChallengePage(conn,request,session);
             }
             catch(Exception e)
-            {
-                System.out.println(e);
-            }
+		{
+		    System.out.println(e);
+		}
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
             dispatcher.forward(request, response);
@@ -407,9 +407,9 @@ public class tennis extends HttpServlet{
                 dispatcher.forward(request, response);
             }
         }
-      //Changing the price by the vendor
+	//Changing the price by the vendor
       
-      else if (request.getParameter("CHANGEPRICE") != null) {
+	else if (request.getParameter("CHANGEPRICE") != null) {
             if (request.getParameter("CHANGEPRICE").equals("Change")) {
                 System.out.println("come from searchclub.jsp into tennis.java, call searchClub in search.java");
                 String redirectJsp = "/Functionality/priceChanged.jsp";
@@ -567,8 +567,8 @@ public class tennis extends HttpServlet{
         else if (request.getParameter("CHALLENGE") != null) {
             if (request.getParameter("CHALLENGE").equals("Challenge")) {
                 try{
-                   challengehandler ch = new  challengehandler();
-                   ch.challengeDetailsFilled(conn,request,session);
+		    challengehandler ch = new  challengehandler();
+		    ch.challengeDetailsFilled(conn,request,session);
                 }
                 catch(Exception e) {
 		    System.out.println(e); 
@@ -619,13 +619,13 @@ public class tennis extends HttpServlet{
 		request.setAttribute("display","Either courts or umpires not free");
 	    }
 
-		ServletContext context = getServletContext();
-		RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+	    ServletContext context = getServletContext();
+	    RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
 	    dispatcher.forward(request, response);
 	}
         
         //Add coaching slot for coach
-         else if(request.getParameter("addcoachingslot") != null){
+	else if(request.getParameter("addcoachingslot") != null){
             if (request.getParameter("addcoachingslot").equals("Add Coaching Slot")) {
                 System.out.println("Add coaching slot in coach");
                 String redirectJsp="";
@@ -642,8 +642,8 @@ public class tennis extends HttpServlet{
             }
         }
          
-         //Add coach for player
-         else if(request.getParameter("PLAYERADDCOACHINGSLOT") != null){
+	//Add coach for player
+	else if(request.getParameter("PLAYERADDCOACHINGSLOT") != null){
             if (request.getParameter("PLAYERADDCOACHINGSLOT").equals("Add Coaching Slot")) {
                 System.out.println("Add coaching slot in player");
                 String redirectJsp = "";
@@ -661,89 +661,92 @@ public class tennis extends HttpServlet{
             }
         }
          
-         //player rates the coach
-         else if(request.getParameter("RATECOACHBYPLAYER") != null){
-             if (request.getParameter("RATECOACHBYPLAYER").equals("Give Rating")) {
-                 System.out.println("Rate coach by player");
-                 try{
-                     coachRatedByPlayer c = new coachRatedByPlayer();
-                     c.coachRated(request,conn,session);
-                 }
-                 catch(Exception e) {
+	//player rates the coach
+	else if(request.getParameter("RATECOACHBYPLAYER") != null){
+	    if (request.getParameter("RATECOACHBYPLAYER").equals("Give Rating")) {
+		System.out.println("Rate coach by player");
+		try{
+		    coachRatedByPlayer c = new coachRatedByPlayer();
+		    c.coachRated(request,conn,session);
+		}
+		catch(Exception e) {
 		    System.out.println(e); 
 		}
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
                 dispatcher.forward(request, response); 
                  
-             }
-         } 
+	    }
+	} 
          
-         // vendor adds stall
-         else if(request.getParameter("CLUBTOURNAMENTADDSTALL") != null){
-             if (request.getParameter("CLUBTOURNAMENTADDSTALL").equals("Add Stall")) {
-                 System.out.println("Add stall by vendor");
-                 try{
-                     setUpStall s = new setUpStall();
-                     s.setStall(request,conn,session);
-                 }
-                 catch(Exception e) {
+	// vendor adds stall
+	else if(request.getParameter("CLUBTOURNAMENTADDSTALL") != null){
+	    if (request.getParameter("CLUBTOURNAMENTADDSTALL").equals("Add Stall")) {
+		System.out.println("Add stall by vendor");
+		try{
+		    setUpStall s = new setUpStall();
+		    s.setStall(request,conn,session);
+		}
+		catch(Exception e) {
 		    System.out.println(e); 
 		}
-		 ServletContext context = getServletContext();
-		 RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
-		 dispatcher.forward(request, response); 
-             }
-         }
+		ServletContext context = getServletContext();
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
+		dispatcher.forward(request, response); 
+	    }
+	}
 
 	// club clicks on schedule tournament
-	 else if(request.getParameter("SCHEDULETOURNAMENT") != null){
-	     try {
-		 createTournament CT = new createTournament();
-		 CT.handleScheduleTournament (conn, request);
-	     }
+	else if(request.getParameter("SCHEDULETOURNAMENT") != null){
+	    try {
+		createTournament CT = new createTournament();
+		CT.handleScheduleTournament (conn, request);
+	    }
 
-	     catch (Exception e) {
-		 System.out.println(e);
-	     }
+	    catch (Exception e) {
+		System.out.println(e);
+	    }
 
-	     ServletContext context = getServletContext();
-	     RequestDispatcher dispatcher = context.getRequestDispatcher("/tournament/create.jsp");
-	     dispatcher.forward(request, response); 
-	 }
+	    ServletContext context = getServletContext();
+	    RequestDispatcher dispatcher = context.getRequestDispatcher("/tournament/create.jsp");
+	    dispatcher.forward(request, response); 
+	}
 
-	
-	// club creates a tournament
-         else if(request.getParameter("CREATETOURNAMENT") != null){
-	     try {
-		 createTournament CT = new createTournament();
-		 CT.handleCreateTournament (conn, request);
-	     }
-
-	     catch (Exception e) {
-		 System.out.println(e);
-	     }
-
-	     ServletContext context = getServletContext();
-	     RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
-	     dispatcher.forward(request, response); 
-	 }
-
-         // player registers for tournament
-         else if(request.getParameter("CLUBTOURNAMENTREGISTER") != null){
-             if (request.getParameter("CLUBTOURNAMENTREGISTER").equals("Add Stall")) {
-                System.out.println("Player registers for tournament");
-                String redirectJsp = "";
-                try{
-                    // make object and call appropriate function
-                }
-                catch(Exception e) {
-		    System.out.println(e); 
+	//Player registering for a tournament
+	else if (request.getParameter("CLUBTOURNAMENTREGISTER") != null) {
+            System.out.println("CLUBTOURNAMENTREGISTER");
+            String redirectJsp="";
+            registertournamentplayer ac=new registertournamentplayer();
+            try{
+                redirectJsp=ac.registertournamentplayerHandler(conn,request,session);
+            }
+            catch(Exception e)
+		{
+		    System.out.println(e);
 		}
-             }
-         }
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher(redirectJsp);
+            dispatcher.forward(request, response);
+            
+        }
          
-         //Logout: Session Invalidate
+	// club creates a tournament
+	else if(request.getParameter("CREATETOURNAMENT") != null){
+	    try {
+		createTournament CT = new createTournament();
+		CT.handleCreateTournament (conn, request);
+	    }
+
+	    catch (Exception e) {
+		System.out.println(e);
+	    }
+
+	    ServletContext context = getServletContext();
+	    RequestDispatcher dispatcher = context.getRequestDispatcher("/signupAndLogin/operationsuccessful.jsp");
+	    dispatcher.forward(request, response); 
+	}
+
+	//Logout: Session Invalidate
         else if (request.getParameter("LOGOUT") != null) {
             session.invalidate();
             String redirectJsp = "/login.jsp";// put correct jsp
