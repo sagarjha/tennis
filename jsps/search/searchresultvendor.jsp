@@ -6,6 +6,7 @@
 <html>
   <head>
     <title>Search results</title>
+    <link href="search/style.css" rel="stylesheet" type="text/css">
   </head>
 
   <body>  

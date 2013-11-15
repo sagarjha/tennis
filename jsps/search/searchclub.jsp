@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>Search for clubs</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
   </head>
 
   <h3 align="center">Search for clubs</h3><hr>

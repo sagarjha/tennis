@@ -64,7 +64,7 @@ public class createTournament extends HttpServlet{
 	if (rs.getInt("cnt") != 0) {
 	    return false;
 	}
-	query = "Insert into Tournament values( " + tournamentid + ", 'tname', '" + startDate + "', " + numPlayers + ", 20000, " + startingSlot + ", NULL, NULL, " + clubid + ")";
+	query = "Insert into Tournament values( " + tournamentid + ", 'Mumbai Open', '" + startDate + "', " + numPlayers + ", 20000, " + startingSlot + ", NULL, NULL, " + clubid + ")";
 	System.out.println(query);
 	stmt.execute(query);
 
