@@ -228,7 +228,7 @@ class clubLogin extends HttpServlet{
 		    count++;
 		}
 		else {
-		    matches += count + ". " + rs.getString("player1") + " vs " + rs.getString("player1") + " on " + rs.getString("dateofmatch") + "\\n";
+		    matches += count + ". " + rs.getString("player1") + " vs " + rs.getString("player2") + " on " + rs.getString("dateofmatch") + "\\n";
 		    count++;
 		}
 	    }
