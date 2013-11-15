@@ -176,15 +176,32 @@
 <table border="0" style="margin-top:300px; margin-left:50px; position:absolute">
   <tr>
     <th><font color="black">Recent Results</th>
+  <%
+if(request.getAttribute("publicNotes1")!=null)
+{
+%>
   <tr>
     <td width="300"><div align="left"><font color="black">&bull; <%= request.getAttribute("publicNotes1") %></div></td>
   </tr>
+  <%
+}
+if(request.getAttribute("publicNotes2")!=null)
+{
+%>
   <tr>
     <td width="300"><div align="left"><font color="black">&bull; <%= request.getAttribute("publicNotes2") %></div></td>
   </tr>
+  <%
+}
+if(request.getAttribute("publicNotes3")!=null)
+{
+%>
   <tr>
     <td width="300"><div align="left"><font color="black">&bull; <%= request.getAttribute("publicNotes3") %></div></td>
   </tr>
+  <%
+}
+%>
   <tr>
     
     <td width="300"><div align="left"><input type="button" onclick='myFunction("<%= request.getAttribute("publicNotes")%>")' value="See all results"> </div></td>
